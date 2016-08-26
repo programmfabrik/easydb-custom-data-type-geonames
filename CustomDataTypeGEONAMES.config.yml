@@ -1,0 +1,32 @@
+plugin:
+  name: custom-data-type-geonames
+  version: 1.0
+  server:
+    api-version:
+      require: 1
+  webfrontend:
+    url: build/webfrontend/custom-data-type-geonames.js
+    l10n: build/webfrontend/l10n/
+custom_types:
+  geonames:
+    elasticsearch:
+      mapping:
+        type: l10ntext
+      value:
+        origin: json
+        key: text
+    config:
+      schema:
+        - name: mapquest_api_key
+          parameters:
+            value:
+              type: text
+      mask:
+        - name: show_infopopup
+          parameters:
+            value:
+              type: bool
+        - name: config_featureclasses
+          parameters:
+            value:
+              type: bool
