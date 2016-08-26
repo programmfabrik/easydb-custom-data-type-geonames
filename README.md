@@ -1,10 +1,22 @@
 # easydb-custom-data-type-geonames
 Custom Data Type "GEONAMES" for easydb
 
-Erlaubt die Verknüpfung mit geonames. Über einen Suchschlitz wird der Suggest-Service http://ws.gbv.de/suggest/geonames/ angesteuert. Die Ergebnisse können nach Featureklassen (http://www.geonames.org/source-code/javadoc/org/geonames/FeatureClass.html) gefiltert werden.
+This is a plugin for [easyDB 5](http://5.easydb.de/) with Custom Data Type `CustomDataTypeGEONAMES` for references to entities of the [GeoNames geographical database)](<http://www.geonames.org/>).
 
-Im Vorschlagsmenü werden die Treffervorschläge nach Featurecodes zusammengefasst und entsprechend unterteilt ausgeliefert.
+The Plugins uses <http://ws.gbv.de/suggest/geonames/> for the autocomplete-suggestions and [GeoNames database](<http://www.geonames.org/export/JSON-webservices.html>) for additional informations about GeoNames entities.
 
-Beim Mausüberfahren eines Treffers in der Vorschlagsliste werden alle weiteren bekannten Informationen zum Datensatz in einem Tooltip dargestellt.
+## configuration
 
-Um die Treffer in einer statischen Kartenvorschau zu sehen, muss ein Mapquest-Developer-Key in der Datenbank-Schema-Konfiguration des Objekttyps hinterlegt werden. Ohne API-Key wird keine Karte angezeigt.
+In `CustomDataTypeGEONAMES.config.yml` you can configure:
+
+* `schema-options`: which [featureclasses] (<http://www.geonames.org/source-code/javadoc/org/geonames/FeatureClass.html>)  are offered for search. If a Mapquest-Developer-Key is added, the Plugin shows GeoNames-Entries in a static map.
+
+* `mask-options`: whether additional informationen is loaded if the mouse hovers a suggestion in the search result. The results are ordered and categorized by featurecode
+
+## sources
+
+The source code of this plugin is managed in a git repository at <https://github.com/programmfabrik/easydb-custom-data-type-geonames>. Please use [the issue tracker](https://github.com/programmfabrik/easydb-custom-data-type-geonames/issues) for bug reports and feature requests!
+
+
+
+
