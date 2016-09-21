@@ -1,7 +1,7 @@
 Session::getCustomDataTypes = ->
 	@getDefaults().server.custom_data_types or {}
 
-class CustomDataTypeGEONAMES extends CustomDataType
+class CustomDataTypeGeonames extends CustomDataType
 
 	# the eventually running xhrs
 	geonames_xhr = undefined
@@ -570,4 +570,4 @@ class CustomDataTypeGEONAMES extends CustomDataType
 		@
 
 
-CustomDataType.register(CustomDataTypeGEONAMES)
+CustomDataType.register(CustomDataTypeGeonames)

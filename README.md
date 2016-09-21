@@ -1,13 +1,13 @@
 # easydb-custom-data-type-geonames
 Custom Data Type "GEONAMES" for easydb
 
-This is a plugin for [easyDB 5](http://5.easydb.de/) with Custom Data Type `CustomDataTypeGEONAMES` for references to entities of the [GeoNames geographical database)](<http://www.geonames.org/>).
+This is a plugin for [easyDB 5](http://5.easydb.de/) with Custom Data Type `CustomDataTypeGeonames` for references to entities of the [GeoNames geographical database)](<http://www.geonames.org/>).
 
 The Plugins uses <http://ws.gbv.de/suggest/geonames/> for the autocomplete-suggestions and [GeoNames database](<http://www.geonames.org/export/JSON-webservices.html>) for additional informations about GeoNames entities.
 
 ## configuration
 
-In `CustomDataTypeGEONAMES.config.yml` you can configure:
+In `CustomDataTypeGeonames.config.yml` you can configure:
 
 * `schema-options`: which [featureclasses] (<http://www.geonames.org/source-code/javadoc/org/geonames/FeatureClass.html>)  are offered for search. If a Mapquest-Developer-Key is added, the Plugin shows GeoNames-Entries in a static map.
 
