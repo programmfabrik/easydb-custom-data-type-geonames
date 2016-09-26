@@ -11,9 +11,9 @@ class CustomDataTypeGeonames extends CustomDataType
   # short info panel
   entityfacts_Panel = new Pane
   # locked geonames-URI
-  geonamesResultURI = ''
+  conceptURI = ''
   # locked geonames-Name
-  geonamesResultName = ''
+  conceptName = ''
   # mapquest api-key
   mapquest_api_key = '';
 
@@ -34,16 +34,16 @@ class CustomDataTypeGeonames extends CustomDataType
     # console.error @, data, top_level_data, opts, @name(), @fullName()
     if not data[@name()]
       cdata = {
-            geonamesResultName : ''
-            geonamesResultURI : ''
+            conceptName : ''
+            conceptURI : ''
         }
       data[@name()] = cdata
-      geonamesResultURI = ''
-      geonamesResultName = ''
+      conceptURI = ''
+      conceptName = ''
     else
       cdata = data[@name()]
-      geonamesResultName = cdata.geonamesResultName
-      geonamesResultURI = cdata.geonamesResultURI
+      conceptName = cdata.conceptName
+      conceptURI = cdata.conceptURI
 
     @__renderEditorInputPopover(data, cdata)
 
@@ -67,12 +67,12 @@ class CustomDataTypeGeonames extends CustomDataType
             onClick: (ev, btn) =>
               # delete data
               cdata = {
-                    geonamesResultName : ''
-                    geonamesResultURI : ''
+                    conceptName : ''
+                    conceptURI : ''
               }
               data.geonames = cdata
-              geonamesResultURI = ''
-              geonamesResultName = ''
+              conceptURI = ''
+              conceptName = ''
               # trigger form change
               Events.trigger
                 node: @__layout
@@ -225,17 +225,17 @@ class CustomDataTypeGeonames extends CustomDataType
           onClick: (ev2, btn) ->
 
             # lock result in variables
-            geonamesResultName = btn.getText()
-            geonamesResultURI = btn.getOpt("value")
+            conceptName = btn.getText()
+            conceptURI = btn.getOpt("value")
 
             # lock in save data
-            cdata.geonamesResultURI = geonamesResultURI
-            cdata.geonamesResultName = geonamesResultName
+            cdata.conceptURI = conceptURI
+            cdata.conceptName = conceptName
             # lock in form
-            cdata_form.getFieldsByName("geonamesResultName")[0].storeValue(geonamesResultName).displayValue()
+            cdata_form.getFieldsByName("conceptName")[0].storeValue(conceptName).displayValue()
             # nach eadb5-Update durch "setText" ersetzen und "__checkbox" rausnehmen
-            cdata_form.getFieldsByName("geonamesResultURI")[0].__checkbox.setText(geonamesResultURI)
-            cdata_form.getFieldsByName("geonamesResultURI")[0].show()
+            cdata_form.getFieldsByName("conceptURI")[0].__checkbox.setText(conceptURI)
+            cdata_form.getFieldsByName("conceptURI")[0].show()
 
             # clear searchbar
             cdata_form.getFieldsByName("geonamesSearchBar")[0].setValue('')
@@ -269,10 +269,10 @@ class CustomDataTypeGeonames extends CustomDataType
   # reset form
   __resetGEONAMESForm: (cdata, cdata_form) ->
     # clear variables
-    geonamesResultName = ''
-    geonamesResultURI = ''
-    cdata.geonamesResultName = ''
-    cdata.geonamesResultURI = ''
+    conceptName = ''
+    conceptURI = ''
+    cdata.conceptName = ''
+    cdata.conceptURI = ''
 
     # reset type-select
     cdata_form.getFieldsByName("geonamesSelectFeatureClasses")[0].setValue("DifferentiatedPerson")
@@ -284,11 +284,11 @@ class CustomDataTypeGeonames extends CustomDataType
     cdata_form.getFieldsByName("geonamesSearchBar")[0].setValue("")
 
     # reset result name
-    cdata_form.getFieldsByName("geonamesResultName")[0].storeValue("").displayValue()
+    cdata_form.getFieldsByName("conceptName")[0].storeValue("").displayValue()
 
     # reset and hide result-uri-button
-    cdata_form.getFieldsByName("geonamesResultURI")[0].__checkbox.setText("")
-    cdata_form.getFieldsByName("geonamesResultURI")[0].hide()
+    cdata_form.getFieldsByName("conceptURI")[0].__checkbox.setText("")
+    cdata_form.getFieldsByName("conceptURI")[0].hide()
 
 
   #######################################################################
@@ -343,8 +343,8 @@ class CustomDataTypeGeonames extends CustomDataType
             onClick: =>
               # put data to savedata
               data.geonames = {
-                geonamesResultName : cdata.geonamesResultName
-                geonamesResultURI : cdata.geonamesResultURI
+                conceptName : cdata.conceptName
+                conceptURI : cdata.conceptURI
               }
               # close popup
               @popover.destroy()
@@ -399,20 +399,20 @@ class CustomDataTypeGeonames extends CustomDataType
         form:
           label: "Gewählter Eintrag"
         type: Output
-        name: "geonamesResultName"
-        data: {geonamesResultName: geonamesResultName}
+        name: "conceptName"
+        data: {conceptName: conceptName}
       }
       {
         form:
           label: "Verknüpfte URI"
         type: FormButton
-        name: "geonamesResultURI"
+        name: "conceptURI"
         icon: new Icon(class: "fa-lightbulb-o")
-        text: geonamesResultURI
+        text: conceptURI
         onClick: (evt,button) =>
-          window.open geonamesResultURI, "_blank"
+          window.open conceptURI, "_blank"
         onRender : (_this) =>
-          if geonamesResultURI == ''
+          if conceptURI == ''
             _this.hide()
       }]
 
@@ -484,33 +484,34 @@ class CustomDataTypeGeonames extends CustomDataType
   #######################################################################
   # checks the form and returns status
   getDataStatus: (cdata) ->
-    if cdata.geonamesResultURI and cdata.geonamesResultName
-      # check url for valididy
-      uriCheck = CUI.parseLocation(cdata.geonamesResultURI)
+    if (cdata)
+        if cdata.conceptURI and cdata.conceptName
+          # check url for valididy
+          uriCheck = CUI.parseLocation(cdata.conceptURI)
 
-      # /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(value);
+          # /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(value);
 
-      # uri-check patch!?!? returns always a result
+          # uri-check patch!?!? returns always a result
 
-      nameCheck = if cdata.geonamesResultName then cdata.geonamesResultName.trim() else undefined
+          nameCheck = if cdata.conceptName then cdata.conceptName.trim() else undefined
 
-      if uriCheck and nameCheck
-        console.debug "getDataStatus: OK "
-        return "ok"
+          if uriCheck and nameCheck
+            console.debug "getDataStatus: OK "
+            return "ok"
 
-      if cdata.geonamesResultURI.trim() == '' and cdata.geonamesResultName.trim() == ''
-        console.debug "getDataStatus: empty"
-        return "empty"
+          if cdata.conceptURI.trim() == '' and cdata.conceptName.trim() == ''
+            console.debug "getDataStatus: empty"
+            return "empty"
 
-      console.debug "getDataStatus returns invalid"
-      return "invalid"
-    else
-      cdata = {
-            geonamesResultName : ''
-            geonamesResultURI : ''
-        }
-      console.debug "getDataStatus: empty"
-      return "empty"
+          console.debug "getDataStatus returns invalid"
+          return "invalid"
+        else
+          cdata = {
+                conceptName : ''
+                conceptURI : ''
+            }
+          console.debug "getDataStatus: empty"
+          return "empty"
 
 
   #######################################################################
@@ -524,21 +525,21 @@ class CustomDataTypeGeonames extends CustomDataType
         return new EmptyLabel(text: $$("custom.data.type.geonames.edit.no_valid_geonames")).DOM
 
     # if status is ok
-    geonamesResultURI = CUI.parseLocation(cdata.geonamesResultURI).url
+    conceptURI = CUI.parseLocation(cdata.conceptURI).url
 
-    # if geonamesResultURI .... ... patch abwarten
+    # if conceptURI .... ... patch abwarten
 
     # output Button with Name of picked GEONAMES-Entry and Url to the "Deutsche Nationalbibliothek"
     new ButtonHref
       appearance: "link"
-      href: cdata.geonamesResultURI
+      href: cdata.conceptURI
       target: "_blank"
       tooltip:
         markdown: true
         auto_size: true
         placement: 'n'
         content: () ->
-          uri = cdata.geonamesResultURI
+          uri = cdata.conceptURI
           geonamesID = uri.split('/')
           geonamesID = geonamesID.pop()
           htmlContent = ''
@@ -546,7 +547,7 @@ class CustomDataTypeGeonames extends CustomDataType
           if mapquest_api_key
               htmlContent += '<div style="width:400px; height: 250px; background-image: url(http://ws.gbv.de/suggest/mapfromgeonamesid/?id=' + geonamesID + '&zoom=12&width=400&height=250&mapquestapikey=' + mapquest_api_key + '); background-repeat: no-repeat; background-position: center center;"></div>'
               htmlContent
-      text: cdata.geonamesResultName + '\n( ' + cdata.geonamesResultURI + ')'
+      text: cdata.conceptName + '\n( ' + cdata.conceptURI + ')'
     .DOM
 
 
@@ -561,8 +562,8 @@ class CustomDataTypeGeonames extends CustomDataType
         save_data[@name()] = null
       when "ok"
         save_data[@name()] =
-          geonamesResultName: cdata.geonamesResultName.trim()
-          geonamesResultURI: cdata.geonamesResultURI.trim()
+          conceptName: cdata.conceptName.trim()
+          conceptURI: cdata.conceptURI.trim()
 
 
 
