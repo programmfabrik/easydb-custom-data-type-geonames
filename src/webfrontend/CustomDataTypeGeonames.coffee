@@ -192,16 +192,20 @@ class CustomDataTypeGeonames extends CustomDataType
         # create new menu with suggestions
         menu_items = []
         # the actual Featureclass
-        actualFclass = ''
         for suggestion, key in data[1]
           do(key) ->
-            if (actualFclass = '' || actualFclass != data[2][key])
-              actualFclass = data[2][key]
+            # the actual Featureclass...
+            aktType = data[2][key]
+            lastType = ''
+            if key > 0
+              lastType = data[2][key-1]
+            if aktType != lastType
+              console.log aktType
               item =
                 divider: true
               menu_items.push item
               item =
-                label: actualFclass
+                label: aktType
               menu_items.push item
               item =
                 divider: true
