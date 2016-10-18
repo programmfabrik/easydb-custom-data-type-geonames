@@ -16,6 +16,8 @@ class CustomDataTypeGeonames extends CustomDataType
   conceptName = ''
   # mapquest api-key
   mapquest_api_key = '';
+  # protocol
+  protocol = location.protocol;
 
   #######################################################################
   # return name of plugin
@@ -102,7 +104,7 @@ class CustomDataTypeGeonames extends CustomDataType
       # abort eventually running request
       entityfacts_xhr.abort()
     # start new request
-    entityfacts_xhr = new (CUI.XHR)(url: 'http://uri.gbv.de/terminology/geonames/' + geonamesID + '?format=json')
+    entityfacts_xhr = new (CUI.XHR)(url: protocol + '//uri.gbv.de/terminology/geonames/' + geonamesID + '?format=json')
     entityfacts_xhr.start()
     .done((data, status, statusText) ->
       htmlContent = '<span style="font-weight: bold">Informationen über den Eintrag</span>'
@@ -114,7 +116,7 @@ class CustomDataTypeGeonames extends CustomDataType
           coord2 = data.lng
       if mapquest_api_key
         if coord1 != 0 & coord2 != 0
-          url = 'http://open.mapquestapi.com/staticmap/v4/getmap?key=' + mapquest_api_key + '&size=400,200&zoom=12&center=' + coord1 + ',' + coord2;
+          url = protocol + '//open.mapquestapi.com/staticmap/v4/getmap?key=' + mapquest_api_key + '&size=400,200&zoom=12&center=' + coord1 + ',' + coord2;
           htmlContent += '<div style="width:400px; height: 250px; background-image: url(' + url + '); background-repeat: no-repeat; background-position: center center;"></div>'
       htmlContent += '<table style="border-spacing: 10px; border-collapse: separate;">'
 
@@ -184,7 +186,7 @@ class CustomDataTypeGeonames extends CustomDataType
         # abort eventually running request
         geonames_xhr.abort()
     # start new request
-    geonames_xhr = new (CUI.XHR)(url: 'http://ws.gbv.de/suggest/geonames/?searchterm=' + geonames_searchterm + '&featureclass=' + geonames_featureclass + '&count=' + geonames_countSuggestions)
+    geonames_xhr = new (CUI.XHR)(url: protocol + '//ws.gbv.de/suggest/geonames/?searchterm=' + geonames_searchterm + '&featureclass=' + geonames_featureclass + '&count=' + geonames_countSuggestions)
     geonames_xhr.start().done((data, status, statusText) ->
 
         CUI.debug 'OK', geonames_xhr.getXHR(), geonames_xhr.getResponseHeaders()
@@ -549,7 +551,7 @@ class CustomDataTypeGeonames extends CustomDataType
           htmlContent = ''
           # wenn mapquest-api-key
           if mapquest_api_key
-              htmlContent += '<div style="width:400px; height: 250px; background-image: url(http://ws.gbv.de/suggest/mapfromgeonamesid/?id=' + geonamesID + '&zoom=12&width=400&height=250&mapquestapikey=' + mapquest_api_key + '); background-repeat: no-repeat; background-position: center center;"></div>'
+              htmlContent += '<div style="width:400px; height: 250px; background-image: url(' + protocol  + '//ws.gbv.de/suggest/mapfromgeonamesid/?id=' + geonamesID + '&zoom=12&width=400&height=250&mapquestapikey=' + mapquest_api_key + '); background-repeat: no-repeat; background-position: center center;"></div>'
               htmlContent
       text: cdata.conceptName + '\n( ' + cdata.conceptURI + ')'
     .DOM
