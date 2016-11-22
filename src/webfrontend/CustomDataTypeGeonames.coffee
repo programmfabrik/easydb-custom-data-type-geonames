@@ -4,7 +4,7 @@ Session::getCustomDataTypes = ->
 class CustomDataTypeGeonames extends CustomDataType
 
   # the eventually running xhrs
-  geonames_xhr = undefined
+  searchsuggest_xhr = undefined
   entityfacts_xhr = undefined
   # suggestMenu
   suggest_Menu = new Menu
@@ -160,7 +160,8 @@ class CustomDataTypeGeonames extends CustomDataType
         if typeof data.timezone != 'object'
             htmlContent += '<tr><td>Zeitzone:</td><td>' + data.timezone + '</td></tr>'
 
-      tooltip.getPane().replace(htmlContent, "center")
+      #tooltip.getPane().replace(htmlContent, "center")
+      tooltip.DOM.html(htmlContent);
       tooltip.autoSize()
     )
     .fail (data, status, statusText) ->
@@ -171,7 +172,7 @@ class CustomDataTypeGeonames extends CustomDataType
 
   #######################################################################
   # handle suggestions-menu
-  __updateSuggestionsMenu: (cdata, cdata_form) ->
+  __updateSuggestionsMenu: (cdata, cdata_form, suggest_Menu, searchsuggest_xhr) ->
     that = @
 
     geonames_searchterm = cdata_form.getFieldsByName("geonamesSearchBar")[0].getValue()
@@ -182,14 +183,14 @@ class CustomDataTypeGeonames extends CustomDataType
         return
 
     # run autocomplete-search via xhr
-    if geonames_xhr != undefined
+    if searchsuggest_xhr.xhr != undefined
         # abort eventually running request
-        geonames_xhr.abort()
+        searchsuggest_xhr.xhr.abort()
     # start new request
-    geonames_xhr = new (CUI.XHR)(url: protocol + '//ws.gbv.de/suggest/geonames/?searchterm=' + geonames_searchterm + '&featureclass=' + geonames_featureclass + '&count=' + geonames_countSuggestions)
-    geonames_xhr.start().done((data, status, statusText) ->
+    searchsuggest_xhr.xhr = new (CUI.XHR)(url: protocol + '//ws.gbv.de/suggest/geonames/?searchterm=' + geonames_searchterm + '&featureclass=' + geonames_featureclass + '&count=' + geonames_countSuggestions)
+    searchsuggest_xhr.xhr.start().done((data, status, statusText) ->
 
-        CUI.debug 'OK', geonames_xhr.getXHR(), geonames_xhr.getResponseHeaders()
+        CUI.debug 'OK', searchsuggest_xhr.xhr.getXHR(), searchsuggest_xhr.xhr.getResponseHeaders()
 
         # create new menu with suggestions
         menu_items = []
@@ -257,18 +258,11 @@ class CustomDataTypeGeonames extends CustomDataType
 
         suggest_Menu.setItemList(itemList)
 
-        suggest_Menu.show(
-          new Positioner(
-            top: 60
-            left: 400
-            width: 0
-            height: 0
-          )
-        )
+        suggest_Menu.show()
 
     )
     #.fail (data, status, statusText) ->
-        #CUI.debug 'FAIL', geonames_xhr.getXHR(), geonames_xhr.getResponseHeaders()
+        #CUI.debug 'FAIL', searchsuggest_xhr.getXHR(), searchsuggest_xhr.getResponseHeaders()
 
 
   #######################################################################
@@ -315,6 +309,13 @@ class CustomDataTypeGeonames extends CustomDataType
   #######################################################################
   # show popover and fill it with the form-elements
   showEditPopover: (btn, cdata, data) ->
+    # init suggestmenu
+    suggest_Menu = new Menu
+        show_at_position:
+            top: 60
+            left: 400
+    # init xhr-object to abort running xhrs
+    searchsuggest_xhr = { "xhr" : undefined }
     # set default value for count of suggestions
     cdata.geonamesSelectCountOfSuggestions = 20
     cdata_form = new Form
@@ -323,7 +324,7 @@ class CustomDataTypeGeonames extends CustomDataType
       onDataChanged: =>
         @__updateGEONAMESResult(cdata)
         @__setEditorFieldStatus(cdata, @__layout)
-        @__updateSuggestionsMenu(cdata, cdata_form)
+        @__updateSuggestionsMenu(cdata, cdata_form,suggest_Menu, searchsuggest_xhr)
     .start()
     xpane = new SimplePane
       class: "cui-demo-pane-pane"
