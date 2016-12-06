@@ -1,3 +1,10 @@
+###
+ * easydb-custom-data-type-geonames
+ * Copyright (c) 2016 Programmfabrik GmbH, Verbundzentrale des GBV (VZG)
+ * MIT Licence
+ * https://github.com/programmfabrik/easydb-custom-data-type-gnd
+###
+
 Session::getCustomDataTypes = ->
   @getDefaults().server.custom_data_types or {}
 
