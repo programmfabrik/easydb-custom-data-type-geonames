@@ -183,7 +183,9 @@ class CustomDataTypeGeonames extends CustomDataType
     that = @
 
     geonames_searchterm = cdata_form.getFieldsByName("geonamesSearchBar")[0].getValue()
-    geonames_featureclass = cdata_form.getFieldsByName("geonamesSelectFeatureClasses")[0].getValue()
+    geonames_featureclass = cdata_form.getFieldsByName("geonamesSelectFeatureClasses")[0]?.getValue()
+    if geonames_featureclass == undefined
+        geonames_featureclass = ''
     geonames_countSuggestions = cdata_form.getFieldsByName("geonamesSelectCountOfSuggestions")[0].getValue()
 
     if geonames_searchterm.length == 0
@@ -210,7 +212,6 @@ class CustomDataTypeGeonames extends CustomDataType
             if key > 0
               lastType = data[2][key-1]
             if aktType != lastType
-              console.log aktType
               item =
                 divider: true
               menu_items.push item
@@ -225,7 +226,6 @@ class CustomDataTypeGeonames extends CustomDataType
               value: data[3][key]
               tooltip:
                 markdown: true
-                auto_size: true
                 placement: "e"
                 content: (tooltip) ->
                   # if enabled in mask-config
@@ -550,7 +550,6 @@ class CustomDataTypeGeonames extends CustomDataType
       target: "_blank"
       tooltip:
         markdown: true
-        auto_size: true
         placement: 'n'
         content: () ->
           uri = cdata.conceptURI
