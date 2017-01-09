@@ -1,10 +1,3 @@
-###
- * easydb-custom-data-type-geonames
- * Copyright (c) 2016 Programmfabrik GmbH, Verbundzentrale des GBV (VZG)
- * MIT Licence
- * https://github.com/programmfabrik/easydb-custom-data-type-gnd
-###
-
 Session::getCustomDataTypes = ->
   @getDefaults().server.custom_data_types or {}
 
@@ -580,8 +573,13 @@ class CustomDataTypeGeonames extends CustomDataType
 
 
 
+  #######################################################################
+  # zeige die gewählten Optionen im Datenmodell unter dem Button an
   renderCustomDataOptionsInDatamodel: (custom_settings) ->
-    @
+    if custom_settings.mapquest_api_key?.value
+      new Label(text: "Mapquest-API-Key hinterlegt")
+    else
+      new Label(text: "Kein Mapquest-API-Key hinterlegt")
 
 
 CustomDataType.register(CustomDataTypeGeonames)
