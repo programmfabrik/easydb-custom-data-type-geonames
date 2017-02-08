@@ -3,21 +3,10 @@ Session::getCustomDataTypes = ->
 
 class CustomDataTypeGeonames extends CustomDataType
 
-  # the eventually running xhrs
-  searchsuggest_xhr = undefined
-  entityfacts_xhr = undefined
-  # suggestMenu
-  suggest_Menu = new Menu
-  # short info panel
-  entityfacts_Panel = new Pane
-  # locked geonames-URI
-  conceptURI = ''
-  # locked geonames-Name
-  conceptName = ''
-  # mapquest api-key
-  mapquest_api_key = '';
-  # protocol
-  protocol = location.protocol;
+  CUI.ready =>
+    style = DOM.element("style")
+    style.innerHTML = ".geonamesPopover { min-width:600px !important; } .geonamesInput .cui-button-visual, .geonamesSelect .cui-button-visual { width: 100%; } .geonamesSelect > div { width: 100%; }"
+    document.head.appendChild(style)
 
   #######################################################################
   # return name of plugin
@@ -31,6 +20,15 @@ class CustomDataTypeGeonames extends CustomDataType
     $$("custom.data.type.geonames.name")
 
   #######################################################################
+  # check if field is empty
+  # needed for editor-table-view
+  isEmpty: (data, top_level_data, opts) ->
+      if data[@name()]?.conceptName
+          false
+      else
+          true
+
+  #######################################################################
   # handle editorinput
   renderEditorInput: (data, top_level_data, opts) ->
     # console.error @, data, top_level_data, opts, @name(), @fullName()
@@ -40,8 +38,6 @@ class CustomDataTypeGeonames extends CustomDataType
             conceptURI : ''
         }
       data[@name()] = cdata
-      conceptURI = ''
-      conceptName = ''
     else
       cdata = data[@name()]
       conceptName = cdata.conceptName
@@ -51,35 +47,40 @@ class CustomDataTypeGeonames extends CustomDataType
 
 
   #######################################################################
-  # buttons, which open and close the popover
+  # buttons, which open and close popover
   __renderEditorInputPopover: (data, cdata) ->
-    # read mapquest-api-key from schema
-    if @getCustomSchemaSettings().mapquest_api_key?.value
-        mapquest_api_key = @getCustomSchemaSettings().mapquest_api_key?.value
-    # render buttons
     @__layout = new HorizontalLayout
       left:
         content:
-            loca_key: "custom.data.type.geonames.edit.button"
-            onClick: (ev, btn) =>
-              @showEditPopover(btn, cdata, data)
-      center:
-        content:
-            loca_key: "custom.data.type.geonames.remove.button"
-            onClick: (ev, btn) =>
-              # delete data
-              cdata = {
-                    conceptName : ''
-                    conceptURI : ''
-              }
-              data.geonames = cdata
-              conceptURI = ''
-              conceptName = ''
-              # trigger form change
-              Events.trigger
-                node: @__layout
-                type: "editor-changed"
-              @__updateGEONAMESResult(cdata)
+            new Buttonbar(
+              buttons: [
+                  new Button
+                      text: ""
+                      icon: 'edit'
+                      group: "groupA"
+
+                      onClick: (ev, btn) =>
+                        @showEditPopover(btn, cdata, data)
+
+                  new Button
+                      text: ""
+                      icon: 'trash'
+                      group: "groupA"
+                      onClick: (ev, btn) =>
+                        # delete data
+                        cdata = {
+                              conceptName : ''
+                              conceptURI : ''
+                        }
+                        data[@name()] = cdata
+                        # trigger form change
+                        Events.trigger
+                          node: @__layout
+                          type: "editor-changed"
+                        @__updateGEONAMESResult(cdata)
+              ]
+            )
+      center: {}
       right: {}
     @__updateGEONAMESResult(cdata)
     @__layout
@@ -94,18 +95,19 @@ class CustomDataTypeGeonames extends CustomDataType
 
   #######################################################################
   # read info from geonames-terminology
-  __getInfoForGeonamesEntry: (uri, tooltip) ->
+  __getInfoForGeonamesEntry: (uri, tooltip,extendedInfo_xhr) ->
+    that = @
     # extract geonamesID from uri
     geonamesID = uri
     geonamesID = geonamesID.split "/"
     geonamesID = geonamesID.pop()
     # download infos from entityfacts
-    if entityfacts_xhr != undefined
+    if extendedInfo_xhr != undefined
       # abort eventually running request
-      entityfacts_xhr.abort()
+      extendedInfo_xhr.abort()
     # start new request
-    entityfacts_xhr = new (CUI.XHR)(url: protocol + '//uri.gbv.de/terminology/geonames/' + geonamesID + '?format=json')
-    entityfacts_xhr.start()
+    extendedInfo_xhr = new (CUI.XHR)(url: location.protocol + '//uri.gbv.de/terminology/geonames/' + geonamesID + '?format=json')
+    extendedInfo_xhr.start()
     .done((data, status, statusText) ->
       htmlContent = '<span style="font-weight: bold">Informationen über den Eintrag</span>'
       coord1 = 0
@@ -114,9 +116,13 @@ class CustomDataTypeGeonames extends CustomDataType
           coord1 = data.lat
       if data.lat
           coord2 = data.lng
+      # wenn mapquest-api-key
+      # read mapquest-api-key from schema
+      if that.getCustomSchemaSettings().mapquest_api_key?.value
+          mapquest_api_key = that.getCustomSchemaSettings().mapquest_api_key?.value
       if mapquest_api_key
         if coord1 != 0 & coord2 != 0
-          url = protocol + '//open.mapquestapi.com/staticmap/v4/getmap?key=' + mapquest_api_key + '&size=400,200&zoom=12&center=' + coord1 + ',' + coord2;
+          url = location.protocol + '//open.mapquestapi.com/staticmap/v4/getmap?key=' + mapquest_api_key + '&size=400,200&zoom=12&center=' + coord1 + ',' + coord2;
           htmlContent += '<div style="width:400px; height: 250px; background-image: url(' + url + '); background-repeat: no-repeat; background-position: center center;"></div>'
       htmlContent += '<table style="border-spacing: 10px; border-collapse: separate;">'
 
@@ -165,7 +171,7 @@ class CustomDataTypeGeonames extends CustomDataType
       tooltip.autoSize()
     )
     .fail (data, status, statusText) ->
-        CUI.debug 'FAIL', entityfacts_xhr.getXHR(), entityfacts_xhr.getResponseHeaders()
+        CUI.debug 'FAIL', extendedInfo_xhr.getXHR(), extendedInfo_xhr.getResponseHeaders()
 
     return
 
@@ -183,13 +189,13 @@ class CustomDataTypeGeonames extends CustomDataType
 
     if geonames_searchterm.length == 0
         return
-
+    extendedInfo_xhr = { "xhr" : undefined }
     # run autocomplete-search via xhr
     if searchsuggest_xhr.xhr != undefined
         # abort eventually running request
         searchsuggest_xhr.xhr.abort()
     # start new request
-    searchsuggest_xhr.xhr = new (CUI.XHR)(url: protocol + '//ws.gbv.de/suggest/geonames/?searchterm=' + geonames_searchterm + '&featureclass=' + geonames_featureclass + '&count=' + geonames_countSuggestions)
+    searchsuggest_xhr.xhr = new (CUI.XHR)(url: location.protocol + '//ws.gbv.de/suggest/geonames/?searchterm=' + geonames_searchterm + '&featureclass=' + geonames_featureclass + '&count=' + geonames_countSuggestions)
     searchsuggest_xhr.xhr.start().done((data, status, statusText) ->
 
         CUI.debug 'OK', searchsuggest_xhr.xhr.getXHR(), searchsuggest_xhr.xhr.getResponseHeaders()
@@ -223,7 +229,7 @@ class CustomDataTypeGeonames extends CustomDataType
                 content: (tooltip) ->
                   # if enabled in mask-config
                   if that.getCustomMaskSettings().show_infopopup?.value
-                    that.__getInfoForGeonamesEntry(data[3][key], tooltip)
+                    that.__getInfoForGeonamesEntry(data[3][key], tooltip, extendedInfo_xhr)
                     new Label(icon: "spinner", text: "lade Informationen")
             menu_items.push item
 
@@ -231,17 +237,13 @@ class CustomDataTypeGeonames extends CustomDataType
         itemList =
           onClick: (ev2, btn) ->
 
-            # lock result in variables
-            conceptName = btn.getText()
-            conceptURI = btn.getOpt("value")
-
             # lock in save data
-            cdata.conceptURI = conceptURI
-            cdata.conceptName = conceptName
+            cdata.conceptURI = btn.getOpt("value")
+            cdata.conceptName = btn.getText()
             # lock in form
-            cdata_form.getFieldsByName("conceptName")[0].storeValue(conceptName).displayValue()
+            cdata_form.getFieldsByName("conceptName")[0].storeValue(cdata.conceptName).displayValue()
             # nach eadb5-Update durch "setText" ersetzen und "__checkbox" rausnehmen
-            cdata_form.getFieldsByName("conceptURI")[0].__checkbox.setText(conceptURI)
+            cdata_form.getFieldsByName("conceptURI")[0].__checkbox.setText(cdata.conceptURI)
             cdata_form.getFieldsByName("conceptURI")[0].show()
 
             # clear searchbar
@@ -269,8 +271,6 @@ class CustomDataTypeGeonames extends CustomDataType
   # reset form
   __resetGEONAMESForm: (cdata, cdata_form) ->
     # clear variables
-    conceptName = ''
-    conceptURI = ''
     cdata.conceptName = ''
     cdata.conceptURI = ''
 
@@ -309,44 +309,34 @@ class CustomDataTypeGeonames extends CustomDataType
   #######################################################################
   # show popover and fill it with the form-elements
   showEditPopover: (btn, cdata, data) ->
-    # init suggestmenu
-    suggest_Menu = new Menu
-        show_at_position:
-            top: 60
-            left: 400
+
     # init xhr-object to abort running xhrs
     searchsuggest_xhr = { "xhr" : undefined }
     # set default value for count of suggestions
     cdata.geonamesSelectCountOfSuggestions = 20
     cdata_form = new Form
       data: cdata
-      fields: @__getEditorFields()
+      fields: @__getEditorFields(cdata)
       onDataChanged: =>
         @__updateGEONAMESResult(cdata)
         @__setEditorFieldStatus(cdata, @__layout)
         @__updateSuggestionsMenu(cdata, cdata_form,suggest_Menu, searchsuggest_xhr)
     .start()
-    xpane = new SimplePane
-      class: "cui-demo-pane-pane"
-      header_left:
-        new Label
-          text: "Header left shortcut"
-      content:
-        new Label
-          text: "Center content shortcut"
-      footer_right:
-        new Label
-          text: "Footer right shortcut"
+
+    suggest_Menu = new Menu
+        element : cdata_form.getFieldsByName("geonamesSearchBar")[0]
+        use_element_width_as_min_width: true
+
     @popover = new Popover
       element: btn
-      fill_space: "both"
-      placement: "c"
+      placement: "wn"
+      class: "geonamesPopover"
       pane:
         # titel of popovers
         header_left: new LocaLabel(loca_key: "custom.data.type.geonames.edit.modal.title")
         # "save"-button
-        footer_left: new Button
-            text: "Ok, Popup schließen"
+        footer_right: new Button
+            text: "Übernehmen"
             onClick: =>
               # put data to savedata
               data.geonames = {
@@ -356,7 +346,7 @@ class CustomDataTypeGeonames extends CustomDataType
               # close popup
               @popover.destroy()
         # "reset"-button
-        footer_right: new Button
+        footer_left: new Button
             text: "Zurücksetzen"
             onClick: =>
               @__resetGEONAMESForm(cdata, cdata_form)
@@ -367,10 +357,11 @@ class CustomDataTypeGeonames extends CustomDataType
 
   #######################################################################
   # create form
-  __getEditorFields: ->
+  __getEditorFields: (cdata) ->
     fields = [
       {
         type: Select
+        class: "geonamesSelect"
         undo_and_changed_support: false
         form:
             label: $$('custom.data.type.geonames.modal.form.text.count')
@@ -396,6 +387,7 @@ class CustomDataTypeGeonames extends CustomDataType
       }
       {
         type: Input
+        class: "geonamesInput"
         undo_and_changed_support: false
         form:
             label: $$("custom.data.type.geonames.modal.form.text.searchbar")
@@ -407,7 +399,7 @@ class CustomDataTypeGeonames extends CustomDataType
           label: "Gewählter Eintrag"
         type: Output
         name: "conceptName"
-        data: {conceptName: conceptName}
+        data: {conceptName: cdata.conceptName}
       }
       {
         form:
@@ -415,11 +407,11 @@ class CustomDataTypeGeonames extends CustomDataType
         type: FormButton
         name: "conceptURI"
         icon: new Icon(class: "fa-lightbulb-o")
-        text: conceptURI
+        text: cdata.conceptURI
         onClick: (evt,button) =>
-          window.open conceptURI, "_blank"
+          window.open cdata.conceptURI, "_blank"
         onRender : (_this) =>
-          if conceptURI == ''
+          if cdata.conceptURI == ''
             _this.hide()
       }]
 
@@ -519,11 +511,19 @@ class CustomDataTypeGeonames extends CustomDataType
             }
           console.debug "getDataStatus: empty"
           return "empty"
+    else
+      cdata = {
+            conceptName : ''
+            conceptURI : ''
+        }
+      console.debug "getDataStatus: empty"
+      return "empty"
 
 
   #######################################################################
   # renders the "result" in original form (outside popover)
   __renderButtonByData: (cdata) ->
+    that = @
     # when status is empty or invalid --> message
     switch @getDataStatus(cdata)
       when "empty"
@@ -532,9 +532,7 @@ class CustomDataTypeGeonames extends CustomDataType
         return new EmptyLabel(text: $$("custom.data.type.geonames.edit.no_valid_geonames")).DOM
 
     # if status is ok
-    conceptURI = CUI.parseLocation(cdata.conceptURI).url
-
-    # if conceptURI .... ... patch abwarten
+    cdata.conceptURI = CUI.parseLocation(cdata.conceptURI).url
 
     # output Button with Name of picked GEONAMES-Entry and Url to the "Deutsche Nationalbibliothek"
     new ButtonHref
@@ -550,9 +548,11 @@ class CustomDataTypeGeonames extends CustomDataType
           geonamesID = geonamesID.pop()
           htmlContent = ''
           # wenn mapquest-api-key
+          if that.getCustomSchemaSettings().mapquest_api_key?.value
+              mapquest_api_key = that.getCustomSchemaSettings().mapquest_api_key?.value
           if mapquest_api_key
-              htmlContent += '<div style="width:400px; height: 250px; background-image: url(' + protocol  + '//ws.gbv.de/suggest/mapfromgeonamesid/?id=' + geonamesID + '&zoom=12&width=400&height=250&mapquestapikey=' + mapquest_api_key + '); background-repeat: no-repeat; background-position: center center;"></div>'
-              htmlContent
+              htmlContent += '<div style="width:400px; height: 250px; background-image: url(' + location.protocol  + '//ws.gbv.de/suggest/mapfromgeonamesid/?id=' + geonamesID + '&zoom=12&width=400&height=250&mapquestapikey=' + mapquest_api_key + '); background-repeat: no-repeat; background-position: center center;"></div>'
+          htmlContent
       text: cdata.conceptName + '\n( ' + cdata.conceptURI + ')'
     .DOM
 
