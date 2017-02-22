@@ -181,90 +181,95 @@ class CustomDataTypeGeonames extends CustomDataType
   __updateSuggestionsMenu: (cdata, cdata_form, suggest_Menu, searchsuggest_xhr) ->
     that = @
 
-    geonames_searchterm = cdata_form.getFieldsByName("geonamesSearchBar")[0].getValue()
-    geonames_featureclass = cdata_form.getFieldsByName("geonamesSelectFeatureClasses")[0]?.getValue()
-    if geonames_featureclass == undefined
-        geonames_featureclass = ''
-    geonames_countSuggestions = cdata_form.getFieldsByName("geonamesSelectCountOfSuggestions")[0].getValue()
+    delayMillisseconds = 200
 
-    if geonames_searchterm.length == 0
-        return
-    extendedInfo_xhr = { "xhr" : undefined }
-    # run autocomplete-search via xhr
-    if searchsuggest_xhr.xhr != undefined
-        # abort eventually running request
-        searchsuggest_xhr.xhr.abort()
-    # start new request
-    searchsuggest_xhr.xhr = new (CUI.XHR)(url: location.protocol + '//ws.gbv.de/suggest/geonames/?searchterm=' + geonames_searchterm + '&featureclass=' + geonames_featureclass + '&count=' + geonames_countSuggestions)
-    searchsuggest_xhr.xhr.start().done((data, status, statusText) ->
+    setTimeout ( ->
 
-        CUI.debug 'OK', searchsuggest_xhr.xhr.getXHR(), searchsuggest_xhr.xhr.getResponseHeaders()
+        geonames_searchterm = cdata_form.getFieldsByName("geonamesSearchBar")[0].getValue()
+        geonames_featureclass = cdata_form.getFieldsByName("geonamesSelectFeatureClasses")[0]?.getValue()
+        if geonames_featureclass == undefined
+            geonames_featureclass = ''
+        geonames_countSuggestions = cdata_form.getFieldsByName("geonamesSelectCountOfSuggestions")[0].getValue()
 
-        # create new menu with suggestions
-        menu_items = []
-        # the actual Featureclass
-        for suggestion, key in data[1]
-          do(key) ->
-            # the actual Featureclass...
-            aktType = data[2][key]
-            lastType = ''
-            if key > 0
-              lastType = data[2][key-1]
-            if aktType != lastType
-              item =
-                divider: true
-              menu_items.push item
-              item =
-                label: aktType
-              menu_items.push item
-              item =
-                divider: true
-              menu_items.push item
-            item =
-              text: suggestion
-              value: data[3][key]
-              tooltip:
-                markdown: true
-                placement: "e"
-                content: (tooltip) ->
-                  # if enabled in mask-config
-                  if that.getCustomMaskSettings().show_infopopup?.value
-                    that.__getInfoForGeonamesEntry(data[3][key], tooltip, extendedInfo_xhr)
-                    new Label(icon: "spinner", text: "lade Informationen")
-            menu_items.push item
+        if geonames_searchterm.length == 0
+            return
+        extendedInfo_xhr = { "xhr" : undefined }
+        # run autocomplete-search via xhr
+        if searchsuggest_xhr.xhr != undefined
+            # abort eventually running request
+            searchsuggest_xhr.xhr.abort()
+        # start new request
+        searchsuggest_xhr.xhr = new (CUI.XHR)(url: location.protocol + '//ws.gbv.de/suggest/geonames/?searchterm=' + geonames_searchterm + '&featureclass=' + geonames_featureclass + '&count=' + geonames_countSuggestions)
+        searchsuggest_xhr.xhr.start().done((data, status, statusText) ->
 
-        # set new items to menu
-        itemList =
-          onClick: (ev2, btn) ->
+            CUI.debug 'OK', searchsuggest_xhr.xhr.getXHR(), searchsuggest_xhr.xhr.getResponseHeaders()
 
-            # lock in save data
-            cdata.conceptURI = btn.getOpt("value")
-            cdata.conceptName = btn.getText()
-            # lock in form
-            cdata_form.getFieldsByName("conceptName")[0].storeValue(cdata.conceptName).displayValue()
-            # nach eadb5-Update durch "setText" ersetzen und "__checkbox" rausnehmen
-            cdata_form.getFieldsByName("conceptURI")[0].__checkbox.setText(cdata.conceptURI)
-            cdata_form.getFieldsByName("conceptURI")[0].show()
+            # create new menu with suggestions
+            menu_items = []
+            # the actual Featureclass
+            for suggestion, key in data[1]
+              do(key) ->
+                # the actual Featureclass...
+                aktType = data[2][key]
+                lastType = ''
+                if key > 0
+                  lastType = data[2][key-1]
+                if aktType != lastType
+                  item =
+                    divider: true
+                  menu_items.push item
+                  item =
+                    label: aktType
+                  menu_items.push item
+                  item =
+                    divider: true
+                  menu_items.push item
+                item =
+                  text: suggestion
+                  value: data[3][key]
+                  tooltip:
+                    markdown: true
+                    placement: "e"
+                    content: (tooltip) ->
+                      # if enabled in mask-config
+                      if that.getCustomMaskSettings().show_infopopup?.value
+                        that.__getInfoForGeonamesEntry(data[3][key], tooltip, extendedInfo_xhr)
+                        new Label(icon: "spinner", text: "lade Informationen")
+                menu_items.push item
 
-            # clear searchbar
-            cdata_form.getFieldsByName("geonamesSearchBar")[0].setValue('')
-          items: menu_items
+            # set new items to menu
+            itemList =
+              onClick: (ev2, btn) ->
 
-        # if no hits set "empty" message to menu
-        if itemList.items.length == 0
-          itemList =
-            items: [
-              text: "kein Treffer"
-              value: undefined
-            ]
+                # lock in save data
+                cdata.conceptURI = btn.getOpt("value")
+                cdata.conceptName = btn.getText()
+                # lock in form
+                cdata_form.getFieldsByName("conceptName")[0].storeValue(cdata.conceptName).displayValue()
+                # nach eadb5-Update durch "setText" ersetzen und "__checkbox" rausnehmen
+                cdata_form.getFieldsByName("conceptURI")[0].__checkbox.setText(cdata.conceptURI)
+                cdata_form.getFieldsByName("conceptURI")[0].show()
 
-        suggest_Menu.setItemList(itemList)
+                # clear searchbar
+                cdata_form.getFieldsByName("geonamesSearchBar")[0].setValue('')
+              items: menu_items
 
-        suggest_Menu.show()
+            # if no hits set "empty" message to menu
+            if itemList.items.length == 0
+              itemList =
+                items: [
+                  text: "kein Treffer"
+                  value: undefined
+                ]
 
-    )
-    #.fail (data, status, statusText) ->
-        #CUI.debug 'FAIL', searchsuggest_xhr.getXHR(), searchsuggest_xhr.getResponseHeaders()
+            suggest_Menu.setItemList(itemList)
+
+            suggest_Menu.show()
+
+        )
+        #.fail (data, status, statusText) ->
+            #CUI.debug 'FAIL', searchsuggest_xhr.getXHR(), searchsuggest_xhr.getResponseHeaders()
+    ), delayMillisseconds
 
 
   #######################################################################
