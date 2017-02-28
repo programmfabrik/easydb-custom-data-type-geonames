@@ -40,8 +40,6 @@ class CustomDataTypeGeonames extends CustomDataType
       data[@name()] = cdata
     else
       cdata = data[@name()]
-      conceptName = cdata.conceptName
-      conceptURI = cdata.conceptURI
 
     @__renderEditorInputPopover(data, cdata)
 
@@ -49,7 +47,7 @@ class CustomDataTypeGeonames extends CustomDataType
   #######################################################################
   # buttons, which open and close popover
   __renderEditorInputPopover: (data, cdata) ->
-    @__layout = new HorizontalLayout
+    layout = new HorizontalLayout
       left:
         content:
             new Buttonbar(
@@ -60,7 +58,7 @@ class CustomDataTypeGeonames extends CustomDataType
                       group: "groupA"
 
                       onClick: (ev, btn) =>
-                        @showEditPopover(btn, cdata, data)
+                        @showEditPopover(btn, cdata, layout)
 
                   new Button
                       text: ""
@@ -74,40 +72,44 @@ class CustomDataTypeGeonames extends CustomDataType
                         }
                         data[@name()] = cdata
                         # trigger form change
+                        @__updateResult(cdata, layout)
                         Events.trigger
                           node: @__layout
                           type: "editor-changed"
-                        @__updateGEONAMESResult(cdata)
+                        Events.trigger
+                          node: layout
+                          type: "editor-changed"
               ]
             )
       center: {}
       right: {}
-    @__updateGEONAMESResult(cdata)
-    @__layout
+    @__updateResult(cdata, layout)
+    layout
 
 
   #######################################################################
   # update result in Masterform
-  __updateGEONAMESResult: (cdata) ->
+  __updateResult: (cdata, layout) ->
     btn = @__renderButtonByData(cdata)
-    @__layout.replace(btn, "right")
+    layout.replace(btn, "right")
 
 
   #######################################################################
   # read info from geonames-terminology
-  __getInfoForGeonamesEntry: (uri, tooltip,extendedInfo_xhr) ->
+  __getAdditionalTooltipInfo: (uri, tooltip,extendedInfo_xhr) ->
     that = @
     # extract geonamesID from uri
     geonamesID = uri
     geonamesID = geonamesID.split "/"
     geonamesID = geonamesID.pop()
     # download infos from entityfacts
-    if extendedInfo_xhr != undefined
+    console.log extendedInfo_xhr
+    if extendedInfo_xhr.xhr != undefined
       # abort eventually running request
-      extendedInfo_xhr.abort()
+      extendedInfo_xhr.xhr.abort()
     # start new request
-    extendedInfo_xhr = new (CUI.XHR)(url: location.protocol + '//uri.gbv.de/terminology/geonames/' + geonamesID + '?format=json')
-    extendedInfo_xhr.start()
+    extendedInfo_xhr.xhr = new (CUI.XHR)(url: location.protocol + '//uri.gbv.de/terminology/geonames/' + geonamesID + '?format=json')
+    extendedInfo_xhr.xhr.start()
     .done((data, status, statusText) ->
       htmlContent = '<span style="font-weight: bold">Informationen über den Eintrag</span>'
       coord1 = 0
@@ -171,7 +173,7 @@ class CustomDataTypeGeonames extends CustomDataType
       tooltip.autoSize()
     )
     .fail (data, status, statusText) ->
-        CUI.debug 'FAIL', extendedInfo_xhr.getXHR(), extendedInfo_xhr.getResponseHeaders()
+        CUI.debug 'FAIL', extendedInfo_xhr.xhr.getXHR(), extendedInfo_xhr.xhr.getResponseHeaders()
 
     return
 
@@ -189,11 +191,13 @@ class CustomDataTypeGeonames extends CustomDataType
         geonames_featureclass = cdata_form.getFieldsByName("geonamesSelectFeatureClasses")[0]?.getValue()
         if geonames_featureclass == undefined
             geonames_featureclass = ''
-        geonames_countSuggestions = cdata_form.getFieldsByName("geonamesSelectCountOfSuggestions")[0].getValue()
+        geonames_countSuggestions = cdata_form.getFieldsByName("countOfSuggestions")[0].getValue()
 
         if geonames_searchterm.length == 0
             return
+
         extendedInfo_xhr = { "xhr" : undefined }
+
         # run autocomplete-search via xhr
         if searchsuggest_xhr.xhr != undefined
             # abort eventually running request
@@ -233,7 +237,7 @@ class CustomDataTypeGeonames extends CustomDataType
                     content: (tooltip) ->
                       # if enabled in mask-config
                       if that.getCustomMaskSettings().show_infopopup?.value
-                        that.__getInfoForGeonamesEntry(data[3][key], tooltip, extendedInfo_xhr)
+                        that.__getAdditionalTooltipInfo(data[3][key], tooltip, extendedInfo_xhr)
                         new Label(icon: "spinner", text: "lade Informationen")
                 menu_items.push item
 
@@ -267,33 +271,8 @@ class CustomDataTypeGeonames extends CustomDataType
             suggest_Menu.show()
 
         )
-        #.fail (data, status, statusText) ->
-            #CUI.debug 'FAIL', searchsuggest_xhr.getXHR(), searchsuggest_xhr.getResponseHeaders()
     ), delayMillisseconds
 
-
-  #######################################################################
-  # reset form
-  __resetGEONAMESForm: (cdata, cdata_form) ->
-    # clear variables
-    cdata.conceptName = ''
-    cdata.conceptURI = ''
-
-    # reset type-select
-    cdata_form.getFieldsByName("geonamesSelectFeatureClasses")[0].setValue("DifferentiatedPerson")
-
-    # reset count of suggestions
-    cdata_form.getFieldsByName("geonamesSelectCountOfSuggestions")[0].setValue(20)
-
-    # reset searchbar
-    cdata_form.getFieldsByName("geonamesSearchBar")[0].setValue("")
-
-    # reset result name
-    cdata_form.getFieldsByName("conceptName")[0].storeValue("").displayValue()
-
-    # reset and hide result-uri-button
-    cdata_form.getFieldsByName("conceptURI")[0].__checkbox.setText("")
-    cdata_form.getFieldsByName("conceptURI")[0].hide()
 
 
   #######################################################################
@@ -313,18 +292,18 @@ class CustomDataTypeGeonames extends CustomDataType
 
   #######################################################################
   # show popover and fill it with the form-elements
-  showEditPopover: (btn, cdata, data) ->
+  showEditPopover: (btn, cdata, layout) ->
 
     # init xhr-object to abort running xhrs
     searchsuggest_xhr = { "xhr" : undefined }
     # set default value for count of suggestions
-    cdata.geonamesSelectCountOfSuggestions = 20
+    cdata.countOfSuggestions = 20
     cdata_form = new Form
       data: cdata
       fields: @__getEditorFields(cdata)
       onDataChanged: =>
-        @__updateGEONAMESResult(cdata)
-        @__setEditorFieldStatus(cdata, @__layout)
+        @__updateResult(cdata, layout)
+        @__setEditorFieldStatus(cdata, layout)
         @__updateSuggestionsMenu(cdata, cdata_form,suggest_Menu, searchsuggest_xhr)
     .start()
 
@@ -339,23 +318,6 @@ class CustomDataTypeGeonames extends CustomDataType
       pane:
         # titel of popovers
         header_left: new LocaLabel(loca_key: "custom.data.type.geonames.edit.modal.title")
-        # "save"-button
-        footer_right: new Button
-            text: "Übernehmen"
-            onClick: =>
-              # put data to savedata
-              data.geonames = {
-                conceptName : cdata.conceptName
-                conceptURI : cdata.conceptURI
-              }
-              # close popup
-              @popover.destroy()
-        # "reset"-button
-        footer_left: new Button
-            text: "Zurücksetzen"
-            onClick: =>
-              @__resetGEONAMESForm(cdata, cdata_form)
-              @__updateGEONAMESResult(cdata)
         content: cdata_form
     .show()
 
@@ -388,7 +350,7 @@ class CustomDataTypeGeonames extends CustomDataType
               text: '100 Vorschläge'
           )
         ]
-        name: 'geonamesSelectCountOfSuggestions'
+        name: 'countOfSuggestions'
       }
       {
         type: Input
@@ -500,28 +462,23 @@ class CustomDataTypeGeonames extends CustomDataType
           nameCheck = if cdata.conceptName then cdata.conceptName.trim() else undefined
 
           if uriCheck and nameCheck
-            console.debug "getDataStatus: OK "
             return "ok"
 
           if cdata.conceptURI.trim() == '' and cdata.conceptName.trim() == ''
-            console.debug "getDataStatus: empty"
             return "empty"
 
-          console.debug "getDataStatus returns invalid"
           return "invalid"
         else
           cdata = {
                 conceptName : ''
                 conceptURI : ''
             }
-          console.debug "getDataStatus: empty"
           return "empty"
     else
       cdata = {
             conceptName : ''
             conceptURI : ''
         }
-      console.debug "getDataStatus: empty"
       return "empty"
 
 
@@ -547,7 +504,7 @@ class CustomDataTypeGeonames extends CustomDataType
       tooltip:
         markdown: true
         placement: 'n'
-        content: () ->
+        content: (tooltip) ->
           uri = cdata.conceptURI
           geonamesID = uri.split('/')
           geonamesID = geonamesID.pop()
@@ -557,20 +514,26 @@ class CustomDataTypeGeonames extends CustomDataType
               mapquest_api_key = that.getCustomSchemaSettings().mapquest_api_key?.value
           if mapquest_api_key
               htmlContent += '<div style="width:400px; height: 250px; background-image: url(' + location.protocol  + '//ws.gbv.de/suggest/mapfromgeonamesid/?id=' + geonamesID + '&zoom=12&width=400&height=250&mapquestapikey=' + mapquest_api_key + '); background-repeat: no-repeat; background-position: center center;"></div>'
+          tooltip.DOM.html(htmlContent)
+          tooltip._pane.DOM.html(htmlContent)
+          tooltip.autoSize()
           htmlContent
-      text: cdata.conceptName + '\n( ' + cdata.conceptURI + ')'
-    .DOM
+      text: cdata.conceptName
+    .DOM.html()
 
 
   #######################################################################
   # is called, when record is being saved by user
   getSaveData: (data, save_data, opts) ->
     cdata = data[@name()] or data._template?[@name()]
+
     switch @getDataStatus(cdata)
       when "invalid"
         throw InvalidSaveDataException
+
       when "empty"
         save_data[@name()] = null
+
       when "ok"
         save_data[@name()] =
           conceptName: cdata.conceptName.trim()
