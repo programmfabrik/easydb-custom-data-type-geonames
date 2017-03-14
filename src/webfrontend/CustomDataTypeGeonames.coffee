@@ -1,12 +1,5 @@
-Session::getCustomDataTypes = ->
-  @getDefaults().server.custom_data_types or {}
+class CustomDataTypeGeonames extends CustomDataTypeWithCommons
 
-class CustomDataTypeGeonames extends CustomDataType
-
-  CUI.ready =>
-    style = DOM.element("style")
-    style.innerHTML = ".geonamesPopover { min-width:600px !important; } .geonamesInput .cui-button-visual, .geonamesSelect .cui-button-visual { width: 100%; } .geonamesSelect > div { width: 100%; }"
-    document.head.appendChild(style)
 
   #######################################################################
   # return name of plugin
@@ -19,80 +12,6 @@ class CustomDataTypeGeonames extends CustomDataType
   getCustomDataTypeNameLocalized: ->
     $$("custom.data.type.geonames.name")
 
-  #######################################################################
-  # check if field is empty
-  # needed for editor-table-view
-  isEmpty: (data, top_level_data, opts) ->
-      if data[@name()]?.conceptName
-          false
-      else
-          true
-
-  #######################################################################
-  # handle editorinput
-  renderEditorInput: (data, top_level_data, opts) ->
-    # console.error @, data, top_level_data, opts, @name(), @fullName()
-    if not data[@name()]
-      cdata = {
-            conceptName : ''
-            conceptURI : ''
-        }
-      data[@name()] = cdata
-    else
-      cdata = data[@name()]
-
-    @__renderEditorInputPopover(data, cdata)
-
-
-  #######################################################################
-  # buttons, which open and close popover
-  __renderEditorInputPopover: (data, cdata) ->
-    layout = new HorizontalLayout
-      left:
-        content:
-            new Buttonbar(
-              buttons: [
-                  new Button
-                      text: ""
-                      icon: 'edit'
-                      group: "groupA"
-
-                      onClick: (ev, btn) =>
-                        @showEditPopover(btn, cdata, layout)
-
-                  new Button
-                      text: ""
-                      icon: 'trash'
-                      group: "groupA"
-                      onClick: (ev, btn) =>
-                        # delete data
-                        cdata = {
-                              conceptName : ''
-                              conceptURI : ''
-                        }
-                        data[@name()] = cdata
-                        # trigger form change
-                        @__updateResult(cdata, layout)
-                        Events.trigger
-                          node: @__layout
-                          type: "editor-changed"
-                        Events.trigger
-                          node: layout
-                          type: "editor-changed"
-              ]
-            )
-      center: {}
-      right: {}
-    @__updateResult(cdata, layout)
-    layout
-
-
-  #######################################################################
-  # update result in Masterform
-  __updateResult: (cdata, layout) ->
-    btn = @__renderButtonByData(cdata)
-    layout.replace(btn, "right")
-
 
   #######################################################################
   # read info from geonames-terminology
@@ -103,7 +22,6 @@ class CustomDataTypeGeonames extends CustomDataType
     geonamesID = geonamesID.split "/"
     geonamesID = geonamesID.pop()
     # download infos from entityfacts
-    console.log extendedInfo_xhr
     if extendedInfo_xhr.xhr != undefined
       # abort eventually running request
       extendedInfo_xhr.xhr.abort()
@@ -187,7 +105,7 @@ class CustomDataTypeGeonames extends CustomDataType
 
     setTimeout ( ->
 
-        geonames_searchterm = cdata_form.getFieldsByName("geonamesSearchBar")[0].getValue()
+        geonames_searchterm = cdata_form.getFieldsByName("searchbarInput")[0].getValue()
         geonames_featureclass = cdata_form.getFieldsByName("geonamesSelectFeatureClasses")[0]?.getValue()
         if geonames_featureclass == undefined
             geonames_featureclass = ''
@@ -255,7 +173,7 @@ class CustomDataTypeGeonames extends CustomDataType
                 cdata_form.getFieldsByName("conceptURI")[0].show()
 
                 # clear searchbar
-                cdata_form.getFieldsByName("geonamesSearchBar")[0].setValue('')
+                cdata_form.getFieldsByName("searchbarInput")[0].setValue('')
               items: menu_items
 
             # if no hits set "empty" message to menu
@@ -274,61 +192,13 @@ class CustomDataTypeGeonames extends CustomDataType
     ), delayMillisseconds
 
 
-
-  #######################################################################
-  # if something in form is in/valid, set this status to masterform
-  __setEditorFieldStatus: (cdata, element) ->
-    switch @getDataStatus(cdata)
-      when "invalid"
-        element.addClass("cui-input-invalid")
-      else
-        element.removeClass("cui-input-invalid")
-
-    Events.trigger
-      node: element
-      type: "editor-changed"
-
-    @
-
-  #######################################################################
-  # show popover and fill it with the form-elements
-  showEditPopover: (btn, cdata, layout) ->
-
-    # init xhr-object to abort running xhrs
-    searchsuggest_xhr = { "xhr" : undefined }
-    # set default value for count of suggestions
-    cdata.countOfSuggestions = 20
-    cdata_form = new Form
-      data: cdata
-      fields: @__getEditorFields(cdata)
-      onDataChanged: =>
-        @__updateResult(cdata, layout)
-        @__setEditorFieldStatus(cdata, layout)
-        @__updateSuggestionsMenu(cdata, cdata_form,suggest_Menu, searchsuggest_xhr)
-    .start()
-
-    suggest_Menu = new Menu
-        element : cdata_form.getFieldsByName("geonamesSearchBar")[0]
-        use_element_width_as_min_width: true
-
-    @popover = new Popover
-      element: btn
-      placement: "wn"
-      class: "geonamesPopover"
-      pane:
-        # titel of popovers
-        header_left: new LocaLabel(loca_key: "custom.data.type.geonames.edit.modal.title")
-        content: cdata_form
-    .show()
-
-
   #######################################################################
   # create form
   __getEditorFields: (cdata) ->
     fields = [
       {
         type: Select
-        class: "geonamesSelect"
+        class: "commonPlugin_Select"
         undo_and_changed_support: false
         form:
             label: $$('custom.data.type.geonames.modal.form.text.count')
@@ -354,12 +224,12 @@ class CustomDataTypeGeonames extends CustomDataType
       }
       {
         type: Input
-        class: "geonamesInput"
+        class: "commonPlugin_Input"
         undo_and_changed_support: false
         form:
             label: $$("custom.data.type.geonames.modal.form.text.searchbar")
         placeholder: $$("custom.data.type.geonames.modal.form.text.searchbar.placeholder")
-        name: "geonamesSearchBar"
+        name: "searchbarInput"
       }
       {
         form:
@@ -435,51 +305,12 @@ class CustomDataTypeGeonames extends CustomDataType
             label: $$('custom.data.type.geonames.modal.form.text.featureclasses')
         options: featureclassesOptions
         name: 'geonamesSelectFeatureClasses'
+        class: 'commonPlugin_Select'
       }
 
       fields.unshift(field)
 
     fields
-
-  #######################################################################
-  # renders details-output of record
-  renderDetailOutput: (data, top_level_data, opts) ->
-    @__renderButtonByData(data[@name()])
-
-
-  #######################################################################
-  # checks the form and returns status
-  getDataStatus: (cdata) ->
-    if (cdata)
-        if cdata.conceptURI and cdata.conceptName
-          # check url for valididy
-          uriCheck = CUI.parseLocation(cdata.conceptURI)
-
-          # /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(value);
-
-          # uri-check patch!?!? returns always a result
-
-          nameCheck = if cdata.conceptName then cdata.conceptName.trim() else undefined
-
-          if uriCheck and nameCheck
-            return "ok"
-
-          if cdata.conceptURI.trim() == '' and cdata.conceptName.trim() == ''
-            return "empty"
-
-          return "invalid"
-        else
-          cdata = {
-                conceptName : ''
-                conceptURI : ''
-            }
-          return "empty"
-    else
-      cdata = {
-            conceptName : ''
-            conceptURI : ''
-        }
-      return "empty"
 
 
   #######################################################################
@@ -520,24 +351,6 @@ class CustomDataTypeGeonames extends CustomDataType
           htmlContent
       text: cdata.conceptName
     .DOM.html()
-
-
-  #######################################################################
-  # is called, when record is being saved by user
-  getSaveData: (data, save_data, opts) ->
-    cdata = data[@name()] or data._template?[@name()]
-
-    switch @getDataStatus(cdata)
-      when "invalid"
-        throw InvalidSaveDataException
-
-      when "empty"
-        save_data[@name()] = null
-
-      when "ok"
-        save_data[@name()] =
-          conceptName: cdata.conceptName.trim()
-          conceptURI: cdata.conceptURI.trim()
 
 
 
