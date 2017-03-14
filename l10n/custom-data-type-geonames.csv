@@ -26,3 +26,7 @@
 "custom.data.type.geonames.setting.mask.show_infopopup", "Infopop für Treffer in der Vorschlagsliste anzeigen?",
 "custom.data.type.geonames.setting.mask.config_featureclasses","Featureklassen als Dropdown zur Verfeinerung der Suche anbieten?",
 "custom.data.type.geonames.setting.schema.mapquest_api_key","Mapquest-Api-Key (für Kartenanzeige benötigt)",
+"custom.data.type.geonames.config.option.mask.show_infopopup.value.true","mit Infopopup",
+"custom.data.type.geonames.config.option.mask.show_infopopup.value.false","ohne Infopopup",
+"custom.data.type.geonames.config.option.mask.config_featureclasses.value.true","Dropdown Featureklassen",
+"custom.data.type.geonames.config.option.mask.config_featureclasses.value.false","Kein Dropdown Featureklassen",
