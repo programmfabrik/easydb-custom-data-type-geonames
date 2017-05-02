@@ -1,39 +1,32 @@
-# have to use l10n2json from running docker container, so it
-# is slightly complicated to launch the command
-L10N2JSON = docker exec -t -i easydb-server /usr/bin/env LD_LIBRARY_PATH=/easydb-5/lib /easydb-5/bin/l10n2json
+PLUGIN_NAME = custom-data-type-geonames
 
-# absolute path in docker container
-PATH_IN_CONTAINER=/config/plugin/custom-data-type-geonames
+L10N_FILES = l10n/$(PLUGIN_NAME).csv
+L10N_GOOGLE_KEY = 1ux8r_kpskdAwTaTjqrk92up5eyyILkpsv4k96QltmI0
+L10N_GOOGLE_GID = 1531978477
+L10N2JSON = python ../easydb-library/tools/l10n2json.py
 
-CULTURES_CSV = l10n/cultures.csv
-CULTURES_CSV_IN_CONTAINER = $(PATH_IN_CONTAINER)/l10n/cultures.csv
+INSTALL_FILES = \
+	$(WEB)/l10n/cultures.json \
+	$(WEB)/l10n/de-DE.json \
+	$(WEB)/l10n/en-US.json \
+	$(WEB)/l10n/es-ES.json \
+	$(WEB)/l10n/it-IT.json \
+	$(JS) \
+	CustomDataTypeGEONAMES.config.yml
 
-L10N_FILES = l10n/custom-data-type-geonames.csv
-L10N_FILES_IN_CONTAINER = $(PATH_IN_CONTAINER)/l10n/custom-data-type-geonames.csv
+COFFEE_FILES = ../easydb-library/src/commons.coffee \
+	src/webfrontend/CustomDataTypeGEONAMES.coffee
 
-JS_FILE = build/webfrontend/custom-data-type-geonames.js
+all: build
 
-all: library ${JS_FILE} build-stamp-l10n
+include ../easydb-library/tools/base-plugins.make
 
-library:
-	mkdir -p src/library
-	wget -O src/library/commons.coffee https://raw.githubusercontent.com/programmfabrik/easydb-library/master/src/commons.coffee
+build: code $(L10N)
 
-clean:
-	rm -f src/webfrontend/*.coffee.js
-	rm -f build-stamp-l10n
-	rm -rf build/
+code: $(JS)
 
-build-stamp-l10n: $(L10N_FILES) $(CULTURES_CSV)
-	mkdir -p build/webfrontend/l10n
-	$(L10N2JSON) $(CULTURES_CSV_IN_CONTAINER) $(L10N_FILES_IN_CONTAINER) $(PATH_IN_CONTAINER)/build/webfrontend/l10n/
-	touch $@
+clean: clean-base
 
-${JS_FILE}: src/library/commons.coffee.js src/webfrontend/CustomDataTypeGEONAMES.coffee.js
-	mkdir -p build/webfrontend
-	cat $^ > $@
+wipe: wipe-base
 
-%.coffee.js: %.coffee
-	coffee -b -p --compile "$^" > "$@" || ( rm -f "$@" ; false )
-
-.PHONY: clean
+.PHONY: clean wipe
