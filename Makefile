@@ -3,7 +3,7 @@ PLUGIN_NAME = custom-data-type-geonames
 L10N_FILES = l10n/$(PLUGIN_NAME).csv
 L10N_GOOGLE_KEY = 1ux8r_kpskdAwTaTjqrk92up5eyyILkpsv4k96QltmI0
 L10N_GOOGLE_GID = 1531978477
-L10N2JSON = python ../easydb-library/tools/l10n2json.py
+L10N2JSON = python easydb-library/tools/l10n2json.py
 
 INSTALL_FILES = \
 	$(WEB)/l10n/cultures.json \
@@ -14,12 +14,12 @@ INSTALL_FILES = \
 	$(JS) \
 	CustomDataTypeGEONAMES.config.yml
 
-COFFEE_FILES = ../easydb-library/src/commons.coffee \
+COFFEE_FILES = easydb-library/src/commons.coffee \
 	src/webfrontend/CustomDataTypeGeonames.coffee
 
 all: build
 
-include ../easydb-library/tools/base-plugins.make
+include easydb-library/tools/base-plugins.make
 
 build: code $(L10N)
 
