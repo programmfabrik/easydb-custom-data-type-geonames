@@ -15,7 +15,7 @@ INSTALL_FILES = \
 	CustomDataTypeGEONAMES.config.yml
 
 COFFEE_FILES = ../easydb-library/src/commons.coffee \
-	src/webfrontend/CustomDataTypeGEONAMES.coffee
+	src/webfrontend/CustomDataTypeGeonames.coffee
 
 all: build
 
