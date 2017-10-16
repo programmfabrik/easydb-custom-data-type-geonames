@@ -87,7 +87,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
             htmlContent += '<tr><td>Zeitzone:</td><td>' + data.timezone + '</td></tr>'
 
       #tooltip.getPane().replace(htmlContent, "center")
-      tooltip.DOM.html(htmlContent);
+      tooltip.DOM.innerHTML = htmlContent
       tooltip.autoSize()
     )
     .fail (data, status, statusText) ->
@@ -156,7 +156,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                       # if enabled in mask-config
                       if that.getCustomMaskSettings().show_infopopup?.value
                         that.__getAdditionalTooltipInfo(data[3][key], tooltip, extendedInfo_xhr)
-                        new Label(icon: "spinner", text: "lade Informationen")
+                        new CUI.Label(icon: "spinner", text: "lade Informationen")
                 menu_items.push item
 
             # set new items to menu
@@ -197,7 +197,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
   __getEditorFields: (cdata) ->
     fields = [
       {
-        type: Select
+        type: CUI.Select
         class: "commonPlugin_Select"
         undo_and_changed_support: false
         form:
@@ -223,7 +223,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
         name: 'countOfSuggestions'
       }
       {
-        type: Input
+        type: CUI.Input
         class: "commonPlugin_Input"
         undo_and_changed_support: false
         form:
@@ -234,16 +234,16 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
       {
         form:
           label: "Gewählter Eintrag"
-        type: Output
+        type: CUI.Output
         name: "conceptName"
         data: {conceptName: cdata.conceptName}
       }
       {
         form:
           label: "Verknüpfte URI"
-        type: FormButton
+        type: CUI.FormButton
         name: "conceptURI"
-        icon: new Icon(class: "fa-lightbulb-o")
+        icon: new CUI.Icon(class: "fa-lightbulb-o")
         text: cdata.conceptURI
         onClick: (evt,button) =>
           window.open cdata.conceptURI, "_blank"
@@ -299,7 +299,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
       ]
 
       field = {
-        type: Select
+        type: CUI.Select
         undo_and_changed_support: false
         form:
             label: $$('custom.data.type.geonames.modal.form.text.featureclasses')
@@ -320,15 +320,15 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
     # when status is empty or invalid --> message
     switch @getDataStatus(cdata)
       when "empty"
-        return new EmptyLabel(text: $$("custom.data.type.geonames.edit.no_geonames")).DOM
+        return new CUI.EmptyLabel(text: $$("custom.data.type.geonames.edit.no_geonames")).DOM
       when "invalid"
-        return new EmptyLabel(text: $$("custom.data.type.geonames.edit.no_valid_geonames")).DOM
+        return new CUI.EmptyLabel(text: $$("custom.data.type.geonames.edit.no_valid_geonames")).DOM
 
     # if status is ok
     cdata.conceptURI = CUI.parseLocation(cdata.conceptURI).url
 
     # output Button with Name of picked GEONAMES-Entry and Url to the "Deutsche Nationalbibliothek"
-    new ButtonHref
+    new CUI.ButtonHref
       appearance: "link"
       href: cdata.conceptURI
       target: "_blank"
@@ -345,13 +345,11 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
               mapquest_api_key = that.getCustomSchemaSettings().mapquest_api_key?.value
           if mapquest_api_key
               htmlContent += '<div style="width:400px; height: 250px; background-image: url(' + location.protocol  + '//ws.gbv.de/suggest/mapfromgeonamesid/?id=' + geonamesID + '&zoom=12&width=400&height=250&mapquestapikey=' + mapquest_api_key + '); background-repeat: no-repeat; background-position: center center;"></div>'
-          tooltip.DOM.html(htmlContent)
-          tooltip._pane.DOM.html(htmlContent)
+          tooltip.DOM.innerHTML = htmlContent
           tooltip.autoSize()
           htmlContent
       text: cdata.conceptName
-    .DOM.html()
-
+    .DOM
 
 
   #######################################################################
