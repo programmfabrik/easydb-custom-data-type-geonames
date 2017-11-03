@@ -90,8 +90,6 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
       tooltip.DOM.innerHTML = htmlContent
       tooltip.autoSize()
     )
-    .fail (data, status, statusText) ->
-        console.debug 'FAIL', extendedInfo_xhr.xhr.getXHR(), extendedInfo_xhr.xhr.getResponseHeaders()
 
     return
 
@@ -123,8 +121,6 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
         # start new request
         searchsuggest_xhr.xhr = new (CUI.XHR)(url: location.protocol + '//ws.gbv.de/suggest/geonames/?searchterm=' + geonames_searchterm + '&featureclass=' + geonames_featureclass + '&count=' + geonames_countSuggestions)
         searchsuggest_xhr.xhr.start().done((data, status, statusText) ->
-
-            console.debug 'OK', searchsuggest_xhr.xhr.getXHR(), searchsuggest_xhr.xhr.getResponseHeaders()
 
             # create new menu with suggestions
             menu_items = []
