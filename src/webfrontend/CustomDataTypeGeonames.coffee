@@ -29,7 +29,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
     extendedInfo_xhr.xhr = new (CUI.XHR)(url: location.protocol + '//uri.gbv.de/terminology/geonames/' + geonamesID + '?format=json')
     extendedInfo_xhr.xhr.start()
     .done((data, status, statusText) ->
-      htmlContent = '<span style="font-weight: bold">Informationen über den Eintrag</span>'
+      htmlContent = '<span style="font-weight: bold">' + $$('custom.data.type.geonames.config.parameter.mask.infopop.info.label') + '</span>'
       coord1 = 0
       coord1 = 0
       if data.lat
@@ -48,43 +48,43 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
 
       if data.name
         if typeof data.name != 'object'
-            htmlContent += '<tr><td>Name:</td><td>' + data.name + '</td></tr>'
+            htmlContent += '<tr><td>' + $$('custom.data.type.geonames.config.parameter.mask.infopop.name.label') + ':</td><td>' + data.name + '</td></tr>'
 
       if data.adminName4
         if typeof data.adminName4 != 'object'
-            htmlContent += '<tr><td>Einteilung4:</td><td>' + data.adminName4 + '</td></tr>'
+            htmlContent += '<tr><td>' + $$('custom.data.type.geonames.config.parameter.mask.infopop.einteilung4.label') + ':</td><td>' + data.adminName4 + '</td></tr>'
 
       if data.adminName3
         if typeof data.adminName3 != 'object'
-            htmlContent += '<tr><td>Einteilung3:</td><td>' + data.adminName3 + '</td></tr>'
+            htmlContent += '<tr><td>' + $$('custom.data.type.geonames.config.parameter.mask.infopop.einteilung3.label') + ':</td><td>' + data.adminName3 + '</td></tr>'
 
       if data.adminName2
         if typeof data.adminName2 != 'object'
-            htmlContent += '<tr><td>Einteilung2:</td><td>' + data.adminName2 + '</td></tr>'
+            htmlContent += '<tr><td>' + $$('custom.data.type.geonames.config.parameter.mask.infopop.einteilung2.label') + ':</td><td>' + data.adminName2 + '</td></tr>'
 
       if data.adminName1
         if typeof data.adminName1 != 'object'
-            htmlContent += '<tr><td>Einteilung1:</td><td>' + data.adminName1 + '</td></tr>'
+            htmlContent += '<tr><td>' + $$('custom.data.type.geonames.config.parameter.mask.infopop.einteilung1.label') + ':</td><td>' + data.adminName1 + '</td></tr>'
 
       if data.countryName
         if typeof data.countryName != 'object'
-            htmlContent += '<tr><td>Land:</td><td>' + data.countryName + '</td></tr>'
+            htmlContent += '<tr><td>' + $$('custom.data.type.geonames.config.parameter.mask.infopop.land.label') + ':</td><td>' + data.countryName + '</td></tr>'
 
       if data.continentCode
         if typeof data.continentCode != 'object'
-            htmlContent += '<tr><td>Kontinent:</td><td>' + data.continentCode + '</td></tr>'
+            htmlContent += '<tr><td>' + $$('custom.data.type.geonames.config.parameter.mask.infopop.kontinent.label') + ':</td><td>' + data.continentCode + '</td></tr>'
 
       if data.population
         if typeof data.population != 'object'
-            htmlContent += '<tr><td>Einwohner:</td><td>' + data.population + '</td></tr>'
+            htmlContent += '<tr><td>' + $$('custom.data.type.geonames.config.parameter.mask.infopop.einwohner.label') + ':</td><td>' + data.population + '</td></tr>'
 
       if data.fclName
         if typeof data.fclName != 'object'
-            htmlContent += '<tr><td>Typ:</td><td>' + data.fclName + '</td></tr>'
+            htmlContent += '<tr><td>' + $$('custom.data.type.geonames.config.parameter.mask.infopop.typ.label') + ':</td><td>' + data.fclName + '</td></tr>'
 
       if data.timezone
         if typeof data.timezone != 'object'
-            htmlContent += '<tr><td>Zeitzone:</td><td>' + data.timezone + '</td></tr>'
+            htmlContent += '<tr><td>' + $$('custom.data.type.geonames.config.parameter.mask.infopop.zeitzone.label') + ':</td><td>' + data.timezone + '</td></tr>'
 
       #tooltip.getPane().replace(htmlContent, "center")
       tooltip.DOM.innerHTML = htmlContent
@@ -201,19 +201,19 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
         options: [
           (
               value: 10
-              text: '10 Vorschläge'
+              text: '10 ' + $$('custom.data.type.geonames.modal.form.text.count_short')
           )
           (
               value: 20
-              text: '20 Vorschläge'
+              text: '20 ' + $$('custom.data.type.geonames.modal.form.text.count_short')
           )
           (
               value: 50
-              text: '50 Vorschläge'
+              text: '50 ' + $$('custom.data.type.geonames.modal.form.text.count_short')
           )
           (
               value: 100
-              text: '100 Vorschläge'
+              text: '100 ' + $$('custom.data.type.geonames.modal.form.text.count_short')
           )
         ]
         name: 'countOfSuggestions'
@@ -229,14 +229,14 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
       }
       {
         form:
-          label: "Gewählter Eintrag"
+          label: $$('custom.data.type.geonames.modal.form.text.result.label')
         type: CUI.Output
         name: "conceptName"
         data: {conceptName: cdata.conceptName}
       }
       {
         form:
-          label: "Verknüpfte URI"
+          label: $$('custom.data.type.geonames.modal.form.text.uri.label')
         type: CUI.FormButton
         name: "conceptURI"
         icon: new CUI.Icon(class: "fa-lightbulb-o")
@@ -254,43 +254,43 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
       featureclassesOptions = [
         (
           value: ''
-          text: 'Alle Featureklassen'
+          text: $$('custom.data.type.geonames.config.parameter.mask.config_featureclasses.all.label')
         )
         (
           value: 'A'
-          text: 'Administration'
+          text: $$('custom.data.type.geonames.config.parameter.mask.config_featureclasses.a.label')
         )
         (
           value: 'H'
-          text: 'Gewässer'
+          text: $$('custom.data.type.geonames.config.parameter.mask.config_featureclasses.h.label')
         )
         (
           value: 'L'
-          text: 'Gebiete'
+          text: $$('custom.data.type.geonames.config.parameter.mask.config_featureclasses.l.label')
         )
         (
           value: 'P'
-          text: 'Besiedelte Orte'
+          text: $$('custom.data.type.geonames.config.parameter.mask.config_featureclasses.p.label')
         )
         (
           value: 'R'
-          text: 'Straßen- und Eisenbahn'
+          text: $$('custom.data.type.geonames.config.parameter.mask.config_featureclasses.r.label')
         )
         (
           value: 'S'
-          text: 'Punkte'
+          text: $$('custom.data.type.geonames.config.parameter.mask.config_featureclasses.s.label')
         )
         (
           value: 'T'
-          text: 'Geländeformen'
+          text: $$('custom.data.type.geonames.config.parameter.mask.config_featureclasses.t.label')
         )
         (
           value: 'U'
-          text: 'Untersee'
+          text: $$('custom.data.type.geonames.config.parameter.mask.config_featureclasses.u.label')
         )
         (
           value: 'V'
-          text: 'Vegetation'
+          text: $$('custom.data.type.geonames.config.parameter.mask.config_featureclasses.v.label')
         )
       ]
 
