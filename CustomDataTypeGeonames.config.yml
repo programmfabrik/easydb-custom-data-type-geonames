@@ -1,5 +1,5 @@
 plugin:
-  name: custom-data-type-geonames
+  name: easydb-custom-data-type-geonames
   version: 1.2
   server:
     api-version:
