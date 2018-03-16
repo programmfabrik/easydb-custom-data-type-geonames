@@ -1,6 +1,13 @@
 plugin:
   name: custom-data-type-geonames
   version: 1.2
+  url: https://github.com/programmfabrik/easydb-custom-data-type-geonames
+  displayname:
+    de-DE: geonames-Verknüpfung
+    en-US: geonames-Referencing
+  info:
+    de-DE: Stellt Verknüpfungen mit der geographischen Datenbank geonames her.
+    en-US: Use for references to entities of geonames-database.
   server:
     api-version:
       require: 1
