@@ -18,7 +18,8 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
   __getAdditionalTooltipInfo: (uri, tooltip,extendedInfo_xhr) ->
     that = @
     # extract geonamesID from uri
-    geonamesID = uri
+    geonamesURI = uri
+    geonamesID = decodeURIComponent(uri)
     geonamesID = geonamesID.split "/"
     geonamesID = geonamesID.pop()
     # download infos from entityfacts
@@ -96,18 +97,23 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
 
   #######################################################################
   # handle suggestions-menu
-  __updateSuggestionsMenu: (cdata, cdata_form, suggest_Menu, searchsuggest_xhr) ->
+  __updateSuggestionsMenu: (cdata, cdata_form, searchstring, input, suggest_Menu, searchsuggest_xhr, layout) ->
     that = @
 
     delayMillisseconds = 200
 
     setTimeout ( ->
 
-        geonames_searchterm = cdata_form.getFieldsByName("searchbarInput")[0].getValue()
-        geonames_featureclass = cdata_form.getFieldsByName("geonamesSelectFeatureClasses")[0]?.getValue()
-        if geonames_featureclass == undefined
-            geonames_featureclass = ''
-        geonames_countSuggestions = cdata_form.getFieldsByName("countOfSuggestions")[0].getValue()
+        geonames_searchterm = searchstring
+        geonames_countSuggestions = 20
+        geonames_featureclass = ''
+
+        if (cdata_form)
+          geonames_searchterm = cdata_form.getFieldsByName("searchbarInput")[0].getValue()
+          geonames_featureclass = cdata_form.getFieldsByName("geonamesSelectFeatureClasses")[0]?.getValue()
+          if geonames_featureclass == undefined
+              geonames_featureclass = ''
+          geonames_countSuggestions = cdata_form.getFieldsByName("countOfSuggestions")[0].getValue()
 
         if geonames_searchterm.length == 0
             return
@@ -158,18 +164,16 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
             # set new items to menu
             itemList =
               onClick: (ev2, btn) ->
-
-                # lock in save data
-                cdata.conceptURI = btn.getOpt("value")
-                cdata.conceptName = btn.getText()
-                # lock in form
-                cdata_form.getFieldsByName("conceptName")[0].storeValue(cdata.conceptName).displayValue()
-                # nach eadb5-Update durch "setText" ersetzen und "__checkbox" rausnehmen
-                cdata_form.getFieldsByName("conceptURI")[0].__checkbox.setText(cdata.conceptURI)
-                cdata_form.getFieldsByName("conceptURI")[0].show()
-
-                # clear searchbar
-                cdata_form.getFieldsByName("searchbarInput")[0].setValue('')
+                  # lock in save data
+                  cdata.conceptURI = btn.getOpt("value")
+                  cdata.conceptName = btn.getText()
+                  # update the layout in form
+                  that.__updateResult(cdata, layout)
+                  # hide suggest-menu
+                  suggest_Menu.hide()
+                  # close popover
+                  if that.popover
+                    that.popover.hide()
               items: menu_items
 
             # if no hits set "empty" message to menu
@@ -227,26 +231,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
         placeholder: $$("custom.data.type.geonames.modal.form.text.searchbar.placeholder")
         name: "searchbarInput"
       }
-      {
-        form:
-          label: $$('custom.data.type.geonames.modal.form.text.result.label')
-        type: CUI.Output
-        name: "conceptName"
-        data: {conceptName: cdata.conceptName}
-      }
-      {
-        form:
-          label: $$('custom.data.type.geonames.modal.form.text.uri.label')
-        type: CUI.FormButton
-        name: "conceptURI"
-        icon: new CUI.Icon(class: "fa-lightbulb-o")
-        text: cdata.conceptURI
-        onClick: (evt,button) =>
-          window.open cdata.conceptURI, "_blank"
-        onRender : (_this) =>
-          if cdata.conceptURI == ''
-            _this.hide()
-      }]
+      ]
 
     # offer Featureclasses? (see config)
     if @getCustomMaskSettings().config_featureclasses?.value
@@ -323,28 +308,40 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
     # if status is ok
     cdata.conceptURI = CUI.parseLocation(cdata.conceptURI).url
 
-    # output Button with Name of picked GEONAMES-Entry and Url to the "Deutsche Nationalbibliothek"
-    new CUI.ButtonHref
-      appearance: "link"
-      href: cdata.conceptURI
-      target: "_blank"
-      tooltip:
-        markdown: true
-        placement: 'n'
-        content: (tooltip) ->
-          uri = cdata.conceptURI
-          geonamesID = uri.split('/')
-          geonamesID = geonamesID.pop()
-          htmlContent = ''
-          # wenn mapquest-api-key
-          if that.getCustomSchemaSettings().mapquest_api_key?.value
-              mapquest_api_key = that.getCustomSchemaSettings().mapquest_api_key?.value
-          if mapquest_api_key
-              htmlContent += '<div style="width:400px; height: 250px; background-image: url(' + location.protocol  + '//ws.gbv.de/suggest/mapfromgeonamesid/?id=' + geonamesID + '&zoom=12&width=400&height=250&mapquestapikey=' + mapquest_api_key + '); background-repeat: no-repeat; background-position: center center;"></div>'
-          tooltip.DOM.innerHTML = htmlContent
-          tooltip.autoSize()
-          htmlContent
-      text: cdata.conceptName
+    # output Button with Name of picked entry and URI
+    new CUI.HorizontalLayout
+      maximize: false
+      left:
+        content:
+          new CUI.Label
+            centered: false
+            multiline: true
+            text: cdata.conceptName
+      center:
+        content:
+          # output Button with Name of picked Entry and Url to the Source
+          new CUI.ButtonHref
+            appearance: "link"
+            href: cdata.conceptURI
+            target: "_blank"
+            tooltip:
+              markdown: true
+              placement: 'n'
+              content: (tooltip) ->
+                uri = cdata.conceptURI
+                geonamesID = uri.split('/')
+                geonamesID = geonamesID.pop()
+                htmlContent = ''
+                # wenn mapquest-api-key
+                if that.getCustomSchemaSettings().mapquest_api_key?.value
+                    mapquest_api_key = that.getCustomSchemaSettings().mapquest_api_key?.value
+                if mapquest_api_key
+                    htmlContent += '<div style="width:400px; height: 250px; background-image: url(' + location.protocol  + '//ws.gbv.de/suggest/mapfromgeonamesid/?id=' + geonamesID + '&zoom=12&width=400&height=250&mapquestapikey=' + mapquest_api_key + '); background-repeat: no-repeat; background-position: center center;"></div>'
+                tooltip.DOM.innerHTML = htmlContent
+                tooltip.autoSize()
+                htmlContent
+            text: ' '
+      right: null
     .DOM
 
 
