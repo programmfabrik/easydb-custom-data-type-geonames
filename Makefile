@@ -7,30 +7,25 @@ L10N_GOOGLE_GID = 1663005148
 L10N2JSON = python easydb-library/tools/l10n2json.py
 
 INSTALL_FILES = \
-	$(WEB)/l10n/cultures.json \
-	$(WEB)/l10n/de-DE.json \
-	$(WEB)/l10n/en-US.json \
-	$(WEB)/l10n/es-ES.json \
-	$(WEB)/l10n/it-IT.json \
+    $(WEB)/l10n/cultures.json \
+    $(WEB)/l10n/de-DE.json \
+    $(WEB)/l10n/en-US.json \
     $(WEB)/custom-data-type-geonames.scss \
-	$(JS) \
-	CustomDataTypeGeonames.config.yml
+    $(JS) \
+    $(CSS) \
+    CustomDataTypeGeonames.config.yml
 
 COFFEE_FILES = easydb-library/src/commons.coffee \
-	src/webfrontend/CustomDataTypeGeonames.coffee
-
-all: build
+    src/webfrontend/CustomDataTypeGeonames.coffee
 
 SCSS_FILES = src/webfrontend/scss/main.scss
 
+all: build
+
 include easydb-library/tools/base-plugins.make
 
-build: code $(L10N) $(SCSS)
+build: code css
 
-code: $(JS)
+code: $(JS) $(L10N)
 
 clean: clean-base
-
-wipe: wipe-base
-
-.PHONY: clean wipe

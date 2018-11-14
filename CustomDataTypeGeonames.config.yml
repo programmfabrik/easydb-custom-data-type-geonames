@@ -11,12 +11,10 @@ plugin:
   server:
     api-version:
       require: 1
-  scss:
-      body:
-        - build/webfrontend/custom-data-type-geonames.scss
   webfrontend:
     url: custom-data-type-geonames.js
     l10n: l10n/
+    css: custom-data-type-geonames.css
 custom_types:
   geonames:
     mapping:
