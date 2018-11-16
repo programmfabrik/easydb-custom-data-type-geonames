@@ -171,6 +171,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                   # lock in save data
                   cdata.conceptURI = btn.getOpt("value")
                   cdata.conceptName = btn.getText()
+                  cdata.conceptFulltext = cdata.conceptName
                   # if a geonames-username is given get data from geonames for fulltext
                   geonamesUsername = ''
                   if that.getCustomSchemaSettings().geonames_username?.value
