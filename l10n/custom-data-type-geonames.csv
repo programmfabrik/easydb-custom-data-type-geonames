@@ -49,3 +49,4 @@ custom.data.type.geonames.config.parameter.mask.infopop.kontinent.label,Kontinen
 custom.data.type.geonames.config.parameter.mask.infopop.einwohner.label,Einwohner,Population,,
 custom.data.type.geonames.config.parameter.mask.infopop.typ.label,Typ,Type,,
 custom.data.type.geonames.config.parameter.mask.infopop.zeitzone.label,Zeitzone,Timezone,,
+custom.data.type.geonames.config.parameter.schema.geonames_username.value.label,geonames-Username,geonames-Username

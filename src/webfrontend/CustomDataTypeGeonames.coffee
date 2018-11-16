@@ -171,13 +171,55 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                   # lock in save data
                   cdata.conceptURI = btn.getOpt("value")
                   cdata.conceptName = btn.getText()
-                  # update the layout in form
-                  that.__updateResult(cdata, layout)
-                  # hide suggest-menu
-                  suggest_Menu.hide()
-                  # close popover
-                  if that.popover
-                    that.popover.hide()
+                  # if a geonames-username is given get data from geonames for fulltext
+                  geonamesUsername = ''
+                  if that.getCustomSchemaSettings().geonames_username?.value
+                    geonamesUsername = that.getCustomSchemaSettings().geonames_username.value
+                    # extract geonames-id from URI
+                    geonamesID = cdata.conceptURI
+                    geonamesID = geonamesID.replace('http://www.geonames.org/', '')
+                    # build url for geonames-api
+                    encodedURL = encodeURIComponent('http://api.geonames.org/getJSON?formatted=true&geonameId=' + geonamesID + '&username=' + geonamesUsername + '&style=full')
+                    dataEntry_xhr = new (CUI.XHR)(url: location.protocol + '//jsontojsonp.gbv.de/?url=' + encodedURL)
+                    dataEntry_xhr.start().done((data, status, statusText) ->
+                      # generate fulltext from data
+                      fulltext = '';
+                      if data?.adminName1
+                        fulltext += ' ' + data.adminName1
+                      if data?.adminName2
+                        fulltext += ' ' + data.adminName2
+                      if data?.adminName3
+                        fulltext += ' ' + data.adminName3
+                      if data?.adminName4
+                        fulltext += ' ' + data.adminName4
+                      if data?.adminName5
+                        fulltext += ' ' + data.adminName5
+                      if data?.countryName
+                        fulltext += ' ' + data.countryName
+                      if data?.geonameId
+                        fulltext += ' ' + data.geonameId
+                      if data?.toponymName
+                        fulltext += ' ' + data.toponymName
+                      if data?.alternateNames
+                        for altName, altNameKey in data.alternateNames
+                          fulltext += ' ' + altName.name
+                      cdata.conceptFulltext = fulltext
+                      # update the layout in form
+                      that.__updateResult(cdata, layout)
+                      # hide suggest-menu
+                      suggest_Menu.hide()
+                      # close popover
+                      if that.popover
+                        that.popover.hide()
+                    )
+                  else
+                    # update the layout in form
+                    that.__updateResult(cdata, layout)
+                    # hide suggest-menu
+                    suggest_Menu.hide()
+                    # close popover
+                    if that.popover
+                      that.popover.hide()
               items: menu_items
 
             # if no hits set "empty" message to menu
@@ -358,6 +400,11 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
       tags.push "✓ Mapquest-API-Key"
     else
       tags.push "✘ Mapquest-API-Key"
+
+    if custom_settings.geonames_username?.value
+      tags.push "✓ geonames-Username"
+    else
+      tags.push "✘ geonames-Username"
 
     tags
 

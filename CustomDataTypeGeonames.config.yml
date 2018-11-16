@@ -28,6 +28,10 @@ custom_types:
           parameters:
             value:
               type: text
+        - name: geonames_username
+          parameters:
+            value:
+              type: text
       mask:
         - name: show_infopopup
           parameters:
