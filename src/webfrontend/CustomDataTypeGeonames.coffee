@@ -101,7 +101,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
 
   #######################################################################
   # handle suggestions-menu
-  __updateSuggestionsMenu: (cdata, cdata_form, searchstring, input, suggest_Menu, searchsuggest_xhr, layout) ->
+  __updateSuggestionsMenu: (cdata, cdata_form, searchstring, input, suggest_Menu, searchsuggest_xhr, layout, opts) ->
     that = @
 
     delayMillisseconds = 200
@@ -206,7 +206,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                           fulltext += ' ' + altName.name
                       cdata.conceptFulltext = fulltext
                       # update the layout in form
-                      that.__updateResult(cdata, layout)
+                      that.__updateResult(cdata, layout, opts)
                       # hide suggest-menu
                       suggest_Menu.hide()
                       # close popover
@@ -215,7 +215,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                     )
                   else
                     # update the layout in form
-                    that.__updateResult(cdata, layout)
+                    that.__updateResult(cdata, layout, opts)
                     # hide suggest-menu
                     suggest_Menu.hide()
                     # close popover
