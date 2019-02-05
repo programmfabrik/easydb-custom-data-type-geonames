@@ -180,6 +180,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                     dataEntry_xhr.start().done((data, status, statusText) ->
                       # generate fulltext from data
                       fulltext = '';
+                      console.log data
                       if data?.adminName1
                         fulltext += ' ' + data.adminName1
                       if data?.adminName2
@@ -199,6 +200,8 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                       if data?.alternateNames
                         for altName, altNameKey in data.alternateNames
                           fulltext += ' ' + altName.name
+                      console.log fulltext
+                      console.error " hier"
                       cdata.conceptFulltext = fulltext
                       # update the layout in form
                       that.__updateResult(cdata, layout, opts)
