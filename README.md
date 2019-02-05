@@ -18,6 +18,19 @@ In `CustomDataTypeGeonames.config.yml` you can configure:
     * whether additional informationen is loaded if the mouse hovers a suggestion in the search result. The results are ordered and categorized by featurecode
     * wether to show a dropdown with available featureclasses or not
 
+## saved data
+
+* conceptName
+    * Preferred label of the linked record
+* conceptURI
+    * URI to linked record
+* conceptFulltext
+    * fulltext-string which contains: geonameId, adminName1, adminName2, adminName3, adminName4, adminName5, countryName, toponymName, alternateNames
+* _fulltext
+    * easydb-fulltext
+* _standard
+    * easydb-standard
+
 ## sources
 
 The source code of this plugin is managed in a git repository at <https://github.com/programmfabrik/easydb-custom-data-type-geonames>. Please use [the issue tracker](https://github.com/programmfabrik/easydb-custom-data-type-geonames/issues) for bug reports and feature requests!
