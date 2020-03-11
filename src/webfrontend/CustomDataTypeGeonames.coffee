@@ -381,10 +381,10 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
   getCustomDataOptionsInDatamodelInfo: (custom_settings) ->
     tags = []
 
-    if custom_settings.mapquest_api_key?.value
-      tags.push "✓ Mapbox-API-Key"
+    if custom_settings.mapbox_api_key?.value
+      tags.push "✓ mapbox-token"
     else
-      tags.push "✘ Mapbox-API-Key"
+      tags.push "✘ mapbox-token"
 
     if custom_settings.geonames_username?.value
       tags.push "✓ geonames-Username"
