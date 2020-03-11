@@ -29,21 +29,20 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
     extendedInfo_xhr.xhr = new (CUI.XHR)(url: location.protocol + '//uri.gbv.de/terminology/geonames/' + geonamesID + '?format=json')
     extendedInfo_xhr.xhr.start()
     .done((data, status, statusText) ->
-      htmlContent = '<span style="font-weight: bold">' + $$('custom.data.type.geonames.config.parameter.mask.infopop.info.label') + '</span>'
+      htmlContent = '<span style="padding: 10px 10px 0px 10px; font-weight: bold">' + $$('custom.data.type.geonames.config.parameter.mask.infopop.info.label') + '</span>'
       coord1 = 0
       coord1 = 0
       if data.lat
           coord1 = data.lat
       if data.lat
           coord2 = data.lng
-      # wenn mapquest-api-key
-      # read mapquest-api-key from schema
-      if that.getCustomSchemaSettings().mapquest_api_key?.value
-          mapquest_api_key = that.getCustomSchemaSettings().mapquest_api_key?.value
-      if mapquest_api_key
+      # if mapbox_api_key --> read mapbox_api_key from schema
+      if that.getCustomSchemaSettings().mapbox_api_key?.value
+          mapbox_api_key = that.getCustomSchemaSettings().mapbox_api_key?.value
+      if mapbox_api_key
         if coord1 != 0 & coord2 != 0
-          url = location.protocol + '//open.mapquestapi.com/staticmap/v4/getmap?key=' + mapquest_api_key + '&size=400,200&zoom=12&center=' + coord1 + ',' + coord2;
-          htmlContent += '<div style="width:400px; height: 250px; background-image: url(' + url + '); background-repeat: no-repeat; background-position: center center;"></div>'
+          url = location.protocol + '//api.mapbox.com/styles/v1/mapbox/streets-v11/static/' + coord2 + ',' + coord1 + ',11/400x200@2x?access_token=' + mapbox_api_key
+          htmlContent += '<div style="width:400px; height: 250px; background-size: contain; background-image: url(' + url + '); background-repeat: no-repeat; background-position: center center;"></div>'
       htmlContent += '<table style="border-spacing: 10px; border-collapse: separate;">'
 
       if data.name
@@ -154,10 +153,8 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                     markdown: true
                     placement: "e"
                     content: (tooltip) ->
-                      # if enabled in mask-config
-                      if that.getCustomMaskSettings().show_infopopup?.value
-                        that.__getAdditionalTooltipInfo(data[3][key], tooltip, extendedInfo_xhr)
-                        new CUI.Label(icon: "spinner", text: "lade Informationen")
+                      that.__getAdditionalTooltipInfo(data[3][key], tooltip, extendedInfo_xhr)
+                      new CUI.Label(icon: "spinner", text: "lade Informationen")
                 menu_items.push item
 
             # set new items to menu
@@ -180,7 +177,6 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                     dataEntry_xhr.start().done((data, status, statusText) ->
                       # generate fulltext from data
                       fulltext = '';
-                      console.log data
                       if data?.adminName1
                         fulltext += ' ' + data.adminName1
                       if data?.adminName2
@@ -200,8 +196,6 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                       if data?.alternateNames
                         for altName, altNameKey in data.alternateNames
                           fulltext += ' ' + altName.name
-                      console.log fulltext
-                      console.error " hier"
                       cdata.conceptFulltext = fulltext
                       # update the layout in form
                       that.__updateResult(cdata, layout, opts)
@@ -353,6 +347,8 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
     # if status is ok
     cdata.conceptURI = CUI.parseLocation(cdata.conceptURI).url
 
+    extendedInfo_xhr = { "xhr" : undefined }
+
     # output Button with Name of picked entry and URI
     new CUI.HorizontalLayout
       maximize: false
@@ -373,18 +369,8 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
               markdown: true
               placement: 'n'
               content: (tooltip) ->
-                uri = cdata.conceptURI
-                geonamesID = uri.split('/')
-                geonamesID = geonamesID.pop()
-                htmlContent = ''
-                # wenn mapquest-api-key
-                if that.getCustomSchemaSettings().mapquest_api_key?.value
-                    mapquest_api_key = that.getCustomSchemaSettings().mapquest_api_key?.value
-                if mapquest_api_key
-                    htmlContent += '<div style="width:400px; height: 250px; background-image: url(' + location.protocol  + '//ws.gbv.de/suggest/mapfromgeonamesid/?id=' + geonamesID + '&zoom=12&width=400&height=250&mapquestapikey=' + mapquest_api_key + '); background-repeat: no-repeat; background-position: center center;"></div>'
-                tooltip.DOM.innerHTML = htmlContent
-                tooltip.autoSize()
-                htmlContent
+                that.__getAdditionalTooltipInfo(cdata.conceptURI, tooltip, extendedInfo_xhr)
+                new CUI.Label(icon: "spinner", text: "lade Informationen")
             text: ' '
       right: null
     .DOM
@@ -396,9 +382,9 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
     tags = []
 
     if custom_settings.mapquest_api_key?.value
-      tags.push "✓ Mapquest-API-Key"
+      tags.push "✓ Mapbox-API-Key"
     else
-      tags.push "✘ Mapquest-API-Key"
+      tags.push "✘ Mapbox-API-Key"
 
     if custom_settings.geonames_username?.value
       tags.push "✓ geonames-Username"

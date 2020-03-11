@@ -24,7 +24,7 @@ custom_types:
         type: text
     config:
       schema:
-        - name: mapquest_api_key
+        - name: mapbox_api_key
           parameters:
             value:
               type: text
@@ -33,10 +33,6 @@ custom_types:
             value:
               type: text
       mask:
-        - name: show_infopopup
-          parameters:
-            value:
-              type: bool
         - name: config_featureclasses
           parameters:
             value:
