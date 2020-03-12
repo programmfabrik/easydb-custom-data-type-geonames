@@ -17,14 +17,15 @@ INSTALL_FILES = \
 COFFEE_FILES = easydb-library/src/commons.coffee \
     src/webfrontend/CustomDataTypeGeonames.coffee
 
-SCSS_FILES = src/webfrontend/scss/main.scss
+CSS_FILE = src/webfrontend/css/main.css
 
 all: build
 
 include easydb-library/tools/base-plugins.make
 
-build: code css
+build: code
 
 code: $(JS) $(L10N)
+	cat $(CSS_FILE) >> build/webfrontend/custom-data-type-geonames.css
 
 clean: clean-base
