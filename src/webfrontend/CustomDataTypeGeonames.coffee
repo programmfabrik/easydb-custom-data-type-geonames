@@ -103,8 +103,9 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
     setTimeout ( ->
 
         geonames_searchterm = searchstring
-        geonames_countSuggestions = 20
+        geonames_countSuggestions = 50
         geonames_featureclass = ''
+        geonames_country = ''
 
         if (cdata_form)
           geonames_searchterm = cdata_form.getFieldsByName("searchbarInput")[0].getValue()
@@ -116,6 +117,10 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
         if geonames_searchterm.length == 0
             return
 
+        countryQuery = ''
+        if cdata?.geonamesSelectCountry
+          countryQuery = '&country=' + cdata.geonamesSelectCountry
+
         extendedInfo_xhr = { "xhr" : undefined }
 
         # run autocomplete-search via xhr
@@ -123,7 +128,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
             # abort eventually running request
             searchsuggest_xhr.xhr.abort()
         # start new request
-        searchsuggest_xhr.xhr = new (CUI.XHR)(url: location.protocol + '//ws.gbv.de/suggest/geonames/?searchterm=' + geonames_searchterm + '&featureclass=' + geonames_featureclass + '&count=' + geonames_countSuggestions)
+        searchsuggest_xhr.xhr = new (CUI.XHR)(url: location.protocol + '//ws.gbv.de/suggest/geonames/?searchterm=' + geonames_searchterm + '&featureclass=' + geonames_featureclass + '&count=' + geonames_countSuggestions + countryQuery)
         searchsuggest_xhr.xhr.start().done((data, status, statusText) ->
 
             # create new menu with suggestions
@@ -159,11 +164,15 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
 
             # set new items to menu
             itemList =
+              keyboardControl: true
               onClick: (ev2, btn) ->
                   # lock in save data
                   cdata.conceptURI = btn.getOpt("value")
                   cdata.conceptName = btn.getText()
-                  cdata.conceptFulltext = cdata.conceptName
+                  cdata._fulltext = {}
+                  cdata._fulltext.string = cdata.conceptName
+                  cdata._fulltext.text = cdata.conceptName
+                  cdata._standard.text = cdata.conceptName
                   # if a geonames-username is given get data from geonames for fulltext
                   geonamesUsername = ''
                   if that.getCustomSchemaSettings().geonames_username?.value
@@ -196,7 +205,8 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                       if data?.alternateNames
                         for altName, altNameKey in data.alternateNames
                           fulltext += ' ' + altName.name
-                      cdata.conceptFulltext = fulltext
+                      cdata._fulltext.string = fulltext
+                      cdata._fulltext.text = fulltext
                       # update the layout in form
                       that.__updateResult(cdata, layout, opts)
                       # hide suggest-menu
@@ -271,6 +281,43 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
         name: "searchbarInput"
       }
       ]
+
+    # country-dropdown
+
+    # geonamesCountryCodes in file "CountryCodes.coffee", translations in l10n "world_names.csv"
+    countryCodeOptions = [
+      (
+        value: ''
+        text: $$('custom.data.type.geonames.country.name.all')
+      )
+    ]
+
+    # default country code?
+    if @getCustomMaskSettings().default_country_code?.value
+      defaultCountryCode = @getCustomMaskSettings().default_country_code?.value
+      defaultCountryCode = defaultCountryCode.toLowerCase()
+      cdata.geonamesSelectCountry = defaultCountryCode
+    else
+      # else "all countrys"
+      cdata.geonamesSelectCountry = ''
+
+    for countrycode in geonamesCountryCodes
+      countryCodeOption =
+        value: countrycode
+        text: $$('custom.data.type.geonames.country.name.' + countrycode)
+      countryCodeOptions.push countryCodeOption
+
+    field = {
+      type: CUI.Select
+      undo_and_changed_support: false
+      form:
+          label: $$('custom.data.type.geonames.modal.form.text.countrys')
+      options: countryCodeOptions
+      name: 'geonamesSelectCountry'
+      class: 'commonPlugin_Select'
+    }
+
+    fields.unshift(field)
 
     # offer Featureclasses? (see config)
     if @getCustomMaskSettings().config_featureclasses?.value

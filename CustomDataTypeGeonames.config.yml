@@ -37,3 +37,7 @@ custom_types:
           parameters:
             value:
               type: bool
+        - name: default_country_code
+          parameters:
+            value:
+              type: text
