@@ -22,6 +22,7 @@ In `CustomDataTypeGeonames.config.yml` you can configure:
 
 * `mask-options`:
     * wether to show a dropdown with available featureclasses or not
+    * default country for the country-dropdown (2 digits-code)
 
 ## saved data
 
