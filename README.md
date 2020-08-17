@@ -23,6 +23,8 @@ In `CustomDataTypeGeonames.config.yml` you can configure:
 * `mask-options`:
     * wether to show a dropdown with available featureclasses or not
     * default country for the country-dropdown (2 digits-code)
+    * default value for search expansion (Records of the lowest administrative level ("admin4") are also found via the higher-level administrative unit ("admin3"))
+    * wether the ancestors are shown in hitlist
 
 ## saved data
 

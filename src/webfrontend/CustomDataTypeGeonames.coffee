@@ -11,6 +11,93 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
   getCustomDataTypeNameLocalized: ->
     $$("custom.data.type.geonames.name")
 
+  #######################################################################
+  # get frontend-language
+  getFrontendLanguage: () ->
+    # language
+    desiredLanguage = ez5.loca.getLanguage()
+    desiredLanguage = desiredLanguage.split('-')
+    desiredLanguage = desiredLanguage[0]
+
+    desiredLanguage
+
+  #######################################################################
+  # returns markup to display in expert search
+  #   use same uix as in plugin itself
+  #######################################################################
+  renderSearchInput: (data) ->
+      that = @
+      if not data[@name()]
+          data[@name()] = {}
+
+      form = @renderEditorInput(data, '', {})
+
+      CUI.Events.listen
+            type: "data-changed"
+            node: form
+            call: =>
+                CUI.Events.trigger
+                    type: "search-input-change"
+                    node: form
+
+      form.DOM
+
+  #######################################################################
+  # make searchfilter for expert-search
+  #######################################################################
+  getSearchFilter: (data) ->
+      that = @
+      # find all records which
+      #   - have the uri as conceptURI
+      #   OR
+      #   - have the given uri in their ancestors
+
+      filter =
+          type: "complex"
+          search: [
+              type: "in"
+              bool: "must"
+              fields: [ "_objecttype" ]
+              in: [ @path() ]
+            ,
+              type: "in"
+              bool: "must"
+              fields: [@path() + '.' + @name() + ".conceptAncestors" ]
+          ]
+
+      if ! data[@name()]
+          filter.search[1].in = [ null ]
+      else if data[@name()]?.conceptURI
+          givenURI = data[@name()].conceptURI
+          givenURIParts = givenURI.split('/')
+          givenGeonamesID = givenURIParts.pop()
+
+          uriVariants = []
+          #uriVariants.push 'http://www.geonames.org/' + givenGeonamesID
+          uriVariants.push 'http://geonames.org/' + givenGeonamesID
+          #uriVariants.push 'https://geonames.org/' + givenGeonamesID
+          #uriVariants.push 'https://sws.geonames.org/' + givenGeonamesID + '/'
+          #uriVariants.push 'https://sws.geonames.org/' + givenGeonamesID
+
+          filter.search[1].in = uriVariants
+      else
+          filter = null
+
+      filter
+
+  #######################################################################
+  # make tag for expert-search
+  #######################################################################
+  getQueryFieldBadge: (data) ->
+      if ! data[@name()]
+          value = $$("field.search.badge.without")
+      else if ! data[@name()]?.conceptURI
+          value = $$("field.search.badge.without")
+      else
+          value = data[@name()].conceptName
+
+      name: @nameLocalized()
+      value: value
 
   #######################################################################
   # read info from geonames-terminology
@@ -39,10 +126,38 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
       # if mapbox_api_key --> read mapbox_api_key from schema
       if that.getCustomSchemaSettings().mapbox_api_key?.value
           mapbox_api_key = that.getCustomSchemaSettings().mapbox_api_key?.value
-      if mapbox_api_key
-        if coord1 != 0 & coord2 != 0
-          url = location.protocol + '//api.mapbox.com/styles/v1/mapbox/streets-v11/static/' + coord2 + ',' + coord1 + ',11/400x200@2x?access_token=' + mapbox_api_key
-          htmlContent += '<div style="width:400px; height: 250px; background-size: contain; background-image: url(' + url + '); background-repeat: no-repeat; background-position: center center;"></div>'
+          if coord1 != 0 & coord2 != 0
+            #url = location.protocol + '//api.mapbox.com/styles/v1/mapbox/streets-v11/static/' + coord2 + ',' + coord1 + ',11/400x200@2x?access_token=' + mapbox_api_key
+            #htmlContent += '<div style="width:400px; height: 250px; background-size: contain; background-image: url(' + url + '); background-repeat: no-repeat; background-position: center center;"></div>'
+            # show point on static-map
+            value = JSON.parse('{"geometry": {"type": "Point","coordinates": [' + coord2 + ',' + coord1 + ']}}')
+
+            # generates static mapbox-map via geojson
+            # compare to https://www.mapbox.com/mapbox.js/example/v1.0.0/static-map-from-geojson-with-geo-viewport/
+            jsonStr = '{"type": "FeatureCollection","features": []}'
+            json = JSON.parse(jsonStr)
+
+            json.features.push value
+
+            bounds = geojsonExtent(json)
+            if bounds
+              size = [
+                500
+                300
+              ]
+              vp = geoViewport.viewport(bounds, size)
+              encodedGeoJSON = value
+              encodedGeoJSON.properties = {}
+              encodedGeoJSON.type = "Feature"
+              encodedGeoJSON.properties['stroke-width'] = 4
+              encodedGeoJSON.properties['stroke'] = '#C20000'
+              encodedGeoJSON = JSON.stringify(encodedGeoJSON)
+              encodedGeoJSON = encodeURIComponent(encodedGeoJSON)
+              if vp.zoom > 16
+                vp.zoom = 12;
+              imageSrc = 'https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/static/geojson(' + encodedGeoJSON + ')/' +  vp.center.join(',') + ',' + vp.zoom + '/' + size.join('x') + '@2x?access_token=' + mapbox_api_key
+              htmlContent += '<div style="width:400px; height: 250px; background-size: contain; background-image: url(\'' + imageSrc + '\'); background-repeat: no-repeat; background-position: center center;"></div>'
+
       htmlContent += '<table style="border-spacing: 10px; border-collapse: separate;">'
 
       if data.name
@@ -107,12 +222,17 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
         geonames_featureclass = ''
         geonames_country = ''
 
+        expandQuery = ''
+
         if (cdata_form)
           geonames_searchterm = cdata_form.getFieldsByName("searchbarInput")[0].getValue()
           geonames_featureclass = cdata_form.getFieldsByName("geonamesSelectFeatureClasses")[0]?.getValue()
           if geonames_featureclass == undefined
               geonames_featureclass = ''
           geonames_countSuggestions = cdata_form.getFieldsByName("countOfSuggestions")[0].getValue()
+
+          expandStatus = cdata_form.getFieldsByName("expandSearchCheckbox")[0].getValue()
+          expandQuery = '&expand=' + expandStatus
 
         if geonames_searchterm.length == 0
             return
@@ -121,6 +241,10 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
         if cdata?.geonamesSelectCountry
           countryQuery = '&country=' + cdata.geonamesSelectCountry
 
+        ancestorsQuery = '&ancestors=false'
+        if that.getCustomMaskSettings().use_ancestors?.value
+          ancestorsQuery = '&ancestors=true'
+
         extendedInfo_xhr = { "xhr" : undefined }
 
         # run autocomplete-search via xhr
@@ -128,7 +252,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
             # abort eventually running request
             searchsuggest_xhr.xhr.abort()
         # start new request
-        searchsuggest_xhr.xhr = new (CUI.XHR)(url: location.protocol + '//ws.gbv.de/suggest/geonames/?searchterm=' + geonames_searchterm + '&featureclass=' + geonames_featureclass + '&count=' + geonames_countSuggestions + countryQuery)
+        searchsuggest_xhr.xhr = new (CUI.XHR)(url: location.protocol + '//ws.gbv.de/suggest/geonames2/?searchterm=' + geonames_searchterm + '&language=' + that.getFrontendLanguage() + '&featureclass=' + geonames_featureclass + '&count=' + geonames_countSuggestions + countryQuery + expandQuery + ancestorsQuery)
         searchsuggest_xhr.xhr.start().done((data, status, statusText) ->
 
             # create new menu with suggestions
@@ -170,6 +294,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                   cdata.conceptURI = btn.getOpt("value")
                   cdata.conceptName = btn.getText()
                   cdata._fulltext = {}
+                  cdata._standard = {}
                   cdata._fulltext.string = cdata.conceptName
                   cdata._fulltext.text = cdata.conceptName
                   cdata._standard.text = cdata.conceptName
@@ -207,6 +332,21 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                           fulltext += ' ' + altName.name
                       cdata._fulltext.string = fulltext
                       cdata._fulltext.text = fulltext
+                      # get ancestors from data
+                      conceptAncestors = []
+                      if data?.countryId
+                        conceptAncestors.push 'http://geonames.org/' + data.countryId
+                      if data?.adminId1
+                        conceptAncestors.push 'http://geonames.org/' + data.adminId1
+                      if data?.adminId2
+                        conceptAncestors.push 'http://geonames.org/' + data.adminId2
+                      if data?.adminId3
+                        conceptAncestors.push 'http://geonames.org/' + data.adminId3
+                      if data?.adminId4
+                        conceptAncestors.push 'http://geonames.org/' + data.adminId4
+                      # push itself to ancestors
+                      conceptAncestors.push 'http://geonames.org/' + geonamesID
+                      cdata.conceptAncestors = conceptAncestors
                       # update the layout in form
                       that.__updateResult(cdata, layout, opts)
                       # hide suggest-menu
@@ -244,6 +384,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
   #######################################################################
   # create form
   __getEditorFields: (cdata) ->
+    that = @
     fields = [
       {
         type: CUI.Select
@@ -272,6 +413,14 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
         name: 'countOfSuggestions'
       }
       {
+        type: CUI.Checkbox
+        class: "commonPlugin_Checkbox"
+        undo_and_changed_support: false
+        form:
+            label: $$('custom.data.type.geonames.modal.form.text.expand')
+        name: 'expandSearchCheckbox'
+      }
+      {
         type: CUI.Input
         class: "commonPlugin_Input"
         undo_and_changed_support: false
@@ -291,6 +440,10 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
         text: $$('custom.data.type.geonames.country.name.all')
       )
     ]
+
+    # default value for expansion
+    if that.getCustomMaskSettings().default_expand?.value
+      cdata.expandSearchCheckbox = that.getCustomMaskSettings().default_expand.value
 
     # default country code?
     if @getCustomMaskSettings().default_country_code?.value

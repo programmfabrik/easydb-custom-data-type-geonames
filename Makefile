@@ -15,6 +15,9 @@ INSTALL_FILES = \
     $(CSS) \
     CustomDataTypeGeonames.config.yml
 
+MAPBOX1 = src/external/geojson-extent.js
+MAPBOX2 = src/external/geo-viewport.js
+
 COFFEE_FILES = easydb-library/src/commons.coffee \
     src/webfrontend/CustomDataTypeGeonames.coffee \
     src/webfrontend/Countrycodes.coffee
@@ -29,5 +32,6 @@ build: code
 
 code: $(JS) $(L10N)
 	cat $(CSS_FILE) >> build/webfrontend/custom-data-type-geonames.css
+	cat $(MAPBOX1) $(MAPBOX2) >> build/webfrontend/custom-data-type-geonames.js	
 
 clean: clean-base

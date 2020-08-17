@@ -52,3 +52,8 @@ custom.data.type.geonames.config.parameter.schema.geonames_username.value.label,
 custom.data.type.geonames.config.parameter.mask.default_country_code.value.label,Standard-Ländercode (2-stellig),Default countrycode (2 digits),,
 custom.data.type.geonames.modal.form.text.countrys,Land,Country,,
 custom.data.type.geonames.country.name.all,Alle Länder, All countries
+custom.data.type.geonames.modal.form.text.expand,Ergebnisse ausdehnen,Expand search
+custom.data.type.geonames.config.parameter.mask.default_expand.value.label,Standardwert für Trefferexpansion,Default value for search expansion
+custom.data.type.geonames.config.parameter.mask.default_expand.value.checkbox,Datensätze der untersten administrativen Ebene ("admin4") werden auch über die darüber geordneten administrativen Einheit ("admin3") gefunden,Records of the lowest administrative level ("admin4") are also found via the higher-level administrative unit ("admin3")
+custom.data.type.geonames.config.parameter.mask.use_ancestors.value.label,Elternhierarchie,Ancestors
+custom.data.type.geonames.config.parameter.mask.use_ancestors.value.checkbox,Zeige die Elternhierarchie in der Trefferliste,Show ancestors in hitlist

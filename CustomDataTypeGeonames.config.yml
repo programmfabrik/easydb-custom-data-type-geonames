@@ -1,6 +1,6 @@
 plugin:
   name: custom-data-type-geonames
-  version: 1.2
+  version: 1.7
   url: https://github.com/programmfabrik/easydb-custom-data-type-geonames
   displayname:
     de-DE: geonames-Verknüpfung
@@ -22,6 +22,8 @@ custom_types:
         type: text
       conceptURI:
         type: text
+      conceptAncestors:
+        type: text
     config:
       schema:
         - name: mapbox_api_key
@@ -41,3 +43,11 @@ custom_types:
           parameters:
             value:
               type: text
+        - name: default_expand
+          parameters:
+            value:
+              type: bool
+        - name: use_ancestors
+          parameters:
+            value:
+              type: bool
