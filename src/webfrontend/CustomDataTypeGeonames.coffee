@@ -295,7 +295,6 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                   cdata.conceptName = btn.getText()
                   cdata._fulltext = {}
                   cdata._standard = {}
-                  cdata._fulltext.string = cdata.conceptName
                   cdata._fulltext.text = cdata.conceptName
                   cdata._standard.text = cdata.conceptName
                   # if a geonames-username is given get data from geonames for fulltext
@@ -329,8 +328,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                         fulltext += ' ' + data.toponymName
                       if data?.alternateNames
                         for altName, altNameKey in data.alternateNames
-                          fulltext += ' ' + altName.name
-                      cdata._fulltext.string = fulltext
+                          fulltext += ' ' + altName.name                      
                       cdata._fulltext.text = fulltext
                       # get ancestors from data
                       conceptAncestors = []
