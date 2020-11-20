@@ -207,6 +207,91 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
 
     return
 
+  __getFeaturecodesFromDANTE: (thisSelect, featureclassCode) ->
+      dfr = new CUI.Deferred()
+      values = []
+
+      # start new request
+      searchsuggest_xhr = new (CUI.XHR)(url: 'https://api.dante.gbv.de/suggest?search=&voc=place_type_geonames&language=' + @getFrontendLanguage() + '&limit=1000&cache=1')
+      searchsuggest_xhr.start().done((data, status, statusText) ->
+          # read options for select
+          select_items = []
+          item = (
+            text: $$('custom.data.type.geonames.config.parameter.mask.config_featurecodes.all.label')
+            value: null
+          )
+          select_items.push item
+          for suggestion, key in data[1]
+              uriParts = data[3][key]
+              uriParts = uriParts.split('.')
+              codeNotation = uriParts.pop()
+              featureClassCodeExtraction = uriParts[2].split('#')
+              featureClassCodeExtraction = featureClassCodeExtraction[1]
+              if (featureClassCodeExtraction == featureclassCode) || featureclassCode == '' || ! featureclassCode || featureclassCode == null
+                item = (
+                  text: suggestion
+                  value: codeNotation
+                )
+                select_items.push item
+          thisSelect.enable()
+          dfr.resolve(select_items)
+      )
+      dfr.promise()
+
+
+  #######################################################################
+  # show popover and fill it with the form-elements
+  showEditPopover: (btn, data, cdata, layout, opts) ->
+    that = @
+
+    suggest_Menu
+
+    # init xhr-object to abort running xhrs
+    searchsuggest_xhr = { "xhr" : undefined }
+
+    # set default value for count of suggestions
+    cdata.countOfSuggestions = 50
+    cdata_form = new CUI.Form
+      class: 'cdtFormWithPadding'
+      data: cdata
+      fields: that.__getEditorFields(cdata)
+      onDataChanged: (data, elem) =>
+        # if featureclass- & featurecodes-dropdown are visible
+        if @getCustomMaskSettings().config_featureclasses?.value && @getCustomMaskSettings().config_featurecodes?.value
+          # if featureclass changed, update featurecodes-dropdown
+          if elem.opts.name == 'geonamesSelectFeatureClasses'
+            # if featureclass is '', show all featurecodes
+            featureclassParameter = ''
+            if data?.geonamesSelectFeatureClasses != '' && data?.geonamesSelectFeatureClasses != null
+              featureclassParameter = data.geonamesSelectFeatureClasses
+            # reset the featurecode-element-value (in data + cdata)
+            data.geonamesSelectFeatureCodes = null
+            cdata.geonamesSelectFeatureCodes = null
+            cdata_form.getFieldsByName("geonamesSelectFeatureCodes")[0]?.setValue(null)
+            defaultText = cdata_form.getFieldsByName("geonamesSelectFeatureCodes")[0].default_opt.text
+
+            cdata_form.getFieldsByName("geonamesSelectFeatureCodes")[0].reload()
+            cdata_form.getFieldsByName("geonamesSelectFeatureCodes")[0]?.setText('test')
+        @__updateResult(cdata, layout, opts)
+        @__setEditorFieldStatus(cdata, layout)
+        @__updateSuggestionsMenu(cdata, cdata_form, data.searchbarInput, elem, suggest_Menu, searchsuggest_xhr, layout, opts)
+    .start()
+
+    # init suggestmenu
+    suggest_Menu = new CUI.Menu
+        element: cdata_form.getFieldsByName("searchbarInput")[0]
+        use_element_width_as_min_width: true
+        class: "customDataTypeCommonsMenu"
+
+    @popover = new CUI.Popover
+      element: btn
+      placement: "wn"
+      class: "commonPlugin_Popover"
+      pane:
+        # titel of popovers
+        header_left: new CUI.Label(text: $$('custom.data.type.commons.popover.choose.label'))
+        content: cdata_form
+    .show()
 
   #######################################################################
   # handle suggestions-menu
@@ -220,6 +305,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
         geonames_searchterm = searchstring
         geonames_countSuggestions = 50
         geonames_featureclass = ''
+        geonames_featurecode = ''
         geonames_country = ''
 
         expandQuery = ''
@@ -227,8 +313,13 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
         if (cdata_form)
           geonames_searchterm = cdata_form.getFieldsByName("searchbarInput")[0].getValue()
           geonames_featureclass = cdata_form.getFieldsByName("geonamesSelectFeatureClasses")[0]?.getValue()
-          if geonames_featureclass == undefined
+          if geonames_featureclass == undefined || geonames_featureclass == null
               geonames_featureclass = ''
+
+          geonames_featurecode = cdata_form.getFieldsByName("geonamesSelectFeatureCodes")[0]?.getValue()
+          if geonames_featurecode == undefined || geonames_featurecode == null
+              geonames_featurecode = ''
+
           geonames_countSuggestions = cdata_form.getFieldsByName("countOfSuggestions")[0].getValue()
 
           expandStatus = cdata_form.getFieldsByName("expandSearchCheckbox")[0].getValue()
@@ -252,7 +343,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
             # abort eventually running request
             searchsuggest_xhr.xhr.abort()
         # start new request
-        searchsuggest_xhr.xhr = new (CUI.XHR)(url: location.protocol + '//ws.gbv.de/suggest/geonames2/?searchterm=' + geonames_searchterm + '&language=' + that.getFrontendLanguage() + '&featureclass=' + geonames_featureclass + '&count=' + geonames_countSuggestions + countryQuery + expandQuery + ancestorsQuery)
+        searchsuggest_xhr.xhr = new (CUI.XHR)(url: location.protocol + '//ws.gbv.de/suggest/geonames2/?searchterm=' + geonames_searchterm + '&language=' + that.getFrontendLanguage() + '&featureclass=' + geonames_featureclass + '&featurecode=' + geonames_featurecode + '&count=' + geonames_countSuggestions + countryQuery + expandQuery + ancestorsQuery)
         searchsuggest_xhr.xhr.start().done((data, status, statusText) ->
 
             # create new menu with suggestions
@@ -328,7 +419,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                         fulltext += ' ' + data.toponymName
                       if data?.alternateNames
                         for altName, altNameKey in data.alternateNames
-                          fulltext += ' ' + altName.name                      
+                          fulltext += ' ' + altName.name
                       cdata._fulltext.text = fulltext
                       # get ancestors from data
                       conceptAncestors = []
@@ -469,6 +560,25 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
     }
 
     fields.unshift(field)
+
+    # offer Featurecodes? (see config)
+    if @getCustomMaskSettings().config_featurecodes?.value
+
+      field = {
+        type: CUI.Select
+        undo_and_changed_support: false
+        form:
+            label: $$('custom.data.type.geonames.modal.form.text.featurecodes')
+        name: 'geonamesSelectFeatureCodes'
+        class: 'commonPlugin_Select'
+        options: (thisSelect) =>
+          featureclassParameter = ''
+          if cdata?.geonamesSelectFeatureClasses != '' && cdata?.geonamesSelectFeatureClasses != null
+            featureclassParameter = cdata.geonamesSelectFeatureClasses
+          that.__getFeaturecodesFromDANTE(thisSelect, featureclassParameter)
+      }
+
+      fields.unshift(field)
 
     # offer Featureclasses? (see config)
     if @getCustomMaskSettings().config_featureclasses?.value

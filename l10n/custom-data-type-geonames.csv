@@ -24,10 +24,13 @@ custom.data.type.geonames.setting.schema.add_coorporates,Körperschaften,Corpora
 custom.data.type.geonames.setting.schema.add_geographicplaces,Geografika,Places,,
 custom.data.type.geonames.setting.schema.add_subjects,Sachbegriffe,Subjects,,
 custom.data.type.geonames.config.parameter.mask.config_featureclasses.value.checkbox,Kategorien (Featureklassen) als Dropdown zur Verfeinerung der Suche anbieten?,Offer featureclasses as a drop-down to refine the search?,,
+custom.data.type.geonames.config.parameter.mask.config_featurecodes.value.checkbox,Ortstyp (Featurecodes) als Dropdown zur Verfeinerung der Suche anbieten?,Offer featurecodes as a drop-down to refine the search?,,
 custom.data.type.geonames.config.parameter.schema.mapbox_api_key.value.label,Mapbox-Api-Key (für Kartenanzeige benötigt),Mapbox Api-Key (required for map display),,
 custom.data.type.geonames.config.parameter.mask.show_infopopup.value.label,Infopopup,Infopopup,,
 custom.data.type.geonames.config.parameter.mask.config_featureclasses.value.label,Dropdown Featureklassen,Dropdown Featureclasses,,
+custom.data.type.geonames.config.parameter.mask.config_featurecodes.value.label,Dropdown Featurecodes,Dropdown Featurecodes,,
 custom.data.type.geonames.config.parameter.mask.config_featureclasses.all.label,Alle Kategorien,All categories,,
+custom.data.type.geonames.config.parameter.mask.config_featurecodes.all.label,Alle Ortstypen,All featurecodes,,
 custom.data.type.geonames.config.parameter.mask.config_featureclasses.a.label,Administration,Administrative Boundary Features,,
 custom.data.type.geonames.config.parameter.mask.config_featureclasses.h.label,Gewässer,Hydrographic Features,,
 custom.data.type.geonames.config.parameter.mask.config_featureclasses.l.label,Gebiete,Area Features,,
@@ -51,6 +54,7 @@ custom.data.type.geonames.config.parameter.mask.infopop.zeitzone.label,Zeitzone,
 custom.data.type.geonames.config.parameter.schema.geonames_username.value.label,geonames-Username,geonames-Username,,
 custom.data.type.geonames.config.parameter.mask.default_country_code.value.label,Standard-Ländercode (2-stellig),Default countrycode (2 digits),,
 custom.data.type.geonames.modal.form.text.countrys,Land,Country,,
+custom.data.type.geonames.modal.form.text.featurecodes,Ortstyp
 custom.data.type.geonames.country.name.all,Alle Länder, All countries
 custom.data.type.geonames.modal.form.text.expand,Ergebnisse ausdehnen,Expand search
 custom.data.type.geonames.config.parameter.mask.default_expand.value.label,Standardwert für Trefferexpansion,Default value for search expansion

@@ -21,7 +21,8 @@ In `CustomDataTypeGeonames.config.yml` you can configure:
     *  if a valid geonames-username is given, fulltext will be available
 
 * `mask-options`:
-    * wether to show a dropdown with available featureclasses or not
+    * wether to show a dropdown with available featureclasses (place-categorie) or not
+    * wether to show a dropdown with available featurecodes (place-type) or not
     * default country for the country-dropdown (2 digits-code)
     * default value for search expansion (Records of the lowest administrative level ("admin4") are also found via the higher-level administrative unit ("admin3"))
     * wether the ancestors are shown in hitlist
@@ -34,6 +35,10 @@ In `CustomDataTypeGeonames.config.yml` you can configure:
     * URI to linked record
 * conceptFulltext
     * fulltext-string which contains: geonameId, adminName1, adminName2, adminName3, adminName4, adminName5, countryName, toponymName, alternateNames
+* conceptAncestors
+    * the parent hierarchy of the selected record
+* frontendLanguage
+    * the frontendlanguage of the entering user
 * _fulltext
     * easydb-fulltext
 * _standard

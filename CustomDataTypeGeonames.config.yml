@@ -1,6 +1,6 @@
 plugin:
   name: custom-data-type-geonames
-  version: 1.7
+  version: 1.8
   url: https://github.com/programmfabrik/easydb-custom-data-type-geonames
   displayname:
     de-DE: geonames-Verknüpfung
@@ -36,6 +36,10 @@ custom_types:
               type: text
       mask:
         - name: config_featureclasses
+          parameters:
+            value:
+              type: bool
+        - name: config_featurecodes
           parameters:
             value:
               type: bool
