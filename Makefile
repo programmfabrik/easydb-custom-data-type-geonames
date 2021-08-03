@@ -12,7 +12,7 @@ INSTALL_FILES = \
     $(WEB)/l10n/en-US.json \
     $(JS) \
     $(CSS) \
-    CustomDataTypeGeonames.config.yml
+    manifest.yml
 
 MAPBOX1 = src/external/geojson-extent.js
 MAPBOX2 = src/external/geo-viewport.js
