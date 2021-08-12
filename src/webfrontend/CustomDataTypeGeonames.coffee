@@ -45,8 +45,19 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
   #######################################################################
   # make searchfilter for expert-search
   #######################################################################
-  getSearchFilter: (data) ->
+  getSearchFilter: (data, key=@name()) ->
       that = @
+
+      # search for empty values
+      if data[key+":unset"]
+          filter =
+              type: "in"
+              fields: [ @fullName()+".conceptName" ]
+              in: [ null ]
+          filter._unnest = true
+          filter._unset_filter = true
+          return filter
+
       # find all records which
       #   - have the uri as conceptURI
       #   OR
