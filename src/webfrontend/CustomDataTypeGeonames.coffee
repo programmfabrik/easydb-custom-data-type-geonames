@@ -71,26 +71,22 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
               fields: [ "_objecttype" ]
               in: [ @path() ]
             ,
-              type: "in"
-              bool: "must"
+              type: "match"
+              mode: "token"
+              bool: "must",
+              phrase: false
               fields: [@path() + '.' + @name() + ".conceptAncestors" ]
           ]
 
       if ! data[@name()]
-          filter.search[1].in = [ null ]
+          filter.search[1].string = null
       else if data[@name()]?.conceptURI
           givenURI = data[@name()].conceptURI
           givenURIParts = givenURI.split('/')
           givenGeonamesID = givenURIParts.pop()
+          uri = 'http://geonames.org/' + givenGeonamesID
 
-          uriVariants = []
-          #uriVariants.push 'http://www.geonames.org/' + givenGeonamesID
-          uriVariants.push 'http://geonames.org/' + givenGeonamesID
-          #uriVariants.push 'https://geonames.org/' + givenGeonamesID
-          #uriVariants.push 'https://sws.geonames.org/' + givenGeonamesID + '/'
-          #uriVariants.push 'https://sws.geonames.org/' + givenGeonamesID
-
-          filter.search[1].in = uriVariants
+          filter.search[1].string = uri
       else
           filter = null
 
@@ -446,7 +442,10 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                         conceptAncestors.push 'http://geonames.org/' + data.adminId4
                       # push itself to ancestors
                       conceptAncestors.push 'http://geonames.org/' + geonamesID
+                      # join array to string
+                      conceptAncestors = conceptAncestors.join(' ')
                       cdata.conceptAncestors = conceptAncestors
+
                       # update the layout in form
                       that.__updateResult(cdata, layout, opts)
                       # hide suggest-menu
