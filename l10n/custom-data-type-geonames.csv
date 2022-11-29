@@ -61,3 +61,7 @@ custom.data.type.geonames.config.parameter.mask.default_expand.value.label,Stand
 custom.data.type.geonames.config.parameter.mask.default_expand.value.checkbox,Datensätze der untersten administrativen Ebene ("admin4") werden auch über die darüber geordneten administrativen Einheit ("admin3") gefunden,Records of the lowest administrative level ("admin4") are also found via the higher-level administrative unit ("admin3")
 custom.data.type.geonames.config.parameter.mask.use_ancestors.value.label,Elternhierarchie,Ancestors
 custom.data.type.geonames.config.parameter.mask.use_ancestors.value.checkbox,Zeige die Elternhierarchie in der Trefferliste,Show ancestors in hitlist
+server.config.name.system.update_interval_geonames,geonames-Update-Einstellungen,geonames-update-configuration
+server.config.parameter.system.update_interval_geonames.default_language.label,Standard-Datensprache als Fallback (ISO 639-1),Default-datalanguage as Ffllback (ISO 639-1)
+server.config.parameter.system.update_interval_geonames.days.label,"Tage zwischen Updates. Hinweis: Das Update sollte nicht automatisch aktiviert werden, sondern nur in bestimmten Fällen manuell gestartet werden.",Days between updates,Days between updates,Days between updates,Days between updates,Days between updates
+server.config.parameter.system.update_interval_geonames.geonames_username.label,Geonames-Username (API),Geonames-Username (API)

@@ -1,6 +1,6 @@
 plugin:
   name: custom-data-type-geonames
-  version: 1.8
+  version: 2
   url: https://github.com/programmfabrik/easydb-custom-data-type-geonames
   displayname:
     de-DE: geonames-Verknüpfung
@@ -17,6 +17,11 @@ plugin:
     css: custom-data-type-geonames.css
 custom_types:
   geonames:
+    update:
+      script: build/updater/geonames-update.js
+      timeout: 60
+      batch_size: 50
+      interval_base_config: update_interval_geonames.days
     mapping:
       conceptName:
         type: text
@@ -55,3 +60,20 @@ custom_types:
           parameters:
             value:
               type: bool
+base_config:
+  - name: update_interval_geonames
+    group: update_custom_data_type
+    parameters:
+      days:
+        type: int
+        min: 0
+        default: 0
+        position: 0
+      default_language:
+        type: text
+        default: 'de'
+        position: 1
+      geonames_username:
+        type: text
+        default: ''
+        position: 1

@@ -395,6 +395,7 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                   cdata._standard = {}
                   cdata._fulltext.text = cdata.conceptName
                   cdata._standard.text = cdata.conceptName
+
                   # if a geonames-username is given get data from geonames for fulltext
                   geonamesUsername = ''
                   if that.getCustomSchemaSettings().geonames_username?.value
@@ -406,45 +407,16 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
                     encodedURL = encodeURIComponent('http://api.geonames.org/getJSON?formatted=true&geonameId=' + geonamesID + '&username=' + geonamesUsername + '&style=full')
                     dataEntry_xhr = new (CUI.XHR)(url: location.protocol + '//jsontojsonp.gbv.de/?url=' + encodedURL)
                     dataEntry_xhr.start().done((data, status, statusText) ->
-                      # generate fulltext from data
-                      fulltext = '';
-                      if data?.adminName1
-                        fulltext += ' ' + data.adminName1
-                      if data?.adminName2
-                        fulltext += ' ' + data.adminName2
-                      if data?.adminName3
-                        fulltext += ' ' + data.adminName3
-                      if data?.adminName4
-                        fulltext += ' ' + data.adminName4
-                      if data?.adminName5
-                        fulltext += ' ' + data.adminName5
-                      if data?.countryName
-                        fulltext += ' ' + data.countryName
-                      if data?.geonameId
-                        fulltext += ' ' + data.geonameId
-                      if data?.toponymName
-                        fulltext += ' ' + data.toponymName
-                      if data?.alternateNames
-                        for altName, altNameKey in data.alternateNames
-                          fulltext += ' ' + altName.name
-                      cdata._fulltext.text = fulltext
+
+                      cdata.conceptName = ez5.GeonamesUtil.getConceptNameFromObject data
+                      cdata.conceptURI = ez5.GeonamesUtil.getConceptURIFromObject data
+
+                      # _standard & _fulltext
+                      cdata._fulltext = ez5.GeonamesUtil.getFullTextFromObject data, false
+                      cdata._standard = ez5.GeonamesUtil.getStandardTextFromObject that, data, cdata, false
+
                       # get ancestors from data
-                      conceptAncestors = []
-                      if data?.countryId
-                        conceptAncestors.push 'http://geonames.org/' + data.countryId
-                      if data?.adminId1
-                        conceptAncestors.push 'http://geonames.org/' + data.adminId1
-                      if data?.adminId2
-                        conceptAncestors.push 'http://geonames.org/' + data.adminId2
-                      if data?.adminId3
-                        conceptAncestors.push 'http://geonames.org/' + data.adminId3
-                      if data?.adminId4
-                        conceptAncestors.push 'http://geonames.org/' + data.adminId4
-                      # push itself to ancestors
-                      conceptAncestors.push 'http://geonames.org/' + geonamesID
-                      # join array to string
-                      conceptAncestors = conceptAncestors.join(' ')
-                      cdata.conceptAncestors = conceptAncestors
+                      cdata.conceptAncestors = ez5.GeonamesUtil.getConceptAncestorsFromObject data
 
                       # update the layout in form
                       that.__updateResult(cdata, layout, opts)
