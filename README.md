@@ -13,7 +13,7 @@ The Plugins uses <http://ws.gbv.de/suggest/geonames/> for the autocomplete-sugge
 
 ## configuration
 
-In `CustomDataTypeGeonames.config.yml` you can configure:
+In `manifest.yml` you can configure:
 
 * `schema-options`:
     * which [featureclasses] (<http://www.geonames.org/source-code/javadoc/org/geonames/FeatureClass.html>)  are offered for search.
@@ -26,6 +26,11 @@ In `CustomDataTypeGeonames.config.yml` you can configure:
     * default country for the country-dropdown (2 digits-code)
     * default value for search expansion (Records of the lowest administrative level ("admin4") are also found via the higher-level administrative unit ("admin3"))
     * wether the ancestors are shown in hitlist
+
+* `base-config`:
+    * "days"
+    * "default_language"
+    * "geonames_username"
 
 ## saved data
 
