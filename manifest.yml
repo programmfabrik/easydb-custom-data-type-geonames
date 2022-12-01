@@ -19,7 +19,7 @@ custom_types:
   geonames:
     update:
       script: build/updater/geonames-update.js
-      timeout: 5
+      timeout: 20
       batch_size: 50
       interval_base_config: update_interval_geonames.days
     mapping:
