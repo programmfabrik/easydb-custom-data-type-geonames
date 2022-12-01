@@ -72,21 +72,17 @@ class geonamesUpdate
       call: (items) =>
         #for uri in items
         uri = items[0]
-        console.error "uri", uri
         originalUri = items[0]
         geonamesID = uri.replace('http://www.geonames.org/', '')
         geonamesID = geonamesID.replace('https://www.geonames.org/', '')
         geonamesID = geonamesID.replace('http://geonames.org/', '')
         geonamesID = geonamesID.replace('https://geonames.org/', '')
-        console.error "geonamesID", geonamesID
         # build url for geonames-api
         encodedURL = encodeURIComponent('http://api.geonames.org/getJSON?formatted=true&geonameId=' + geonamesID + '&username=' + geonames_username + '&style=full')
         callUrl = 'https://jsontojsonp.gbv.de/?url=' + encodedURL
-        console.error "callUrl", callUrl
         deferred = new CUI.Deferred()
         extendedInfo_xhr = new (CUI.XHR)(url: callUrl)
         extendedInfo_xhr.start().done((data, status, statusText) ->
-          console.error "data", data
           # validation-test on data.geonameId (obligatory)
           if data?.geonameId
             # validation-test on data.asciiName (obligatory)
@@ -110,7 +106,6 @@ class geonamesUpdate
                 # get ancestors from data
                 updatedcdata.conceptAncestors = ez5.GeonamesUtil.getConceptAncestorsFromObject data
 
-                console.error "updatedcdata", updatedcdata
                 # aggregate in objectsMap
                 if that.__hasChanges(objectsMap[originalUri][objectsMapKey].data, updatedcdata)
                   objectsMap[originalUri][objectsMapKey].data = updatedcdata
