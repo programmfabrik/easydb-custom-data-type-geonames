@@ -51,4 +51,4 @@ In `manifest.yml` you can configure:
 
 ## sources
 
-The source code of this plugin is managed in a git repository at <https://github.com/programmfabrik/easydb-custom-data-type-geonames>. Please use [the issue tracker](https://github.com/programmfabrik/easydb-custom-data-type-geonames/issues) for bug reports and feature requests!
+The source code of this plugin is managed in a git repository at <https://github.com/programmfabrik/easydb-custom-data-type-geonames>.
