@@ -48,6 +48,9 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
   getSearchFilter: (data, key=@name()) ->
       that = @
 
+      if data[@name()] == undefined || data[@name()] == {} || data[@name()] == null
+        return
+
       # search for empty values
       if data[key+":unset"]
           filter =
@@ -62,33 +65,28 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
       #   - have the uri as conceptURI
       #   OR
       #   - have the given uri in their ancestors
-
-      filter =
-          type: "complex"
-          search: [
-              type: "in"
-              bool: "must"
-              fields: [ "_objecttype" ]
-              in: [ @path() ]
-            ,
-              type: "match"
-              mode: "token"
-              bool: "must",
-              phrase: false
-              fields: [@path() + '.' + @name() + ".conceptAncestors" ]
-          ]
-
-      if ! data[@name()]
-          filter.search[1].string = null
-      else if data[@name()]?.conceptURI
+      filter = null
+      if data[@name()]?.conceptURI
           givenURI = data[@name()].conceptURI
           givenURIParts = givenURI.split('/')
           givenGeonamesID = givenURIParts.pop()
           uri = 'http://geonames.org/' + givenGeonamesID
 
-          filter.search[1].string = uri
-      else
-          filter = null
+          filter =
+              type: "complex"
+              search: [
+                  type: "in"
+                  bool: "must"
+                  fields: [ "_objecttype" ]
+                  in: [ @path() ]
+                ,
+                  type: "match"
+                  mode: "token"
+                  bool: "must",
+                  phrase: false
+                  fields: [@path() + '.' + @name() + ".conceptAncestors" ]
+                  string: uri
+              ]
 
       filter
 
