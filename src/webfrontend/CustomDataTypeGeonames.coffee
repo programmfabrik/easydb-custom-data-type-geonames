@@ -70,22 +70,17 @@ class CustomDataTypeGeonames extends CustomDataTypeWithCommons
           givenURI = data[@name()].conceptURI
           givenURIParts = givenURI.split('/')
           givenGeonamesID = givenURIParts.pop()
-          uri = 'http://geonames.org/' + givenGeonamesID
+          uri = 'http://www.geonames.org/' + givenGeonamesID
 
           filter =
               type: "complex"
               search: [
                   type: "in"
-                  bool: "must"
-                  fields: [ "_objecttype" ]
-                  in: [ @path() ]
-                ,
-                  type: "match"
                   mode: "token"
                   bool: "must",
                   phrase: false
-                  fields: [@path() + '.' + @name() + ".conceptAncestors" ]
-                  string: uri
+                  fields: [@path() + '.' + @name() + ".conceptURI" ]
+                  in: [uri]
               ]
 
       filter
