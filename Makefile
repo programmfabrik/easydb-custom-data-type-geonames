@@ -41,7 +41,7 @@ include easydb-library/tools/base-plugins.make
 
 build: code buildinfojson buildupdater
 
-code: $(JS)
+code: $(JS) $(L10N)
 	cat $(CSS_FILE) >> build/webfrontend/custom-data-type-geonames.css
 	cat $(MAPBOX1) $(MAPBOX2) >> build/webfrontend/custom-data-type-geonames.js
 
