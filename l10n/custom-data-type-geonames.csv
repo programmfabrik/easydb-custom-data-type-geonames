@@ -6,8 +6,38 @@ custom.data.type.geonames.config.parameter.mask.config_featureclasses.value.labe
 custom.data.type.geonames.config.parameter.mask.show_infopopup.value.checkbox,Infopopup für Treffer in der Vorschlagsliste anzeigen?,FALSE,Display info popup for hits in the suggestions?,FALSE,Display info popup for hits in the suggestions?,TRUE,Näytetäänkö ehdotusluettelossa osumien tietoponnahdusikkuna?,FALSE,Visa informationspopup för träffar i förslagslistan?,FALSE,Afficher une fenêtre contextuelle d'information pour les appels dans les suggestions ?,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.config.parameter.mask.show_infopopup.value.label,Infopopup,FALSE,Info popup,FALSE,Info popup,TRUE,Tiedot ponnahdusikkuna,FALSE,Info popup,FALSE,Fenêtre contextuelle d'informations,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.config.parameter.schema.mapquest_api_key.value.label,Mapquest-Api-Key (für Kartenanzeige benötigt),FALSE,Mapquest-Api-Key (required for map display),FALSE,Mapquest-Api-Key (required for map display),TRUE,Mapquest API-avain (tarvitaan kartan näyttämiseen),FALSE,Mapquest API-nyckel (krävs för kartvisning),FALSE,Mapquest-Api-Key (requis pour l'affichage de la carte),FALSE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.schema.mapbox_api_key.value.label,Mapbox-Api-Key (für Kartenanzeige benötigt),FALSE,Mapbox-Api-Key (required for map display),FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.schema.mapbox_api_key.value.label,Mapbox-Api-Key (für Kartenanzeige benötigt),FALSE,Mapbox Api-Key (required for map display),FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.value.label,Dropdown Featureklassen,,Dropdown Featureclasses,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featurecodes.value.label,Dropdown Featurecodes,,Dropdown Featurecodes,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featurecodes.all.label,Alle Ortstypen,,All featurecodes,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featurecodes.value.checkbox,Ortstyp (Featurecodes) als Dropdown zur Verfeinerung der Suche anbieten?,FALSE,Offer featurecodes as a drop-down to refine the search?,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.all.label,Alle Kategorien,,All categories,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.a.label,Administration,,Administrative Boundary Features,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.h.label,Gewässer,,Hydrographic Features,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.l.label,Gebiete,,Area Features,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.p.label,Besiedelte Orte,,Populated Place Features,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.r.label,Straßen- und Eisenbahn,,Road / Railroad Features,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.s.label,Punkte,,Spot Features,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.t.label,Geländeformen,,Hypsographic Features,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.u.label,Untersee,,Undersea Features,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.v.label,Vegetation,,Vegetation Features,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.info.label,Informationen über den Eintrag,,Information about the entry,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.name.label,Name,,Name,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.einteilung4.label,Einteilung4,,Classification4,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.einteilung3.label,Einteilung3,,Classification3,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.einteilung2.label,Einteilung2,,Classification2,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.einteilung1.label,Einteilung1,,Classification1,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.land.label,Land,,Country,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.kontinent.label,Kontinent,,Continent,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.einwohner.label,Einwohner,,Population,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.typ.label,Typ,,Type,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.zeitzone.label,Zeitzone,,Timezone,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
 custom.data.type.geonames.config.parameter.schema.geonames_username.value.label,Geonames: Username,FALSE,Geonames: Username,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.default_country_code.value.label,Standard-Ländercode (2-stellig),,Default countrycode (2 digits),,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.default_expand.value.label,Standardwert für Trefferexpansion,,Default value for search expansion,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.default_expand.value.checkbox,"Datensätze der untersten administrativen Ebene (""admin4"") werden auch über die darüber geordneten administrativen Einheit (""admin3"") gefunden",,"Records of the lowest administrative level (""admin4"") are also found via the higher-level administrative unit (""admin3"")",,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.use_ancestors.value.label,Elternhierarchie,,Ancestors,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.use_ancestors.value.checkbox,Zeige die Elternhierarchie in der Trefferliste,,Show ancestors in hitlist,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
 custom.data.type.geonames.edit.button|icon,edit,FALSE,edit,FALSE,edit,TRUE,edit,FALSE,edit,FALSE,modifier,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.edit.modal.title|text,Web-GEONAMES konfigurieren,FALSE,Configure Web-GEONAMES,FALSE,Configure Web-GEONAMES,TRUE,Määritä Web-GEONAMES,FALSE,Konfigurera webb GEONAMES,FALSE,Configurer Web-GEONAMS,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.edit.no_geonames,Keine GEONAMES-Verknüpfung gesetzt,FALSE,No GEONAMES link created,FALSE,No GEONAMES link created,TRUE,GEONAMES-linkkiä ei ole tehty,FALSE,Ingen GEONAMES-länk inställd,FALSE,Aucun lien GEONAMES créé,FALSE,,TRUE,,TRUE
@@ -21,6 +51,10 @@ custom.data.type.geonames.modal.form.text.searchbar,Suchbegriff eingeben,FALSE,I
 custom.data.type.geonames.modal.form.text.searchbar.placeholder,tippen ...,FALSE,type ...,FALSE,type ...,TRUE,hakutermi...,FALSE,sökterm...,FALSE,taper ...,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.modal.form.text.uri.label,Zugehörige URI,FALSE,Related URl,FALSE,Related URl,TRUE,Liittyvä URI,FALSE,Relaterad URl,FALSE,URL associée,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.modal.form.text.uri.label.placeholder,noch leer,FALSE,still empty,FALSE,still empty,TRUE,tyhjä,FALSE,tom,FALSE,toujours vide,FALSE,,TRUE,,TRUE
+custom.data.type.geonames.modal.form.text.count_short,Vorschläge,,Suggestions,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
+custom.data.type.geonames.modal.form.text.countrys,Land,,Country,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
+custom.data.type.geonames.modal.form.text.expand,Ergebnisse ausdehnen,,Expand search,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
+custom.data.type.geonames.modal.form.text.featurecodes,Ortstyp,,Featurecode,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
 custom.data.type.geonames.modal.form.url.placeholder,GEONAMES-Verknüpfung,FALSE,GEONAMES link,FALSE,GEONAMES link,TRUE,GEONAMES-linkki,FALSE,GEONAMES-länk,FALSE,Lien GEONAMES,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.name,GEONAMES-Verknüpfung,FALSE,GEONAMES link,FALSE,GEONAMES link,TRUE,GEONAMES-linkki,FALSE,GEONAMES-länk,FALSE,Lien GEONAMES,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.remove.button|icon,trash,FALSE,trash,FALSE,trash,TRUE,trash,FALSE,trash,FALSE,trash,FALSE,,TRUE,,TRUE
@@ -29,11 +63,13 @@ custom.data.type.geonames.setting.schema.add_coorporates,Körperschaften,FALSE,C
 custom.data.type.geonames.setting.schema.add_differentiatedpersons,Individualisierte Personen,FALSE,Individualised  People,FALSE,Individualised  People,TRUE,Yksilöidyt henkilöt,FALSE,Individualiserade personer,FALSE,Personnes individualisées,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.setting.schema.add_geographicplaces,Geografika,FALSE,Geographics,FALSE,Geographics,TRUE,Maantiede,FALSE,Geografi,FALSE,Géographie,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.setting.schema.add_subjects,Sachbegriffe,FALSE,Subject Terms,FALSE,Subject Terms,TRUE,Aiheet,FALSE,Tekniska termer,FALSE,Termes du sujet,FALSE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.schema.mapbox_api_key.value.label,Mapbox-Api-Key (für Kartenanzeige benötigt),FALSE,Mapbox Api-Key (required for map display),FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
 custom.data.type.geonames.url.tooltip,zu **%(name)s** bei der Deutschen Nationalbibliothek springen,FALSE,Jump to **%(name)s** at the German National Library,FALSE,Jump to **%(name)s** at the German National Library,TRUE,siirry kohtaan **%(name)s** Saksan kansalliskirjastossa,FALSE,Hoppa till **%(name)s** på tyska nationalbiblioteket,FALSE,Accédez à **%(name)s** à la Bibliothèque nationale allemande,FALSE,,TRUE,,TRUE
 server.config.name.system.update_interval_geonames,Update Intervall,FALSE,Update Interval,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
 server.config.parameter.system.update_interval_geonames.days.label,Update Intervall (in Tagen),FALSE,Update Interval (in days),FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
 server.config.parameter.system.update_interval_geonames.default_language.label,Standardsprache,FALSE,Default Language,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
 server.config.parameter.system.update_interval_geonames.geonames_username.label,Geonames: Username,FALSE,Geonames: Username,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.all,Alle Länder,FALSE,All countries,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
 custom.data.type.geonames.country.name.af,Afghanistan,FALSE,Afghanistan,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
 custom.data.type.geonames.country.name.eg,Ägypten,FALSE,Egypt,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
 custom.data.type.geonames.country.name.ax,Åland,FALSE,Åland Islands,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
