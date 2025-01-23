@@ -6,38 +6,38 @@ custom.data.type.geonames.config.parameter.mask.config_featureclasses.value.labe
 custom.data.type.geonames.config.parameter.mask.show_infopopup.value.checkbox,Infopopup für Treffer in der Vorschlagsliste anzeigen?,FALSE,Display info popup for hits in the suggestions?,FALSE,Display info popup for hits in the suggestions?,TRUE,Näytetäänkö ehdotusluettelossa osumien tietoponnahdusikkuna?,FALSE,Visa informationspopup för träffar i förslagslistan?,FALSE,Afficher une fenêtre contextuelle d'information pour les appels dans les suggestions ?,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.config.parameter.mask.show_infopopup.value.label,Infopopup,FALSE,Info popup,FALSE,Info popup,TRUE,Tiedot ponnahdusikkuna,FALSE,Info popup,FALSE,Fenêtre contextuelle d'informations,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.config.parameter.schema.mapquest_api_key.value.label,Mapquest-Api-Key (für Kartenanzeige benötigt),FALSE,Mapquest-Api-Key (required for map display),FALSE,Mapquest-Api-Key (required for map display),TRUE,Mapquest API-avain (tarvitaan kartan näyttämiseen),FALSE,Mapquest API-nyckel (krävs för kartvisning),FALSE,Mapquest-Api-Key (requis pour l'affichage de la carte),FALSE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.schema.mapbox_api_key.value.label,Mapbox-Api-Key (für Kartenanzeige benötigt),FALSE,Mapbox Api-Key (required for map display),FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.config_featureclasses.value.label,Dropdown Featureklassen,,Dropdown Featureclasses,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.config_featurecodes.value.label,Dropdown Featurecodes,,Dropdown Featurecodes,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.config_featurecodes.all.label,Alle Ortstypen,,All featurecodes,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.config_featurecodes.value.checkbox,Ortstyp (Featurecodes) als Dropdown zur Verfeinerung der Suche anbieten?,FALSE,Offer featurecodes as a drop-down to refine the search?,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.config_featureclasses.all.label,Alle Kategorien,,All categories,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.config_featureclasses.a.label,Administration,,Administrative Boundary Features,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.config_featureclasses.h.label,Gewässer,,Hydrographic Features,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.config_featureclasses.l.label,Gebiete,,Area Features,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.config_featureclasses.p.label,Besiedelte Orte,,Populated Place Features,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.config_featureclasses.r.label,Straßen- und Eisenbahn,,Road / Railroad Features,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.config_featureclasses.s.label,Punkte,,Spot Features,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.config_featureclasses.t.label,Geländeformen,,Hypsographic Features,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.config_featureclasses.u.label,Untersee,,Undersea Features,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.config_featureclasses.v.label,Vegetation,,Vegetation Features,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.infopop.info.label,Informationen über den Eintrag,,Information about the entry,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.infopop.name.label,Name,,Name,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.infopop.einteilung4.label,Einteilung4,,Classification4,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.infopop.einteilung3.label,Einteilung3,,Classification3,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.infopop.einteilung2.label,Einteilung2,,Classification2,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.infopop.einteilung1.label,Einteilung1,,Classification1,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.infopop.land.label,Land,,Country,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.infopop.kontinent.label,Kontinent,,Continent,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.infopop.einwohner.label,Einwohner,,Population,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.infopop.typ.label,Typ,,Type,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.infopop.zeitzone.label,Zeitzone,,Timezone,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.schema.geonames_username.value.label,Geonames: Username,FALSE,Geonames: Username,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.default_country_code.value.label,Standard-Ländercode (2-stellig),,Default countrycode (2 digits),,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.default_expand.value.label,Standardwert für Trefferexpansion,,Default value for search expansion,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.default_expand.value.checkbox,"Datensätze der untersten administrativen Ebene (""admin4"") werden auch über die darüber geordneten administrativen Einheit (""admin3"") gefunden",,"Records of the lowest administrative level (""admin4"") are also found via the higher-level administrative unit (""admin3"")",,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.use_ancestors.value.label,Elternhierarchie,,Ancestors,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.mask.use_ancestors.value.checkbox,Zeige die Elternhierarchie in der Trefferliste,,Show ancestors in hitlist,,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.schema.mapbox_api_key.value.label,Mapbox-Api-Key (für Kartenanzeige benötigt),FALSE,Mapbox Api-Key (required for map display),FALSE,,TRUE,,TRUE,,TRUE,Clé API Mapbox (requise pour l'affichage de la carte),TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.value.label,Dropdown Featureklassen,,Dropdown Featureclasses,,,TRUE,,TRUE,,TRUE,Classes déroulantes de fonctionnalités,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featurecodes.value.label,Dropdown Featurecodes,,Dropdown Featurecodes,,,TRUE,,TRUE,,TRUE,Codes de fonctionnalités déroulants,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featurecodes.all.label,Alle Ortstypen,,All featurecodes,,,TRUE,,TRUE,,TRUE,Tous les codes de fonctionnalités,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featurecodes.value.checkbox,Ortstyp (Featurecodes) als Dropdown zur Verfeinerung der Suche anbieten?,FALSE,Offer featurecodes as a drop-down to refine the search?,,,TRUE,,TRUE,,TRUE,Proposer des codes de fonctionnalités sous forme de liste déroulante pour affiner la recherche?,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.all.label,Alle Kategorien,,All categories,,,TRUE,,TRUE,,TRUE,Toutes les catégories,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.a.label,Administration,,Administrative Boundary Features,,,TRUE,,TRUE,,TRUE,Éléments des limites administratives,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.h.label,Gewässer,,Hydrographic Features,,,TRUE,,TRUE,,TRUE,Éléments hydrographiques,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.l.label,Gebiete,,Area Features,,,TRUE,,TRUE,,TRUE,Caractéristiques de la zone,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.p.label,Besiedelte Orte,,Populated Place Features,,,TRUE,,TRUE,,TRUE,Caractéristiques de lieux habités,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.r.label,Straßen- und Eisenbahn,,Road / Railroad Features,,,TRUE,,TRUE,,TRUE,Caractéristiques de routes/chemins de fer,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.s.label,Punkte,,Spot Features,,,TRUE,,TRUE,,TRUE,Caractéristiques ponctuelles,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.t.label,Geländeformen,,Hypsographic Features,,,TRUE,,TRUE,,TRUE,Caractéristiques du relief du sol,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.u.label,Untersee,,Undersea Features,,,TRUE,,TRUE,,TRUE,Caractéristiques sous-marines,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.config_featureclasses.v.label,Vegetation,,Vegetation Features,,,TRUE,,TRUE,,TRUE,Caractéristiques de la végétation,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.info.label,Informationen über den Eintrag,,Information about the entry,,,TRUE,,TRUE,,TRUE,Informations sur l'entrée,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.name.label,Name,,Name,,,TRUE,,TRUE,,TRUE,Nom,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.einteilung4.label,Einteilung4,,Classification4,,,TRUE,,TRUE,,TRUE,Classification4,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.einteilung3.label,Einteilung3,,Classification3,,,TRUE,,TRUE,,TRUE,Classification3,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.einteilung2.label,Einteilung2,,Classification2,,,TRUE,,TRUE,,TRUE,Classification2,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.einteilung1.label,Einteilung1,,Classification1,,,TRUE,,TRUE,,TRUE,Classification1,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.land.label,Land,,Country,,,TRUE,,TRUE,,TRUE,Pays,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.kontinent.label,Kontinent,,Continent,,,TRUE,,TRUE,,TRUE,Continent,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.einwohner.label,Einwohner,,Population,,,TRUE,,TRUE,,TRUE,Population,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.typ.label,Typ,,Type,,,TRUE,,TRUE,,TRUE,Type,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.infopop.zeitzone.label,Zeitzone,,Timezone,,,TRUE,,TRUE,,TRUE,Fuseau horaire,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.schema.geonames_username.value.label,Geonames: Username,FALSE,Geonames: Username,FALSE,,TRUE,,TRUE,,TRUE,Geonames : nom d'utilisateur,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.default_country_code.value.label,Standard-Ländercode (2-stellig),,Default countrycode (2 digits),,,TRUE,,TRUE,,TRUE,Code de pays par défaut (2 chiffres),TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.default_expand.value.label,Standardwert für Trefferexpansion,,Default value for search expansion,,,TRUE,,TRUE,,TRUE,Valeur par défaut pour l'extension de la recherche,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.default_expand.value.checkbox,"Datensätze der untersten administrativen Ebene (""admin4"") werden auch über die darüber geordneten administrativen Einheit (""admin3"") gefunden",,"Records of the lowest administrative level (""admin4"") are also found via the higher-level administrative unit (""admin3"")",,,TRUE,,TRUE,,TRUE,Les enregistrements du niveau administratif le plus bas (« admin4 ») sont également trouvés via l'unité administrative de niveau supérieur (« admin3 »),TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.use_ancestors.value.label,Elternhierarchie,,Ancestors,,,TRUE,,TRUE,,TRUE,Ancêtres,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.mask.use_ancestors.value.checkbox,Zeige die Elternhierarchie in der Trefferliste,,Show ancestors in hitlist,,,TRUE,,TRUE,,TRUE,Afficher les ancêtres dans la liste de résultats,TRUE,,TRUE,,TRUE
 custom.data.type.geonames.edit.button|icon,edit,FALSE,edit,FALSE,edit,TRUE,edit,FALSE,edit,FALSE,modifier,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.edit.modal.title|text,Web-GEONAMES konfigurieren,FALSE,Configure Web-GEONAMES,FALSE,Configure Web-GEONAMES,TRUE,Määritä Web-GEONAMES,FALSE,Konfigurera webb GEONAMES,FALSE,Configurer Web-GEONAMS,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.edit.no_geonames,Keine GEONAMES-Verknüpfung gesetzt,FALSE,No GEONAMES link created,FALSE,No GEONAMES link created,TRUE,GEONAMES-linkkiä ei ole tehty,FALSE,Ingen GEONAMES-länk inställd,FALSE,Aucun lien GEONAMES créé,FALSE,,TRUE,,TRUE
@@ -51,10 +51,10 @@ custom.data.type.geonames.modal.form.text.searchbar,Suchbegriff eingeben,FALSE,I
 custom.data.type.geonames.modal.form.text.searchbar.placeholder,tippen ...,FALSE,type ...,FALSE,type ...,TRUE,hakutermi...,FALSE,sökterm...,FALSE,taper ...,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.modal.form.text.uri.label,Zugehörige URI,FALSE,Related URl,FALSE,Related URl,TRUE,Liittyvä URI,FALSE,Relaterad URl,FALSE,URL associée,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.modal.form.text.uri.label.placeholder,noch leer,FALSE,still empty,FALSE,still empty,TRUE,tyhjä,FALSE,tom,FALSE,toujours vide,FALSE,,TRUE,,TRUE
-custom.data.type.geonames.modal.form.text.count_short,Vorschläge,,Suggestions,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
-custom.data.type.geonames.modal.form.text.countrys,Land,,Country,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
-custom.data.type.geonames.modal.form.text.expand,Ergebnisse ausdehnen,,Expand search,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
-custom.data.type.geonames.modal.form.text.featurecodes,Ortstyp,,Featurecode,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
+custom.data.type.geonames.modal.form.text.count_short,Vorschläge,,Suggestions,FALSE,,FALSE,,FALSE,,FALSE,Suggestions,FALSE,,FALSE,,FALSE
+custom.data.type.geonames.modal.form.text.countrys,Land,,Country,FALSE,,FALSE,,FALSE,,FALSE,Pays,FALSE,,FALSE,,FALSE
+custom.data.type.geonames.modal.form.text.expand,Ergebnisse ausdehnen,,Expand search,FALSE,,FALSE,,FALSE,,FALSE,Élargir la recherche,FALSE,,FALSE,,FALSE
+custom.data.type.geonames.modal.form.text.featurecodes,Ortstyp,,Featurecode,FALSE,,FALSE,,FALSE,,FALSE,Code de fonctionnalité,FALSE,,FALSE,,FALSE
 custom.data.type.geonames.modal.form.url.placeholder,GEONAMES-Verknüpfung,FALSE,GEONAMES link,FALSE,GEONAMES link,TRUE,GEONAMES-linkki,FALSE,GEONAMES-länk,FALSE,Lien GEONAMES,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.name,GEONAMES-Verknüpfung,FALSE,GEONAMES link,FALSE,GEONAMES link,TRUE,GEONAMES-linkki,FALSE,GEONAMES-länk,FALSE,Lien GEONAMES,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.remove.button|icon,trash,FALSE,trash,FALSE,trash,TRUE,trash,FALSE,trash,FALSE,trash,FALSE,,TRUE,,TRUE
@@ -63,259 +63,260 @@ custom.data.type.geonames.setting.schema.add_coorporates,Körperschaften,FALSE,C
 custom.data.type.geonames.setting.schema.add_differentiatedpersons,Individualisierte Personen,FALSE,Individualised  People,FALSE,Individualised  People,TRUE,Yksilöidyt henkilöt,FALSE,Individualiserade personer,FALSE,Personnes individualisées,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.setting.schema.add_geographicplaces,Geografika,FALSE,Geographics,FALSE,Geographics,TRUE,Maantiede,FALSE,Geografi,FALSE,Géographie,FALSE,,TRUE,,TRUE
 custom.data.type.geonames.setting.schema.add_subjects,Sachbegriffe,FALSE,Subject Terms,FALSE,Subject Terms,TRUE,Aiheet,FALSE,Tekniska termer,FALSE,Termes du sujet,FALSE,,TRUE,,TRUE
-custom.data.type.geonames.config.parameter.schema.mapbox_api_key.value.label,Mapbox-Api-Key (für Kartenanzeige benötigt),FALSE,Mapbox Api-Key (required for map display),FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.config.parameter.schema.mapbox_api_key.value.label,Mapbox-Api-Key (für Kartenanzeige benötigt),FALSE,Mapbox Api-Key (required for map display),FALSE,,TRUE,,TRUE,,TRUE,Clé API Mapbox (requise pour l'affichage de la carte),TRUE,,TRUE,,TRUE
 custom.data.type.geonames.url.tooltip,zu **%(name)s** bei der Deutschen Nationalbibliothek springen,FALSE,Jump to **%(name)s** at the German National Library,FALSE,Jump to **%(name)s** at the German National Library,TRUE,siirry kohtaan **%(name)s** Saksan kansalliskirjastossa,FALSE,Hoppa till **%(name)s** på tyska nationalbiblioteket,FALSE,Accédez à **%(name)s** à la Bibliothèque nationale allemande,FALSE,,TRUE,,TRUE
-server.config.name.system.update_interval_geonames,Update Intervall,FALSE,Update Interval,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-server.config.parameter.system.update_interval_geonames.days.label,Update Intervall (in Tagen),FALSE,Update Interval (in days),FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-server.config.parameter.system.update_interval_geonames.default_language.label,Standardsprache,FALSE,Default Language,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-server.config.parameter.system.update_interval_geonames.geonames_username.label,Geonames: Username,FALSE,Geonames: Username,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.all,Alle Länder,FALSE,All countries,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.af,Afghanistan,FALSE,Afghanistan,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.eg,Ägypten,FALSE,Egypt,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ax,Åland,FALSE,Åland Islands,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.al,Albanien,FALSE,Albania,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.dz,Algerien,FALSE,Algeria,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.as,Amerikanisch-Samoa,FALSE,American Samoa,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.vi,Amerikanische Jungferninseln,FALSE,Virgin Islands (U.S.),FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ad,Andorra,FALSE,Andorra,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ao,Angola,FALSE,Angola,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ai,Anguilla,FALSE,Anguilla,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.aq,Antarktis (Sonderstatus durch Antarktisvertrag),FALSE,Antarctica,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ag,Antigua und Barbuda,FALSE,Antigua and Barbuda,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.gq,Äquatorialguinea,FALSE,Equatorial Guinea,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ar,Argentinien,FALSE,Argentina,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.am,Armenien,FALSE,Armenia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.aw,Aruba,FALSE,Aruba,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.az,Aserbaidschan,FALSE,Azerbaijan,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.et,Äthiopien,FALSE,Ethiopia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.au,Australien,FALSE,Australia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.bs,Bahamas,FALSE,Bahamas,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.bh,Bahrain,FALSE,Bahrain,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.bd,Bangladesch,FALSE,Bangladesh,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.bb,Barbados,FALSE,Barbados,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.be,Belgien,FALSE,Belgium,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.bz,Belize,FALSE,Belize,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.bj,Benin,FALSE,Benin,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.bm,Bermuda,FALSE,Bermuda,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.bt,Bhutan,FALSE,Bhutan,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.bo,Bolivien,FALSE,Bolivia (Plurinational State of),FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.bq,"Bonaire, Saba, Sint Eustatius",FALSE,"Bonaire, Sint Eustatius and Saba",FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ba,Bosnien und Herzegowina,FALSE,Bosnia and Herzegovina,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.bw,Botswana,FALSE,Botswana,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.bv,Bouvetinsel,FALSE,Bouvet Island,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.br,Brasilien,FALSE,Brazil,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.vg,Britische Jungferninseln,FALSE,Virgin Islands (British),FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.io,Britisches Territorium im Indischen Ozean,FALSE,British Indian Ocean Territory,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.bn,Brunei,FALSE,Brunei Darussalam,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.bg,Bulgarien,FALSE,Bulgaria,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.bf,Burkina Faso,FALSE,Burkina Faso,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.bi,Burundi,FALSE,Burundi,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.cl,Chile,FALSE,Chile,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ck,Cookinseln,FALSE,Cook Islands,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.cr,Costa Rica,FALSE,Costa Rica,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.cw,Curaçao,FALSE,Curaçao,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.dk,Dänemark,FALSE,Denmark,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.de,Deutschland,FALSE,Germany,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.dm,Dominica,FALSE,Dominica,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.do,Dominikanische Republik,FALSE,Dominican Republic,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.dj,Dschibuti,FALSE,Djibouti,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ec,Ecuador,FALSE,Ecuador,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.sv,El Salvador,FALSE,El Salvador,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ci,Elfenbeinküste,FALSE,Côte d'Ivoire,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.er,Eritrea,FALSE,Eritrea,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ee,Estland,FALSE,Estonia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.fk,Falklandinseln,FALSE,Falkland Islands (Malvinas),FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.fo,Färöer,FALSE,Faroe Islands,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.fj,Fidschi,FALSE,Fiji,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.fi,Finnland,FALSE,Finland,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.fr,Frankreich,FALSE,France,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.gf,Französisch-Guayana,FALSE,French Guiana,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.pf,Französisch-Polynesien,FALSE,French Polynesia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.tf,Französische Süd- und Antarktisgebiete,FALSE,French Southern Territories,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ga,Gabun,FALSE,Gabon,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.gm,Gambia,FALSE,Gambia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ge,Georgien,FALSE,Georgia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.gh,Ghana,FALSE,Ghana,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.gi,Gibraltar,FALSE,Gibraltar,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.gd,Grenada,FALSE,Grenada,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.gr,Griechenland,FALSE,Greece,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.gl,Grönland,FALSE,Greenland,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.gp,Guadeloupe,FALSE,Guadeloupe,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.gu,Guam,FALSE,Guam,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.gt,Guatemala,FALSE,Guatemala,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.gg,Guernsey (Kanalinsel),FALSE,Guernsey,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.gn,Guinea,FALSE,Guinea,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.gw,Guinea-Bissau,FALSE,Guinea-Bissau,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.gy,Guyana,FALSE,Guyana,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ht,Haiti,FALSE,Haiti,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.hm,Heard und McDonaldinseln,FALSE,Heard Island and McDonald Islands,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.hn,Honduras,FALSE,Honduras,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.hk,Hongkong,FALSE,Hong Kong,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.in,Indien,FALSE,India,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.id,Indonesien,FALSE,Indonesia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.im,Insel Man,FALSE,Isle of Man,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.iq,Irak,FALSE,Iraq,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ir,Iran,FALSE,Iran (Islamic Republic of),FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ie,Irland,FALSE,Ireland,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.is,Island,FALSE,Iceland,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.il,Israel,FALSE,Israel,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.it,Italien,FALSE,Italy,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.jm,Jamaika,FALSE,Jamaica,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.jp,Japan,FALSE,Japan,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ye,Jemen,FALSE,Yemen,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.je,Jersey (Kanalinsel),FALSE,Jersey,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.jo,Jordanien,FALSE,Jordan,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ky,Kaimaninseln,FALSE,Cayman Islands,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.kh,Kambodscha,FALSE,Cambodia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.cm,Kamerun,FALSE,Cameroon,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ca,Kanada,FALSE,Canada,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.cv,Kap Verde,FALSE,Cabo Verde,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.kz,Kasachstan,FALSE,Kazakhstan,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.qa,Katar,FALSE,Qatar,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ke,Kenia,FALSE,Kenya,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.kg,Kirgisistan,FALSE,Kyrgyzstan,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ki,Kiribati,FALSE,Kiribati,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.cc,Kokosinseln,FALSE,Cocos (Keeling) Islands,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.co,Kolumbien,FALSE,Colombia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.km,Komoren,FALSE,Comoros,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.cd,"Kongo, Demokratische Republik",FALSE,"Congo, Democratic Republic of the",FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.cg,"Kongo, Republik",FALSE,Congo,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.kp,"Korea, Nord",FALSE,Korea (Democratic People's Republic of),FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.kr,"Korea, Süd",FALSE,"Korea, Republic of",FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.hr,Kroatien,FALSE,Croatia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.cu,Kuba,FALSE,Cuba,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.kw,Kuwait,FALSE,Kuwait,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.la,Laos,FALSE,Lao People's Democratic Republic,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ls,Lesotho,FALSE,Lesotho,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.lv,Lettland,FALSE,Latvia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.lb,Libanon,FALSE,Lebanon,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.lr,Liberia,FALSE,Liberia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ly,Libyen,FALSE,Libya,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.li,Liechtenstein,FALSE,Liechtenstein,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.lt,Litauen,FALSE,Lithuania,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.lu,Luxemburg,FALSE,Luxembourg,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.mo,Macau,FALSE,Macao,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.mg,Madagaskar,FALSE,Madagascar,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.mw,Malawi,FALSE,Malawi,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.my,Malaysia,FALSE,Malaysia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.mv,Malediven,FALSE,Maldives,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ml,Mali,FALSE,Mali,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.mt,Malta,FALSE,Malta,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ma,Marokko,FALSE,Morocco,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.mh,Marshallinseln,FALSE,Marshall Islands,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.mq,Martinique,FALSE,Martinique,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.mr,Mauretanien,FALSE,Mauritania,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.mu,Mauritius,FALSE,Mauritius,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.yt,Mayotte,FALSE,Mayotte,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.mx,Mexiko,FALSE,Mexico,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.fm,Mikronesien,FALSE,Micronesia (Federated States of),FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.md,Moldau,FALSE,"Moldova, Republic of",FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.mc,Monaco,FALSE,Monaco,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.mn,Mongolei,FALSE,Mongolia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.me,Montenegro,FALSE,Montenegro,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ms,Montserrat,FALSE,Montserrat,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.mz,Mosambik,FALSE,Mozambique,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.mm,Myanmar,FALSE,Myanmar,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.na,Namibia,FALSE,Namibia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.nr,Nauru,FALSE,Nauru,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.np,Nepal,FALSE,Nepal,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.nc,Neukaledonien,FALSE,New Caledonia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.nz,Neuseeland,FALSE,New Zealand,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ni,Nicaragua,FALSE,Nicaragua,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.nl,Niederlande,FALSE,Netherlands,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ne,Niger,FALSE,Niger,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ng,Nigeria,FALSE,Nigeria,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.nu,Niue,FALSE,Niue,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.mp,Nördliche Marianen,FALSE,Northern Mariana Islands,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.mk,Nordmazedonien,FALSE,North Macedonia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.nf,Norfolkinsel,FALSE,Norfolk Island,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.no,Norwegen,FALSE,Norway,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.om,Oman,FALSE,Oman,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.at,Österreich,FALSE,Austria,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.tl,Osttimor,FALSE,Timor-Leste,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.pk,Pakistan,FALSE,Pakistan,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ps,Palästina,FALSE,"Palestine, State of",FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.pw,Palau,FALSE,Palau,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.pa,Panama,FALSE,Panama,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.pg,Papua-Neuguinea,FALSE,Papua New Guinea,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.py,Paraguay,FALSE,Paraguay,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.pe,Peru,FALSE,Peru,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ph,Philippinen,FALSE,Philippines,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.pn,Pitcairninseln,FALSE,Pitcairn,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.pl,Polen,FALSE,Poland,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.pt,Portugal,FALSE,Portugal,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.pr,Puerto Rico,FALSE,Puerto Rico,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.tw,Republik China,FALSE,"Taiwan, Province of China",FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.re,Réunion,FALSE,Réunion,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.rw,Ruanda,FALSE,Rwanda,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ro,Rumänien,FALSE,Romania,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ru,Russland,FALSE,Russian Federation,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.bl,Saint-Barthélemy,FALSE,Saint Barthélemy,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.mf,Saint-Martin (französischer Teil),FALSE,Saint Martin (French part),FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.pm,Saint-Pierre und Miquelon,FALSE,Saint Pierre and Miquelon,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.sb,Salomonen,FALSE,Solomon Islands,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.zm,Sambia,FALSE,Zambia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ws,Samoa,FALSE,Samoa,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.sm,San Marino,FALSE,San Marino,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.st,São Tomé und Príncipe,FALSE,Sao Tome and Principe,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.sa,Saudi-Arabien,FALSE,Saudi Arabia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.se,Schweden,FALSE,Sweden,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ch,Schweiz,FALSE,Switzerland,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.sn,Senegal,FALSE,Senegal,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.rs,Serbien,FALSE,Serbia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.sc,Seychellen,FALSE,Seychelles,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.sl,Sierra Leone,FALSE,Sierra Leone,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.zw,Simbabwe,FALSE,Zimbabwe,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.sg,Singapur,FALSE,Singapore,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.sx,Sint Maarten,FALSE,Sint Maarten (Dutch part),FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.sk,Slowakei,FALSE,Slovakia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.si,Slowenien,FALSE,Slovenia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.so,Somalia,FALSE,Somalia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.es,Spanien,FALSE,Spain,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.sj,Spitzbergen und Jan Mayen,FALSE,Svalbard and Jan Mayen,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.lk,Sri Lanka,FALSE,Sri Lanka,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.sh,"St. Helena, Ascension und Tristan da Cunha",FALSE,"Saint Helena, Ascension and Tristan da Cunha",FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.kn,St. Kitts und Nevis,FALSE,Saint Kitts and Nevis,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.lc,St. Lucia,FALSE,Saint Lucia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.vc,St. Vincent und die Grenadinen,FALSE,Saint Vincent and the Grenadines,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.za,Südafrika,FALSE,South Africa,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.sd,Sudan,FALSE,Sudan,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.gs,Südgeorgien und die Südlichen Sandwichinseln,FALSE,South Georgia and the South Sandwich Islands,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ss,Südsudan,FALSE,South Sudan,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.sr,Suriname,FALSE,Suriname,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.sz,Swasiland,FALSE,Eswatini,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.sy,Syrien,FALSE,Syrian Arab Republic,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.tj,Tadschikistan,FALSE,Tajikistan,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.tz,Tansania,FALSE,"Tanzania, United Republic of",FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.th,Thailand,FALSE,Thailand,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.tg,Togo,FALSE,Togo,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.tk,Tokelau,FALSE,Tokelau,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.to,Tonga,FALSE,Tonga,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.tt,Trinidad und Tobago,FALSE,Trinidad and Tobago,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.td,Tschad,FALSE,Chad,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.cz,Tschechien,FALSE,Czechia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.tn,Tunesien,FALSE,Tunisia,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.tr,Türkei,FALSE,Turkey,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.tm,Turkmenistan,FALSE,Turkmenistan,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.tc,Turks- und Caicosinseln,FALSE,Turks and Caicos Islands,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.tv,Tuvalu,FALSE,Tuvalu,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ug,Uganda,FALSE,Uganda,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ua,Ukraine,FALSE,Ukraine,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.hu,Ungarn,FALSE,Hungary,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.um,United States Minor Outlying Islands,FALSE,United States Minor Outlying Islands,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.uy,Uruguay,FALSE,Uruguay,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.uz,Usbekistan,FALSE,Uzbekistan,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.vu,Vanuatu,FALSE,Vanuatu,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.va,Vatikanstadt,FALSE,Holy See,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ve,Venezuela,FALSE,Venezuela (Bolivarian Republic of),FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.ae,Vereinigte Arabische Emirate,FALSE,United Arab Emirates,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.us,Vereinigte Staaten,FALSE,United States of America,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.gb,Vereinigtes Königreich,FALSE,United Kingdom of Great Britain and Northern Ireland,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.vn,Vietnam,FALSE,Viet Nam,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.cn,Volksrepublik China,FALSE,China,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.wf,Wallis und Futuna,FALSE,Wallis and Futuna,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.cx,Weihnachtsinsel,FALSE,Christmas Island,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.by,Weißrussland,FALSE,Belarus,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.eh,Westsahara,FALSE,Western Sahara,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.cf,Zentral­afrikanische Republik,FALSE,Central African Republic,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
-custom.data.type.geonames.country.name.cy,Zypern,FALSE,Cyprus,FALSE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE,,TRUE
+server.config.name.system.update_interval_geonames,Update Intervall,FALSE,Update Interval,FALSE,,TRUE,,TRUE,,TRUE,Intervalle de mise à jour,TRUE,,TRUE,,TRUE
+server.config.parameter.system.update_interval_geonames.days.label,Update Intervall (in Tagen),FALSE,Update Interval (in days),FALSE,,TRUE,,TRUE,,TRUE,Intervalle de mise à jour (en jours),TRUE,,TRUE,,TRUE
+server.config.parameter.system.update_interval_geonames.default_language.label,Standardsprache,FALSE,Default Language,FALSE,,TRUE,,TRUE,,TRUE,Langue par défaut,TRUE,,TRUE,,TRUE
+server.config.parameter.system.update_interval_geonames.geonames_username.label,Geonames: Username,FALSE,Geonames: Username,FALSE,,TRUE,,TRUE,,TRUE,Geonames : nom d'utilisateur,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.all,Alle Länder,FALSE,All countries,FALSE,,TRUE,,TRUE,,TRUE,Tous les pays,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.af,Afghanistan,FALSE,Afghanistan,FALSE,,TRUE,,TRUE,,TRUE,Afghanistan,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.eg,Ägypten,FALSE,Egypt,FALSE,,TRUE,,TRUE,,TRUE,Egypte,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ax,Åland,FALSE,Åland Islands,FALSE,,TRUE,,TRUE,,TRUE,Îles Åland,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.al,Albanien,FALSE,Albania,FALSE,,TRUE,,TRUE,,TRUE,Albanie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.dz,Algerien,FALSE,Algeria,FALSE,,TRUE,,TRUE,,TRUE,Algérie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.as,Amerikanisch-Samoa,FALSE,American Samoa,FALSE,,TRUE,,TRUE,,TRUE,Samoa américaines,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.vi,Amerikanische Jungferninseln,FALSE,Virgin Islands (U.S.),FALSE,,TRUE,,TRUE,,TRUE,Îles Vierges (États-Unis),TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ad,Andorra,FALSE,Andorra,FALSE,,TRUE,,TRUE,,TRUE,Andorre,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ao,Angola,FALSE,Angola,FALSE,,TRUE,,TRUE,,TRUE,Angola,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ai,Anguilla,FALSE,Anguilla,FALSE,,TRUE,,TRUE,,TRUE,Anguilla,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.aq,Antarktis (Sonderstatus durch Antarktisvertrag),FALSE,Antarctica,FALSE,,TRUE,,TRUE,,TRUE,Antarctique,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ag,Antigua und Barbuda,FALSE,Antigua and Barbuda,FALSE,,TRUE,,TRUE,,TRUE,Antigua-et-Barbuda,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.gq,Äquatorialguinea,FALSE,Equatorial Guinea,FALSE,,TRUE,,TRUE,,TRUE,Guinée équatoriale,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ar,Argentinien,FALSE,Argentina,FALSE,,TRUE,,TRUE,,TRUE,Argentine,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.am,Armenien,FALSE,Armenia,FALSE,,TRUE,,TRUE,,TRUE,Arménie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.aw,Aruba,FALSE,Aruba,FALSE,,TRUE,,TRUE,,TRUE,Aruba,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.az,Aserbaidschan,FALSE,Azerbaijan,FALSE,,TRUE,,TRUE,,TRUE,Azerbaïdjan,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.et,Äthiopien,FALSE,Ethiopia,FALSE,,TRUE,,TRUE,,TRUE,Ethiopie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.au,Australien,FALSE,Australia,FALSE,,TRUE,,TRUE,,TRUE,Australie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.bs,Bahamas,FALSE,Bahamas,FALSE,,TRUE,,TRUE,,TRUE,Les Bahamas,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.bh,Bahrain,FALSE,Bahrain,FALSE,,TRUE,,TRUE,,TRUE,Bahreïn,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.bd,Bangladesch,FALSE,Bangladesh,FALSE,,TRUE,,TRUE,,TRUE,Bangladesh,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.bb,Barbados,FALSE,Barbados,FALSE,,TRUE,,TRUE,,TRUE,Barbade,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.be,Belgien,FALSE,Belgium,FALSE,,TRUE,,TRUE,,TRUE,Belgique,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.bz,Belize,FALSE,Belize,FALSE,,TRUE,,TRUE,,TRUE,Bélize,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.bj,Benin,FALSE,Benin,FALSE,,TRUE,,TRUE,,TRUE,Bénin,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.bm,Bermuda,FALSE,Bermuda,FALSE,,TRUE,,TRUE,,TRUE,Bermudes,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.bt,Bhutan,FALSE,Bhutan,FALSE,,TRUE,,TRUE,,TRUE,Bhoutan,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.bo,Bolivien,FALSE,Bolivia (Plurinational State of),FALSE,,TRUE,,TRUE,,TRUE,Bolivie (État plurinational de),TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.bq,"Bonaire, Saba, Sint Eustatius",FALSE,"Bonaire, Sint Eustatius and Saba",FALSE,,TRUE,,TRUE,,TRUE,"Bonaire, Saint-Eustache et Saba",TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ba,Bosnien und Herzegowina,FALSE,Bosnia and Herzegovina,FALSE,,TRUE,,TRUE,,TRUE,Bosnie-Herzégovine,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.bw,Botswana,FALSE,Botswana,FALSE,,TRUE,,TRUE,,TRUE,Botswana,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.bv,Bouvetinsel,FALSE,Bouvet Island,FALSE,,TRUE,,TRUE,,TRUE,Ile Bouvet,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.br,Brasilien,FALSE,Brazil,FALSE,,TRUE,,TRUE,,TRUE,Brésil,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.vg,Britische Jungferninseln,FALSE,Virgin Islands (British),FALSE,,TRUE,,TRUE,,TRUE,Îles Vierges (britanniques),TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.io,Britisches Territorium im Indischen Ozean,FALSE,British Indian Ocean Territory,FALSE,,TRUE,,TRUE,,TRUE,Territoire britannique de l'océan Indien,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.bn,Brunei,FALSE,Brunei Darussalam,FALSE,,TRUE,,TRUE,,TRUE,Brunéi Darussalam,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.bg,Bulgarien,FALSE,Bulgaria,FALSE,,TRUE,,TRUE,,TRUE,Bulgarie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.bf,Burkina Faso,FALSE,Burkina Faso,FALSE,,TRUE,,TRUE,,TRUE,Burkina Faso,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.bi,Burundi,FALSE,Burundi,FALSE,,TRUE,,TRUE,,TRUE,Burundi,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.cl,Chile,FALSE,Chile,FALSE,,TRUE,,TRUE,,TRUE,Chili,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ck,Cookinseln,FALSE,Cook Islands,FALSE,,TRUE,,TRUE,,TRUE,Îles Cook,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.cr,Costa Rica,FALSE,Costa Rica,FALSE,,TRUE,,TRUE,,TRUE,Costa Rica,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.cw,Curaçao,FALSE,Curaçao,FALSE,,TRUE,,TRUE,,TRUE,Curaçao,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.dk,Dänemark,FALSE,Denmark,FALSE,,TRUE,,TRUE,,TRUE,Danemark,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.de,Deutschland,FALSE,Germany,FALSE,,TRUE,,TRUE,,TRUE,Allemagne,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.dm,Dominica,FALSE,Dominica,FALSE,,TRUE,,TRUE,,TRUE,Dominique,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.do,Dominikanische Republik,FALSE,Dominican Republic,FALSE,,TRUE,,TRUE,,TRUE,République dominicaine,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.dj,Dschibuti,FALSE,Djibouti,FALSE,,TRUE,,TRUE,,TRUE,Djibouti,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ec,Ecuador,FALSE,Ecuador,FALSE,,TRUE,,TRUE,,TRUE,Équateur,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.sv,El Salvador,FALSE,El Salvador,FALSE,,TRUE,,TRUE,,TRUE,Le Sauveur,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ci,Elfenbeinküste,FALSE,Côte d'Ivoire,FALSE,,TRUE,,TRUE,,TRUE,Côte d'Ivoire,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.er,Eritrea,FALSE,Eritrea,FALSE,,TRUE,,TRUE,,TRUE,Érythrée,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ee,Estland,FALSE,Estonia,FALSE,,TRUE,,TRUE,,TRUE,Estonie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.fk,Falklandinseln,FALSE,Falkland Islands (Malvinas),FALSE,,TRUE,,TRUE,,TRUE,Îles Falkland (Falkland),TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.fo,Färöer,FALSE,Faroe Islands,FALSE,,TRUE,,TRUE,,TRUE,Îles Féroé,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.fj,Fidschi,FALSE,Fiji,FALSE,,TRUE,,TRUE,,TRUE,Fidji,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.fi,Finnland,FALSE,Finland,FALSE,,TRUE,,TRUE,,TRUE,Finlande,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.fr,Frankreich,FALSE,France,FALSE,,TRUE,,TRUE,,TRUE,France,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.gf,Französisch-Guayana,FALSE,French Guiana,FALSE,,TRUE,,TRUE,,TRUE,Guyane française,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.pf,Französisch-Polynesien,FALSE,French Polynesia,FALSE,,TRUE,,TRUE,,TRUE,Polynésie française,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.tf,Französische Süd- und Antarktisgebiete,FALSE,French Southern Territories,FALSE,,TRUE,,TRUE,,TRUE,Terres Australes Françaises,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ga,Gabun,FALSE,Gabon,FALSE,,TRUE,,TRUE,,TRUE,Gabon,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.gm,Gambia,FALSE,Gambia,FALSE,,TRUE,,TRUE,,TRUE,La Gambie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ge,Georgien,FALSE,Georgia,FALSE,,TRUE,,TRUE,,TRUE,Géorgie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.gh,Ghana,FALSE,Ghana,FALSE,,TRUE,,TRUE,,TRUE,Ghana,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.gi,Gibraltar,FALSE,Gibraltar,FALSE,,TRUE,,TRUE,,TRUE,Gibraltar,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.gd,Grenada,FALSE,Grenada,FALSE,,TRUE,,TRUE,,TRUE,Grenade,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.gr,Griechenland,FALSE,Greece,FALSE,,TRUE,,TRUE,,TRUE,Grèce,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.gl,Grönland,FALSE,Greenland,FALSE,,TRUE,,TRUE,,TRUE,Groenland,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.gp,Guadeloupe,FALSE,Guadeloupe,FALSE,,TRUE,,TRUE,,TRUE,Guadeloupe,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.gu,Guam,FALSE,Guam,FALSE,,TRUE,,TRUE,,TRUE,Guam,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.gt,Guatemala,FALSE,Guatemala,FALSE,,TRUE,,TRUE,,TRUE,Guatemala,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.gg,Guernsey (Kanalinsel),FALSE,Guernsey,FALSE,,TRUE,,TRUE,,TRUE,Guernesey,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.gn,Guinea,FALSE,Guinea,FALSE,,TRUE,,TRUE,,TRUE,Guinée,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.gw,Guinea-Bissau,FALSE,Guinea-Bissau,FALSE,,TRUE,,TRUE,,TRUE,Guinée-Bissau,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.gy,Guyana,FALSE,Guyana,FALSE,,TRUE,,TRUE,,TRUE,Guyane,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ht,Haiti,FALSE,Haiti,FALSE,,TRUE,,TRUE,,TRUE,Haïti,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.hm,Heard und McDonaldinseln,FALSE,Heard Island and McDonald Islands,FALSE,,TRUE,,TRUE,,TRUE,Îles Heard et McDonald,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.hn,Honduras,FALSE,Honduras,FALSE,,TRUE,,TRUE,,TRUE,Honduras,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.hk,Hongkong,FALSE,Hong Kong,FALSE,,TRUE,,TRUE,,TRUE,Hong Kong,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.in,Indien,FALSE,India,FALSE,,TRUE,,TRUE,,TRUE,Inde,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.id,Indonesien,FALSE,Indonesia,FALSE,,TRUE,,TRUE,,TRUE,Indonésie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.im,Insel Man,FALSE,Isle of Man,FALSE,,TRUE,,TRUE,,TRUE,Île de Man,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.iq,Irak,FALSE,Iraq,FALSE,,TRUE,,TRUE,,TRUE,Irak,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ir,Iran,FALSE,Iran (Islamic Republic of),FALSE,,TRUE,,TRUE,,TRUE,Iran (République islamique d'),TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ie,Irland,FALSE,Ireland,FALSE,,TRUE,,TRUE,,TRUE,Irlande,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.is,Island,FALSE,Iceland,FALSE,,TRUE,,TRUE,,TRUE,Islande,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.il,Israel,FALSE,Israel,FALSE,,TRUE,,TRUE,,TRUE,Israël,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.it,Italien,FALSE,Italy,FALSE,,TRUE,,TRUE,,TRUE,Italie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.jm,Jamaika,FALSE,Jamaica,FALSE,,TRUE,,TRUE,,TRUE,Jamaïque,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.jp,Japan,FALSE,Japan,FALSE,,TRUE,,TRUE,,TRUE,Japon,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ye,Jemen,FALSE,Yemen,FALSE,,TRUE,,TRUE,,TRUE,Yémen,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.je,Jersey (Kanalinsel),FALSE,Jersey,FALSE,,TRUE,,TRUE,,TRUE,Jersey,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.jo,Jordanien,FALSE,Jordan,FALSE,,TRUE,,TRUE,,TRUE,Jordanie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ky,Kaimaninseln,FALSE,Cayman Islands,FALSE,,TRUE,,TRUE,,TRUE,Îles Caïmans,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.kh,Kambodscha,FALSE,Cambodia,FALSE,,TRUE,,TRUE,,TRUE,Cambodge,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.cm,Kamerun,FALSE,Cameroon,FALSE,,TRUE,,TRUE,,TRUE,Cameroun,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ca,Kanada,FALSE,Canada,FALSE,,TRUE,,TRUE,,TRUE,Canada,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.cv,Kap Verde,FALSE,Cabo Verde,FALSE,,TRUE,,TRUE,,TRUE,Cap-Vert,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.kz,Kasachstan,FALSE,Kazakhstan,FALSE,,TRUE,,TRUE,,TRUE,Kazakhstan,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.qa,Katar,FALSE,Qatar,FALSE,,TRUE,,TRUE,,TRUE,Qatar,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ke,Kenia,FALSE,Kenya,FALSE,,TRUE,,TRUE,,TRUE,Kenya,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.kg,Kirgisistan,FALSE,Kyrgyzstan,FALSE,,TRUE,,TRUE,,TRUE,Kirghizistan,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ki,Kiribati,FALSE,Kiribati,FALSE,,TRUE,,TRUE,,TRUE,Kiribati,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.cc,Kokosinseln,FALSE,Cocos (Keeling) Islands,FALSE,,TRUE,,TRUE,,TRUE,Îles Cocos (Keeling),TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.co,Kolumbien,FALSE,Colombia,FALSE,,TRUE,,TRUE,,TRUE,Colombie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.km,Komoren,FALSE,Comoros,FALSE,,TRUE,,TRUE,,TRUE,Comores,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.cd,"Kongo, Demokratische Republik",FALSE,"Congo, Democratic Republic of the",FALSE,,TRUE,,TRUE,,TRUE,"Congo, République démocratique du Congo",TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.cg,"Kongo, Republik",FALSE,Congo,FALSE,,TRUE,,TRUE,,TRUE,Congo,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.kp,"Korea, Nord",FALSE,Korea (Democratic People's Republic of),FALSE,,TRUE,,TRUE,,TRUE,Corée (République populaire démocratique de Corée),TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.kr,"Korea, Süd",FALSE,"Korea, Republic of",FALSE,,TRUE,,TRUE,,TRUE,"Corée, République de Corée",TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.hr,Kroatien,FALSE,Croatia,FALSE,,TRUE,,TRUE,,TRUE,Croatie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.cu,Kuba,FALSE,Cuba,FALSE,,TRUE,,TRUE,,TRUE,Cuba,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.kw,Kuwait,FALSE,Kuwait,FALSE,,TRUE,,TRUE,,TRUE,Koweit,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.la,Laos,FALSE,Lao People's Democratic Republic,FALSE,,TRUE,,TRUE,,TRUE,République démocratique populaire lao,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ls,Lesotho,FALSE,Lesotho,FALSE,,TRUE,,TRUE,,TRUE,Lesotho,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.lv,Lettland,FALSE,Latvia,FALSE,,TRUE,,TRUE,,TRUE,Lettonie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.lb,Libanon,FALSE,Lebanon,FALSE,,TRUE,,TRUE,,TRUE,Liban,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.lr,Liberia,FALSE,Liberia,FALSE,,TRUE,,TRUE,,TRUE,Libéria,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ly,Libyen,FALSE,Libya,FALSE,,TRUE,,TRUE,,TRUE,Libye,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.li,Liechtenstein,FALSE,Liechtenstein,FALSE,,TRUE,,TRUE,,TRUE,Liechtenstein,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.lt,Litauen,FALSE,Lithuania,FALSE,,TRUE,,TRUE,,TRUE,Lituanie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.lu,Luxemburg,FALSE,Luxembourg,FALSE,,TRUE,,TRUE,,TRUE,Luxembourg,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.mo,Macau,FALSE,Macao,FALSE,,TRUE,,TRUE,,TRUE,Macao,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.mg,Madagaskar,FALSE,Madagascar,FALSE,,TRUE,,TRUE,,TRUE,Madagascar,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.mw,Malawi,FALSE,Malawi,FALSE,,TRUE,,TRUE,,TRUE,Malawi,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.my,Malaysia,FALSE,Malaysia,FALSE,,TRUE,,TRUE,,TRUE,Malaisie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.mv,Malediven,FALSE,Maldives,FALSE,,TRUE,,TRUE,,TRUE,Maldives,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ml,Mali,FALSE,Mali,FALSE,,TRUE,,TRUE,,TRUE,Mali,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.mt,Malta,FALSE,Malta,FALSE,,TRUE,,TRUE,,TRUE,Malte,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ma,Marokko,FALSE,Morocco,FALSE,,TRUE,,TRUE,,TRUE,Maroc,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.mh,Marshallinseln,FALSE,Marshall Islands,FALSE,,TRUE,,TRUE,,TRUE,Îles Marshall,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.mq,Martinique,FALSE,Martinique,FALSE,,TRUE,,TRUE,,TRUE,Martinique,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.mr,Mauretanien,FALSE,Mauritania,FALSE,,TRUE,,TRUE,,TRUE,Mauritanie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.mu,Mauritius,FALSE,Mauritius,FALSE,,TRUE,,TRUE,,TRUE,Ile Maurice,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.yt,Mayotte,FALSE,Mayotte,FALSE,,TRUE,,TRUE,,TRUE,Mayotte,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.mx,Mexiko,FALSE,Mexico,FALSE,,TRUE,,TRUE,,TRUE,Mexique,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.fm,Mikronesien,FALSE,Micronesia (Federated States of),FALSE,,TRUE,,TRUE,,TRUE,Micronésie (États fédérés d'Amérique),TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.md,Moldau,FALSE,"Moldova, Republic of",FALSE,,TRUE,,TRUE,,TRUE,"Moldavie, République de",TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.mc,Monaco,FALSE,Monaco,FALSE,,TRUE,,TRUE,,TRUE,Monaco,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.mn,Mongolei,FALSE,Mongolia,FALSE,,TRUE,,TRUE,,TRUE,Mongolie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.me,Montenegro,FALSE,Montenegro,FALSE,,TRUE,,TRUE,,TRUE,Monténégro,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ms,Montserrat,FALSE,Montserrat,FALSE,,TRUE,,TRUE,,TRUE,Montserrat,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.mz,Mosambik,FALSE,Mozambique,FALSE,,TRUE,,TRUE,,TRUE,Mozambique,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.mm,Myanmar,FALSE,Myanmar,FALSE,,TRUE,,TRUE,,TRUE,Birmanie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.na,Namibia,FALSE,Namibia,FALSE,,TRUE,,TRUE,,TRUE,Namibie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.nr,Nauru,FALSE,Nauru,FALSE,,TRUE,,TRUE,,TRUE,Nauru,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.np,Nepal,FALSE,Nepal,FALSE,,TRUE,,TRUE,,TRUE,Népal,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.nc,Neukaledonien,FALSE,New Caledonia,FALSE,,TRUE,,TRUE,,TRUE,Nouvelle-Calédonie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.nz,Neuseeland,FALSE,New Zealand,FALSE,,TRUE,,TRUE,,TRUE,Nouvelle-Zélande,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ni,Nicaragua,FALSE,Nicaragua,FALSE,,TRUE,,TRUE,,TRUE,Nicaragua,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.nl,Niederlande,FALSE,Netherlands,FALSE,,TRUE,,TRUE,,TRUE,Pays-Bas,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ne,Niger,FALSE,Niger,FALSE,,TRUE,,TRUE,,TRUE,Niger,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ng,Nigeria,FALSE,Nigeria,FALSE,,TRUE,,TRUE,,TRUE,Nigeria,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.nu,Niue,FALSE,Niue,FALSE,,TRUE,,TRUE,,TRUE,Niue,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.mp,Nördliche Marianen,FALSE,Northern Mariana Islands,FALSE,,TRUE,,TRUE,,TRUE,Îles Mariannes du Nord,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.mk,Nordmazedonien,FALSE,North Macedonia,FALSE,,TRUE,,TRUE,,TRUE,Macédoine du Nord,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.nf,Norfolkinsel,FALSE,Norfolk Island,FALSE,,TRUE,,TRUE,,TRUE,Île Norfolk,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.no,Norwegen,FALSE,Norway,FALSE,,TRUE,,TRUE,,TRUE,Norvège,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.om,Oman,FALSE,Oman,FALSE,,TRUE,,TRUE,,TRUE,Oman,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.at,Österreich,FALSE,Austria,FALSE,,TRUE,,TRUE,,TRUE,Autriche,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.tl,Osttimor,FALSE,Timor-Leste,FALSE,,TRUE,,TRUE,,TRUE,Timor-Leste,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.pk,Pakistan,FALSE,Pakistan,FALSE,,TRUE,,TRUE,,TRUE,Pakistan,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ps,Palästina,FALSE,"Palestine, State of",FALSE,,TRUE,,TRUE,,TRUE,"Palestine, État de",TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.pw,Palau,FALSE,Palau,FALSE,,TRUE,,TRUE,,TRUE,Palau,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.pa,Panama,FALSE,Panama,FALSE,,TRUE,,TRUE,,TRUE,Panama,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.pg,Papua-Neuguinea,FALSE,Papua New Guinea,FALSE,,TRUE,,TRUE,,TRUE,Papouasie-Nouvelle-Guinée,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.py,Paraguay,FALSE,Paraguay,FALSE,,TRUE,,TRUE,,TRUE,Paraguay,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.pe,Peru,FALSE,Peru,FALSE,,TRUE,,TRUE,,TRUE,Pérou,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ph,Philippinen,FALSE,Philippines,FALSE,,TRUE,,TRUE,,TRUE,Philippines,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.pn,Pitcairninseln,FALSE,Pitcairn,FALSE,,TRUE,,TRUE,,TRUE,Pitcairn,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.pl,Polen,FALSE,Poland,FALSE,,TRUE,,TRUE,,TRUE,Pologne,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.pt,Portugal,FALSE,Portugal,FALSE,,TRUE,,TRUE,,TRUE,Portugal,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.pr,Puerto Rico,FALSE,Puerto Rico,FALSE,,TRUE,,TRUE,,TRUE,Porto Rico,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.tw,Republik China,FALSE,"Taiwan, Province of China",FALSE,,TRUE,,TRUE,,TRUE,"Taïwan, province de Chine",TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.re,Réunion,FALSE,Réunion,FALSE,,TRUE,,TRUE,,TRUE,La Réunion,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.rw,Ruanda,FALSE,Rwanda,FALSE,,TRUE,,TRUE,,TRUE,Rwanda,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ro,Rumänien,FALSE,Romania,FALSE,,TRUE,,TRUE,,TRUE,Roumanie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ru,Russland,FALSE,Russian Federation,FALSE,,TRUE,,TRUE,,TRUE,Fédération de Russie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.bl,Saint-Barthélemy,FALSE,Saint Barthélemy,FALSE,,TRUE,,TRUE,,TRUE,Saint-Barthélemy,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.mf,Saint-Martin (französischer Teil),FALSE,Saint Martin (French part),FALSE,,TRUE,,TRUE,,TRUE,Saint-Martin (partie française),TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.pm,Saint-Pierre und Miquelon,FALSE,Saint Pierre and Miquelon,FALSE,,TRUE,,TRUE,,TRUE,Saint-Pierre-et-Miquelon,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.sb,Salomonen,FALSE,Solomon Islands,FALSE,,TRUE,,TRUE,,TRUE,Îles Salomon,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.zm,Sambia,FALSE,Zambia,FALSE,,TRUE,,TRUE,,TRUE,Zambie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ws,Samoa,FALSE,Samoa,FALSE,,TRUE,,TRUE,,TRUE,Samoa,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.sm,San Marino,FALSE,San Marino,FALSE,,TRUE,,TRUE,,TRUE,Saint-Marin,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.st,São Tomé und Príncipe,FALSE,Sao Tome and Principe,FALSE,,TRUE,,TRUE,,TRUE,Sao Tomé-et-Principe,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.sa,Saudi-Arabien,FALSE,Saudi Arabia,FALSE,,TRUE,,TRUE,,TRUE,Arabie saoudite,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.se,Schweden,FALSE,Sweden,FALSE,,TRUE,,TRUE,,TRUE,Suède,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ch,Schweiz,FALSE,Switzerland,FALSE,,TRUE,,TRUE,,TRUE,Suisse,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.sn,Senegal,FALSE,Senegal,FALSE,,TRUE,,TRUE,,TRUE,Sénégal,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.rs,Serbien,FALSE,Serbia,FALSE,,TRUE,,TRUE,,TRUE,Serbie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.sc,Seychellen,FALSE,Seychelles,FALSE,,TRUE,,TRUE,,TRUE,Seychelles,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.sl,Sierra Leone,FALSE,Sierra Leone,FALSE,,TRUE,,TRUE,,TRUE,Sierra Leone,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.zw,Simbabwe,FALSE,Zimbabwe,FALSE,,TRUE,,TRUE,,TRUE,Zimbabwe,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.sg,Singapur,FALSE,Singapore,FALSE,,TRUE,,TRUE,,TRUE,Singapour,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.sx,Sint Maarten,FALSE,Sint Maarten (Dutch part),FALSE,,TRUE,,TRUE,,TRUE,Sint-Maarten (partie néerlandaise),TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.sk,Slowakei,FALSE,Slovakia,FALSE,,TRUE,,TRUE,,TRUE,Slovaquie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.si,Slowenien,FALSE,Slovenia,FALSE,,TRUE,,TRUE,,TRUE,Slovénie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.so,Somalia,FALSE,Somalia,FALSE,,TRUE,,TRUE,,TRUE,Somalie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.es,Spanien,FALSE,Spain,FALSE,,TRUE,,TRUE,,TRUE,Espagne,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.sj,Spitzbergen und Jan Mayen,FALSE,Svalbard and Jan Mayen,FALSE,,TRUE,,TRUE,,TRUE,Svalbard et Jan Mayen,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.lk,Sri Lanka,FALSE,Sri Lanka,FALSE,,TRUE,,TRUE,,TRUE,Sri Lanka,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.sh,"St. Helena, Ascension und Tristan da Cunha",FALSE,"Saint Helena, Ascension and Tristan da Cunha",FALSE,,TRUE,,TRUE,,TRUE,"Saint Sainte-Hélène, Ascension et Tristan da Cunha",TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.kn,St. Kitts und Nevis,FALSE,Saint Kitts and Nevis,FALSE,,TRUE,,TRUE,,TRUE,Saint-Kitts-et-Nevis,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.lc,St. Lucia,FALSE,Saint Lucia,FALSE,,TRUE,,TRUE,,TRUE,Sainte-Lucie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.vc,St. Vincent und die Grenadinen,FALSE,Saint Vincent and the Grenadines,FALSE,,TRUE,,TRUE,,TRUE,Saint-Vincent-et-les Grenadines,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.za,Südafrika,FALSE,South Africa,FALSE,,TRUE,,TRUE,,TRUE,Afrique du Sud,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.sd,Sudan,FALSE,Sudan,FALSE,,TRUE,,TRUE,,TRUE,Soudan,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.gs,Südgeorgien und die Südlichen Sandwichinseln,FALSE,South Georgia and the South Sandwich Islands,FALSE,,TRUE,,TRUE,,TRUE,Géorgie du Sud et îles Sandwich du Sud,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ss,Südsudan,FALSE,South Sudan,FALSE,,TRUE,,TRUE,,TRUE,Soudan du Sud,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.sr,Suriname,FALSE,Suriname,FALSE,,TRUE,,TRUE,,TRUE,Suriname,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.sz,Swasiland,FALSE,Eswatini,FALSE,,TRUE,,TRUE,,TRUE,Eswatini,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.sy,Syrien,FALSE,Syrian Arab Republic,FALSE,,TRUE,,TRUE,,TRUE,République arabe syrienne,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.tj,Tadschikistan,FALSE,Tajikistan,FALSE,,TRUE,,TRUE,,TRUE,Tadjikistan,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.tz,Tansania,FALSE,"Tanzania, United Republic of",FALSE,,TRUE,,TRUE,,TRUE,"Tanzanie, République-Unie de",TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.th,Thailand,FALSE,Thailand,FALSE,,TRUE,,TRUE,,TRUE,Thaïlande,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.tg,Togo,FALSE,Togo,FALSE,,TRUE,,TRUE,,TRUE,Togo,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.tk,Tokelau,FALSE,Tokelau,FALSE,,TRUE,,TRUE,,TRUE,Tokelau,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.to,Tonga,FALSE,Tonga,FALSE,,TRUE,,TRUE,,TRUE,Tonga,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.tt,Trinidad und Tobago,FALSE,Trinidad and Tobago,FALSE,,TRUE,,TRUE,,TRUE,Trinité-et-Tobago,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.td,Tschad,FALSE,Chad,FALSE,,TRUE,,TRUE,,TRUE,Tchad,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.cz,Tschechien,FALSE,Czechia,FALSE,,TRUE,,TRUE,,TRUE,Tchéquie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.tn,Tunesien,FALSE,Tunisia,FALSE,,TRUE,,TRUE,,TRUE,Tunisie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.tr,Türkei,FALSE,Turkey,FALSE,,TRUE,,TRUE,,TRUE,Turquie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.tm,Turkmenistan,FALSE,Turkmenistan,FALSE,,TRUE,,TRUE,,TRUE,Turkménistan,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.tc,Turks- und Caicosinseln,FALSE,Turks and Caicos Islands,FALSE,,TRUE,,TRUE,,TRUE,Îles Turques-et-Caïques,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.tv,Tuvalu,FALSE,Tuvalu,FALSE,,TRUE,,TRUE,,TRUE,Tuvalu,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ug,Uganda,FALSE,Uganda,FALSE,,TRUE,,TRUE,,TRUE,Ouganda,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ua,Ukraine,FALSE,Ukraine,FALSE,,TRUE,,TRUE,,TRUE,Ukraine,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.hu,Ungarn,FALSE,Hungary,FALSE,,TRUE,,TRUE,,TRUE,Hongrie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.um,United States Minor Outlying Islands,FALSE,United States Minor Outlying Islands,FALSE,,TRUE,,TRUE,,TRUE,Îles mineures éloignées des États-Unis,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.uy,Uruguay,FALSE,Uruguay,FALSE,,TRUE,,TRUE,,TRUE,Uruguay,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.uz,Usbekistan,FALSE,Uzbekistan,FALSE,,TRUE,,TRUE,,TRUE,Ouzbékistan,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.vu,Vanuatu,FALSE,Vanuatu,FALSE,,TRUE,,TRUE,,TRUE,Vanuatu,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.va,Vatikanstadt,FALSE,Holy See,FALSE,,TRUE,,TRUE,,TRUE,Saint-Siège,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ve,Venezuela,FALSE,Venezuela (Bolivarian Republic of),FALSE,,TRUE,,TRUE,,TRUE,Venezuela (République bolivarienne du),TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.ae,Vereinigte Arabische Emirate,FALSE,United Arab Emirates,FALSE,,TRUE,,TRUE,,TRUE,Émirats arabes unis,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.us,Vereinigte Staaten,FALSE,United States of America,FALSE,,TRUE,,TRUE,,TRUE,États-Unis d'Amérique,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.gb,Vereinigtes Königreich,FALSE,United Kingdom of Great Britain and Northern Ireland,FALSE,,TRUE,,TRUE,,TRUE,Royaume-Uni de Grande-Bretagne et d'Irlande du Nord,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.vn,Vietnam,FALSE,Viet Nam,FALSE,,TRUE,,TRUE,,TRUE,Viet Nam,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.cn,Volksrepublik China,FALSE,China,FALSE,,TRUE,,TRUE,,TRUE,Chine,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.wf,Wallis und Futuna,FALSE,Wallis and Futuna,FALSE,,TRUE,,TRUE,,TRUE,Wallis-et-Futuna,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.cx,Weihnachtsinsel,FALSE,Christmas Island,FALSE,,TRUE,,TRUE,,TRUE,Île Christmas,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.by,Weißrussland,FALSE,Belarus,FALSE,,TRUE,,TRUE,,TRUE,Biélorussie,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.eh,Westsahara,FALSE,Western Sahara,FALSE,,TRUE,,TRUE,,TRUE,Sahara occidental,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.cf,Zentral­afrikanische Republik,FALSE,Central African Republic,FALSE,,TRUE,,TRUE,,TRUE,République centrafricaine,TRUE,,TRUE,,TRUE
+custom.data.type.geonames.country.name.cy,Zypern,FALSE,Cyprus,FALSE,,TRUE,,TRUE,,TRUE,Chypre,TRUE,,TRUE,,TRUE
+,Kanada,,Canada,,,,,,,,Canada,,,,,
